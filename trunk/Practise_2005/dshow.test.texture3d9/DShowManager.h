@@ -24,9 +24,9 @@ public:
 	void CleanupDShow(void);
 
 private:
-	CComPtr<IGraphBuilder>  m_pGB;          // GraphBuilder
-	CComPtr<IMediaControl>  m_pMC;          // Media Control
-	CComPtr<IMediaPosition> m_pMP;          // Media Position
-	CComPtr<IMediaEvent>    m_pME;          // Media Event
-	CComPtr<IBaseFilter>    m_pRenderer;    // our custom renderer
+	IGraphBuilder*  m_pGB;          // GraphBuilder
+	IMediaControl * m_pMC;          // Media Control
+	IMediaPosition *m_pMP;          // Media Position
+	IMediaEvent    *m_pME;          // Media Event
+	IBaseFilter    *m_pRenderer;    // our custom renderer
 };
