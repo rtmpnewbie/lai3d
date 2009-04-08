@@ -4,7 +4,7 @@
 #include "DShowTextures.h"
 #include "dshow.texture3d9.h"
 
-inline LPWSTR T2W(__in_opt LPTSTR lp) { return lp; }
+//inline LPWSTR T2W(__in_opt LPTSTR lp) { return lp; }
 
 //-----------------------------------------------------------------------------
 // InitDShowTextureRenderer : Create DirectShow filter graph and run the graph
@@ -185,19 +185,21 @@ void CDShowManager::CleanupDShow(void)
 #endif
 
 	// Shut down the graph
-	if (m_pMC) 
-		m_pMC->Stop();
-	m_pGB->RemoveFilter(m_pRenderer);
+	//if (m_pMC) 
+	//	m_pMC->Stop();
+	//m_pGB->RemoveFilter(m_pRenderer);
 
-	SAFE_RELEASE(m_pMC);
-	SAFE_RELEASE(m_pME);
-	SAFE_RELEASE(m_pMP);
-	SAFE_RELEASE(m_pGB);
+	//SAFE_RELEASE(m_pMC);
+	//SAFE_RELEASE(m_pME);
+	//SAFE_RELEASE(m_pMP);
+	//SAFE_RELEASE(m_pGB);
+
 	//SAFE_RELEASE(m_pRenderer);
-	if (m_pRenderer)
-	{
-		IBaseFilter* pTemp = m_pRenderer;
-		m_pRenderer = NULL;
-		pTemp->Release();
-	}
+	if (!(!m_pMC)) m_pMC->Stop();
+
+	if (!(!m_pMC)) m_pMC.Release();
+	if (!(!m_pME)) m_pME.Release();
+	if (!(!m_pMP)) m_pMP.Release();
+	if (!(!m_pGB)) m_pGB.Release();
+	if (!(!m_pRenderer)) m_pRenderer.Release();
 }
