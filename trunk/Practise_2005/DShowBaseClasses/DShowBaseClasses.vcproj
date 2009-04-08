@@ -20,6 +20,7 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="4"
+			UseOfATL="0"
 			CharacterSet="2"
 			>
 			<Tool
@@ -169,7 +170,7 @@
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
-				UsePrecompiledHeader="1"
+				UsePrecompiledHeader="2"
 				PrecompiledHeaderThrough="streams.h"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="true"
@@ -285,6 +286,18 @@
 			<File
 				RelativePath=".\BaseClasses\source.cpp"
 				>
+			</File>
+			<File
+				RelativePath=".\BaseClasses\streams.cpp"
+				>
+				<FileConfiguration
+					Name="Debug_Unicode|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\BaseClasses\strmctl.cpp"
