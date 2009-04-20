@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "01.HelloWorld", "01.HelloWorld\01.HelloWorld.vcproj", "{F9EE34CC-E0B0-448D-85E8-11E8DA5984BF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|M8SDK (ARMV4I) = Debug|M8SDK (ARMV4I)
+		Release|M8SDK (ARMV4I) = Release|M8SDK (ARMV4I)
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F9EE34CC-E0B0-448D-85E8-11E8DA5984BF}.Debug|M8SDK (ARMV4I).ActiveCfg = Debug|M8SDK (ARMV4I)
+		{F9EE34CC-E0B0-448D-85E8-11E8DA5984BF}.Debug|M8SDK (ARMV4I).Build.0 = Debug|M8SDK (ARMV4I)
+		{F9EE34CC-E0B0-448D-85E8-11E8DA5984BF}.Debug|M8SDK (ARMV4I).Deploy.0 = Debug|M8SDK (ARMV4I)
+		{F9EE34CC-E0B0-448D-85E8-11E8DA5984BF}.Release|M8SDK (ARMV4I).ActiveCfg = Release|M8SDK (ARMV4I)
+		{F9EE34CC-E0B0-448D-85E8-11E8DA5984BF}.Release|M8SDK (ARMV4I).Build.0 = Release|M8SDK (ARMV4I)
+		{F9EE34CC-E0B0-448D-85E8-11E8DA5984BF}.Release|M8SDK (ARMV4I).Deploy.0 = Release|M8SDK (ARMV4I)
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
