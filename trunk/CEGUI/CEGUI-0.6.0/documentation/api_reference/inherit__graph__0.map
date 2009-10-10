@@ -1,0 +1,7 @@
+<area shape="rect" href="$classCEGUI_1_1BaseDim.html" title="Abstract interface for a generic &#39;dimension&#39; class." alt="" coords="5,132,133,159">
+<area shape="rect" href="$classCEGUI_1_1AbsoluteDim.html" title="Dimension type that represents an absolute pixel value. Implements BaseDim interface..." alt="" coords="181,6,333,32">
+<area shape="rect" href="$classCEGUI_1_1FontDim.html" title="Dimension type that represents some metric of a Font. Implements BaseDim interface..." alt="" coords="196,56,319,83">
+<area shape="rect" href="$classCEGUI_1_1ImageDim.html" title="Dimension type that represents some dimension of a named Image. Implements BaseDim..." alt="" coords="189,107,325,134">
+<area shape="rect" href="$classCEGUI_1_1PropertyDim.html" title="Dimension type that represents the value of a Window property. Implements BaseDim..." alt="" coords="183,158,332,184">
+<area shape="rect" href="$classCEGUI_1_1UnifiedDim.html" title="Dimension type that represents an Unified dimension. Implements BaseDim interface..." alt="" coords="188,208,327,235">
+<area shape="rect" href="$classCEGUI_1_1WidgetDim.html" title="Dimension type that represents some dimension of a Window/widget. Implements BaseDim..." alt="" coords="188,259,327,286">

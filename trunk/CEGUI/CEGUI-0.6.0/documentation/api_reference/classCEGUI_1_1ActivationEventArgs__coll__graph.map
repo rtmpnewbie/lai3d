@@ -1,0 +1,3 @@
+<area shape="rect" href="$classCEGUI_1_1WindowEventArgs.html" title="EventArgs based class that is used for objects passed to handlers triggered for events..." alt="" coords="5,122,187,148">
+<area shape="rect" href="$classCEGUI_1_1EventArgs.html" title="Base class used as the argument to all subscribers Event object." alt="" coords="20,18,153,44">
+<area shape="rect" href="$classCEGUI_1_1Window.html" title="An abstract base class providing common functionality and specifying the required..." alt="" coords="177,18,292,44">

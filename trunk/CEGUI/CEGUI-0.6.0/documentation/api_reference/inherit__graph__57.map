@@ -1,0 +1,6 @@
+<area shape="rect" href="$classCEGUI_1_1SlotFunctorBase.html" title="Defines abstract interface which will be used when constructing various functor objects..." alt="" coords="7,107,180,133">
+<area shape="rect" href="$classCEGUI_1_1FreeFunctionSlot.html" title="Slot functor class that calls back via a free function pointer." alt="" coords="264,5,440,32">
+<area shape="rect" href="$classCEGUI_1_1FunctorCopySlot.html" title="Slot template class that creates a functor that calls back via a copy of a functor..." alt="" coords="247,56,457,83">
+<area shape="rect" href="$classCEGUI_1_1FunctorPointerSlot.html" title="Slot template class that creates a functor that calls back via a functor object pointer..." alt="" coords="240,107,464,133">
+<area shape="rect" href="$classCEGUI_1_1FunctorReferenceSlot.html" title="Slot template class that creates a functor that calls back via a functor object reference..." alt="" coords="231,157,473,184">
+<area shape="rect" href="$classCEGUI_1_1MemberFunctionSlot.html" title="Slot template class that creates a functor that calls back via a class member function..." alt="" coords="233,208,471,235">

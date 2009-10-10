@@ -1,0 +1,10 @@
+<area shape="rect" href="$classCEGUI_1_1EventArgs.html" title="Base class used as the argument to all subscribers Event object." alt="" coords="7,132,140,158">
+<area shape="rect" href="$classCEGUI_1_1MouseCursorEventArgs.html" title="EventArgs based class that is used for objects passed to input event handlers concerning..." alt="" coords="189,106,408,133">
+<area shape="rect" href="$classCEGUI_1_1WindowEventArgs.html" title="EventArgs based class that is used for objects passed to handlers triggered for events..." alt="" coords="208,157,389,184">
+<area shape="rect" href="$classCEGUI_1_1ActivationEventArgs.html" title="EventArgs based class that is used for Activated and Deactivated window events." alt="" coords="480,5,677,32">
+<area shape="rect" href="$classCEGUI_1_1DragDropEventArgs.html" title="EventArgs based class used for certain drag/drop notifications." alt="" coords="481,56,676,82">
+<area shape="rect" href="$classCEGUI_1_1HeaderSequenceEventArgs.html" title="EventArgs class used for segment move (sequence changed) events." alt="" coords="456,106,701,133">
+<area shape="rect" href="$classCEGUI_1_1KeyEventArgs.html" title="EventArgs based class that is used for objects passed to input event handlers concerning..." alt="" coords="500,157,657,184">
+<area shape="rect" href="$classCEGUI_1_1MouseEventArgs.html" title="EventArgs based class that is used for objects passed to input event handlers concerning..." alt="" coords="491,208,667,234">
+<area shape="rect" href="$classCEGUI_1_1TreeEventArgs.html" title="EventArgs based class that is used for objects passed to input event handlers concerning..." alt="" coords="499,258,659,285">
+<area shape="rect" href="$classCEGUI_1_1UpdateEventArgs.html" title="WindowEventArgs class that is primarily used by lua scripts." alt="" coords="488,309,669,336">
