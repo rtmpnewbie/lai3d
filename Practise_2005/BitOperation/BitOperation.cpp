@@ -20,6 +20,9 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	std::cout << state << std::endl;
 
+	int arrayTmp[] = {1, 2};
+	int nValue = arrayTmp[3];
+
 	return 0;
 }
 
