@@ -1,0 +1,113 @@
+/********************************************************************************
+** Form generated from reading ui file 'helloworld.ui'
+**
+** Created: Fri Jan 4 16:26:24 2008
+**      by: Qt User Interface Compiler version 4.3.0
+**
+** WARNING! All changes made in this file will be lost when recompiling ui file!
+********************************************************************************/
+
+#ifndef UI_HELLOWORLD_H
+#define UI_HELLOWORLD_H
+
+#include <QtCore/QVariant>
+#include <QtGui/QAction>
+#include <QtGui/QApplication>
+#include <QtGui/QButtonGroup>
+#include <QtGui/QCalendarWidget>
+#include <QtGui/QDialog>
+#include <QtGui/QDialogButtonBox>
+#include <QtGui/QFrame>
+#include <QtGui/QGraphicsView>
+#include <QtGui/QProgressBar>
+#include <QtGui/QWidget>
+#include "analogclock.h"
+#include "multipagewidget.h"
+#include "tictactoe.h"
+#include "worldtimeclock.h"
+
+class Ui_HelloWorldClass
+{
+public:
+    QDialogButtonBox *buttonBox;
+    MultiPageWidget *multipagewidget;
+    QWidget *page;
+    AnalogClock *analogClock;
+    TicTacToe *tictactoe;
+    WorldTimeClock *worldTimeClock;
+    QCalendarWidget *calendarWidget;
+    QProgressBar *progressBar;
+    QFrame *line;
+    QFrame *line_2;
+    QGraphicsView *graphicsView;
+
+    void setupUi(QDialog *Dialog)
+    {
+    if (Dialog->objectName().isEmpty())
+        Dialog->setObjectName(QString::fromUtf8("Dialog"));
+    QSize size(1007, 755);
+    size = size.expandedTo(Dialog->minimumSizeHint());
+    Dialog->resize(size);
+    Dialog->setContextMenuPolicy(Qt::NoContextMenu);
+    buttonBox = new QDialogButtonBox(Dialog);
+    buttonBox->setObjectName(QString::fromUtf8("buttonBox"));
+    buttonBox->setGeometry(QRect(640, 710, 341, 32));
+    buttonBox->setOrientation(Qt::Horizontal);
+    buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::NoButton|QDialogButtonBox::Ok);
+    multipagewidget = new MultiPageWidget(Dialog);
+    multipagewidget->setObjectName(QString::fromUtf8("multipagewidget"));
+    multipagewidget->setGeometry(QRect(30, 10, 200, 150));
+    page = new QWidget(multipagewidget);
+    page->setObjectName(QString::fromUtf8("page"));
+    analogClock = new AnalogClock(Dialog);
+    analogClock->setObjectName(QString::fromUtf8("analogClock"));
+    analogClock->setGeometry(QRect(500, 20, 100, 100));
+    tictactoe = new TicTacToe(Dialog);
+    tictactoe->setObjectName(QString::fromUtf8("tictactoe"));
+    tictactoe->setGeometry(QRect(30, 200, 200, 200));
+    worldTimeClock = new WorldTimeClock(Dialog);
+    worldTimeClock->setObjectName(QString::fromUtf8("worldTimeClock"));
+    worldTimeClock->setGeometry(QRect(400, 140, 100, 100));
+    calendarWidget = new QCalendarWidget(Dialog);
+    calendarWidget->setObjectName(QString::fromUtf8("calendarWidget"));
+    calendarWidget->setGeometry(QRect(590, 270, 344, 155));
+    progressBar = new QProgressBar(Dialog);
+    progressBar->setObjectName(QString::fromUtf8("progressBar"));
+    progressBar->setGeometry(QRect(20, 440, 391, 20));
+    progressBar->setValue(24);
+    line = new QFrame(Dialog);
+    line->setObjectName(QString::fromUtf8("line"));
+    line->setGeometry(QRect(40, 530, 118, 3));
+    line->setFrameShape(QFrame::HLine);
+    line->setFrameShadow(QFrame::Sunken);
+    line_2 = new QFrame(Dialog);
+    line_2->setObjectName(QString::fromUtf8("line_2"));
+    line_2->setGeometry(QRect(30, 590, 21, 61));
+    line_2->setFrameShape(QFrame::VLine);
+    line_2->setFrameShadow(QFrame::Sunken);
+    graphicsView = new QGraphicsView(Dialog);
+    graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
+    graphicsView->setGeometry(QRect(210, 530, 256, 192));
+
+    retranslateUi(Dialog);
+    QObject::connect(buttonBox, SIGNAL(accepted()), Dialog, SLOT(accept()));
+    QObject::connect(buttonBox, SIGNAL(rejected()), Dialog, SLOT(reject()));
+
+    QMetaObject::connectSlotsByName(Dialog);
+    } // setupUi
+
+    void retranslateUi(QDialog *Dialog)
+    {
+    Dialog->setWindowTitle(QApplication::translate("HelloWorldClass", "Dialog", 0, QApplication::UnicodeUTF8));
+    analogClock->setToolTip(QApplication::translate("HelloWorldClass", "The current time", 0, QApplication::UnicodeUTF8));
+    analogClock->setWhatsThis(QApplication::translate("HelloWorldClass", "The analog clock widget displays the current time.", 0, QApplication::UnicodeUTF8));
+    Q_UNUSED(Dialog);
+    } // retranslateUi
+
+};
+
+namespace Ui {
+    class HelloWorldClass: public Ui_HelloWorldClass {};
+} // namespace Ui
+
+#endif // UI_HELLOWORLD_H

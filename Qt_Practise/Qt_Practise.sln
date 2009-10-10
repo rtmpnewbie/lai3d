@@ -1,0 +1,70 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HelloWorld", "HelloWorld\HelloWorld.vcproj", "{F42B35D9-6448-491F-B194-84FC14C43366}"
+	GlobalSection(Qt) = preSolution
+		Integration = True
+	EndGlobalSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QStrin_CString_Test", "QStrin_CString_Test\QStrin_CString_Test.vcproj", "{76E9AC75-9E4A-42C5-8E03-E89B86E1B45B}"
+	GlobalSection(Qt) = preSolution
+		Integration = True
+	EndGlobalSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MFC_CString_Test", "MFC_CString_Test\MFC_CString_Test.vcproj", "{B23FDCC3-C5DD-4149-90B6-32B23B38B1AE}"
+	GlobalSection(Qt) = preSolution
+		Integration = True
+	EndGlobalSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QtGui_Test", "QtGui_Test\QtGui_Test.vcproj", "{7A3EB5DF-39A5-4F4C-9442-293BBCB39566}"
+	GlobalSection(Qt) = preSolution
+		Integration = True
+	EndGlobalSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WorldEditor", "WorldEditor\WorldEditor.vcproj", "{DAC2F393-2945-4B8B-AF80-68AE8A237824}"
+	GlobalSection(Qt) = preSolution
+		Integration = True
+	EndGlobalSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ModelViewer", "ModelViewer\ModelViewer.vcproj", "{D0E0F7BE-A012-47E9-AA3D-FDEB3640409F}"
+	GlobalSection(Qt) = preSolution
+		Integration = True
+	EndGlobalSection
+EndProject
+Global
+	GlobalSection(Qt) = preSolution
+		Integration = True
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F42B35D9-6448-491F-B194-84FC14C43366}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F42B35D9-6448-491F-B194-84FC14C43366}.Debug|Win32.Build.0 = Debug|Win32
+		{F42B35D9-6448-491F-B194-84FC14C43366}.Release|Win32.ActiveCfg = Release|Win32
+		{F42B35D9-6448-491F-B194-84FC14C43366}.Release|Win32.Build.0 = Release|Win32
+		{76E9AC75-9E4A-42C5-8E03-E89B86E1B45B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{76E9AC75-9E4A-42C5-8E03-E89B86E1B45B}.Debug|Win32.Build.0 = Debug|Win32
+		{76E9AC75-9E4A-42C5-8E03-E89B86E1B45B}.Release|Win32.ActiveCfg = Release|Win32
+		{76E9AC75-9E4A-42C5-8E03-E89B86E1B45B}.Release|Win32.Build.0 = Release|Win32
+		{B23FDCC3-C5DD-4149-90B6-32B23B38B1AE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B23FDCC3-C5DD-4149-90B6-32B23B38B1AE}.Debug|Win32.Build.0 = Debug|Win32
+		{B23FDCC3-C5DD-4149-90B6-32B23B38B1AE}.Release|Win32.ActiveCfg = Release|Win32
+		{B23FDCC3-C5DD-4149-90B6-32B23B38B1AE}.Release|Win32.Build.0 = Release|Win32
+		{7A3EB5DF-39A5-4F4C-9442-293BBCB39566}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7A3EB5DF-39A5-4F4C-9442-293BBCB39566}.Debug|Win32.Build.0 = Debug|Win32
+		{7A3EB5DF-39A5-4F4C-9442-293BBCB39566}.Release|Win32.ActiveCfg = Release|Win32
+		{7A3EB5DF-39A5-4F4C-9442-293BBCB39566}.Release|Win32.Build.0 = Release|Win32
+		{DAC2F393-2945-4B8B-AF80-68AE8A237824}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DAC2F393-2945-4B8B-AF80-68AE8A237824}.Debug|Win32.Build.0 = Debug|Win32
+		{DAC2F393-2945-4B8B-AF80-68AE8A237824}.Release|Win32.ActiveCfg = Release|Win32
+		{DAC2F393-2945-4B8B-AF80-68AE8A237824}.Release|Win32.Build.0 = Release|Win32
+		{D0E0F7BE-A012-47E9-AA3D-FDEB3640409F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D0E0F7BE-A012-47E9-AA3D-FDEB3640409F}.Debug|Win32.Build.0 = Debug|Win32
+		{D0E0F7BE-A012-47E9-AA3D-FDEB3640409F}.Release|Win32.ActiveCfg = Release|Win32
+		{D0E0F7BE-A012-47E9-AA3D-FDEB3640409F}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
