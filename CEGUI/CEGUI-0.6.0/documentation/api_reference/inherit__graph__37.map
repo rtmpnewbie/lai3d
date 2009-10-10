@@ -1,0 +1,175 @@
+<area shape="rect" href="$classCEGUI_1_1Property.html" title="An abstract class that defines the interface to access object properties by name..." alt="" coords="7,4341,129,4368">
+<area shape="rect" href="$classCEGUI_1_1CheckboxProperties_1_1Selected.html" title="Property to access the selected state of the check box." alt="" coords="268,9,527,36">
+<area shape="rect" href="$classCEGUI_1_1ComboboxProperties_1_1CaratIndex.html" title="Property to access the current carat index." alt="" coords="257,60,537,86">
+<area shape="rect" href="$classCEGUI_1_1ComboboxProperties_1_1EditSelectionLength.html" title="Property to access the current selection length." alt="" coords="228,110,567,137">
+<area shape="rect" href="$classCEGUI_1_1ComboboxProperties_1_1EditSelectionStart.html" title="Property to access the current selection start index." alt="" coords="235,161,560,188">
+<area shape="rect" href="$classCEGUI_1_1ComboboxProperties_1_1ForceHorzScrollbar.html" title="Property to access the &#39;always show&#39; setting for the horizontal scroll bar..." alt="" coords="232,212,563,238">
+<area shape="rect" href="$classCEGUI_1_1ComboboxProperties_1_1ForceVertScrollbar.html" title="Property to access the &#39;always show&#39; setting for the vertical scroll bar..." alt="" coords="233,262,561,289">
+<area shape="rect" href="$classCEGUI_1_1ComboboxProperties_1_1MaxEditTextLength.html" title="Property to access the maximum text length for the edit box." alt="" coords="232,313,563,340">
+<area shape="rect" href="$classCEGUI_1_1ComboboxProperties_1_1ReadOnly.html" title="Property to access the read&#45;only setting of the edit box." alt="" coords="261,364,533,390">
+<area shape="rect" href="$classCEGUI_1_1ComboboxProperties_1_1SingleClickMode.html" title="Property to access the &#39;single click mode&#39; setting for the combo box." alt="" coords="240,414,555,441">
+<area shape="rect" href="$classCEGUI_1_1ComboboxProperties_1_1SortList.html" title="Property to access the sort setting of the list box." alt="" coords="268,465,527,492">
+<area shape="rect" href="$classCEGUI_1_1ComboboxProperties_1_1ValidationString.html" title="Property to access the string used for regular expression validation of the edit..." alt="" coords="241,516,553,542">
+<area shape="rect" href="$classCEGUI_1_1DragContainerProperties_1_1DragAlpha.html" title="Property to access the dragging alpha value." alt="" coords="247,566,548,593">
+<area shape="rect" href="$classCEGUI_1_1DragContainerProperties_1_1DragCursorImage.html" title="Property to access the dragging mouse cursor setting." alt="" coords="224,617,571,644">
+<area shape="rect" href="$classCEGUI_1_1DragContainerProperties_1_1DraggingEnabled.html" title="Property to access the state of the dragging enabled setting." alt="" coords="225,668,569,694">
+<area shape="rect" href="$classCEGUI_1_1DragContainerProperties_1_1DragThreshold.html" title="Property to access the dragging threshold value." alt="" coords="233,718,561,745">
+<area shape="rect" href="$classCEGUI_1_1EditboxProperties_1_1ActiveSelectionColour.html" title="Property to access the colour used for rendering the selection highlight when the..." alt="" coords="233,769,561,796">
+<area shape="rect" href="$classCEGUI_1_1EditboxProperties_1_1CaratIndex.html" title="Property to access the current carat index." alt="" coords="268,820,527,846">
+<area shape="rect" href="$classCEGUI_1_1EditboxProperties_1_1InactiveSelectionColour.html" title="Property to access the colour used for rendering the selection highlight when the..." alt="" coords="228,870,567,897">
+<area shape="rect" href="$classCEGUI_1_1EditboxProperties_1_1MaskCodepoint.html" title="Property to access the mask text setting of the edit box." alt="" coords="253,921,541,948">
+<area shape="rect" href="$classCEGUI_1_1EditboxProperties_1_1MaskText.html" title="Property to access the mask text setting of the edit box." alt="" coords="273,972,521,998">
+<area shape="rect" href="$classCEGUI_1_1EditboxProperties_1_1MaxTextLength.html" title="Property to access the maximum text length for the edit box." alt="" coords="255,1022,540,1049">
+<area shape="rect" href="$classCEGUI_1_1EditboxProperties_1_1NormalTextColour.html" title="Property to access the normal, unselected, text colour used for rendering text." alt="" coords="245,1073,549,1100">
+<area shape="rect" href="$classCEGUI_1_1EditboxProperties_1_1ReadOnly.html" title="Property to access the read&#45;only setting of the edit box." alt="" coords="273,1124,521,1150">
+<area shape="rect" href="$classCEGUI_1_1EditboxProperties_1_1SelectedTextColour.html" title="Property to access the colour used for rendering text within the selection area." alt="" coords="241,1174,553,1201">
+<area shape="rect" href="$classCEGUI_1_1EditboxProperties_1_1SelectionLength.html" title="Property to access the current selection length." alt="" coords="252,1225,543,1252">
+<area shape="rect" href="$classCEGUI_1_1EditboxProperties_1_1SelectionStart.html" title="Property to access the current selection start index." alt="" coords="257,1276,537,1302">
+<area shape="rect" href="$classCEGUI_1_1EditboxProperties_1_1ValidationString.html" title="Property to access the string used for regular expression validation of the edit..." alt="" coords="253,1326,541,1353">
+<area shape="rect" href="$classCEGUI_1_1FrameWindowProperties_1_1CloseButtonEnabled.html" title="Property to access the setting for whether the window close button will be enabled..." alt="" coords="217,1377,577,1404">
+<area shape="rect" href="$classCEGUI_1_1FrameWindowProperties_1_1DragMovingEnabled.html" title="Property to access the setting for whether the user may drag the window around by..." alt="" coords="219,1428,576,1454">
+<area shape="rect" href="$classCEGUI_1_1FrameWindowProperties_1_1EWSizingCursorImage.html" title="Property to access the E&#45;W (left/right) sizing cursor image." alt="" coords="213,1478,581,1505">
+<area shape="rect" href="$classCEGUI_1_1FrameWindowProperties_1_1FrameEnabled.html" title="Property to access the setting for whether the window frame will be displayed." alt="" coords="236,1529,559,1556">
+<area shape="rect" href="$classCEGUI_1_1FrameWindowProperties_1_1NESWSizingCursorImage.html" title="Property to access the NE&#45;SW diagonal sizing cursor image." alt="" coords="204,1580,591,1606">
+<area shape="rect" href="$classCEGUI_1_1FrameWindowProperties_1_1NSSizingCursorImage.html" title="Property to access the N&#45;S (up&#45;down) sizing cursor image." alt="" coords="213,1630,581,1657">
+<area shape="rect" href="$classCEGUI_1_1FrameWindowProperties_1_1NWSESizingCursorImage.html" title="Property to access the NW&#45;SE diagonal sizing cursor image." alt="" coords="204,1681,591,1708">
+<area shape="rect" href="$classCEGUI_1_1FrameWindowProperties_1_1RollUpEnabled.html" title="Property to access the setting for whether the user is able to roll&#45;up / shade the..." alt="" coords="237,1732,557,1758">
+<area shape="rect" href="$classCEGUI_1_1FrameWindowProperties_1_1RollUpState.html" title="Property to access the roll&#45;up / shade state of the window." alt="" coords="245,1782,549,1809">
+<area shape="rect" href="$classCEGUI_1_1FrameWindowProperties_1_1SizingBorderThickness.html" title="Property to access the setting for the sizing border thickness." alt="" coords="211,1833,584,1860">
+<area shape="rect" href="$classCEGUI_1_1FrameWindowProperties_1_1SizingEnabled.html" title="Property to access the state of the sizable setting for the FrameWindow." alt="" coords="237,1884,557,1910">
+<area shape="rect" href="$classCEGUI_1_1FrameWindowProperties_1_1TitlebarEnabled.html" title="Property to access the setting for whether the window title&#45;bar will be enabled (or..." alt="" coords="233,1934,561,1961">
+<area shape="rect" href="$classCEGUI_1_1ItemEntryProperties_1_1Selectable.html" title="Property to access the state of the selectable setting." alt="" coords="261,1985,533,2012">
+<area shape="rect" href="$classCEGUI_1_1ItemEntryProperties_1_1Selected.html" title="Property to access the state of the selected setting." alt="" coords="268,2036,527,2062">
+<area shape="rect" href="$classCEGUI_1_1ItemListBaseProperties_1_1AutoResizeEnabled.html" title="Property to access the state of the auto resize enabled setting." alt="" coords="224,2086,571,2113">
+<area shape="rect" href="$classCEGUI_1_1ItemListBaseProperties_1_1SortEnabled.html" title="Property to access the state of the sorting enabled setting." alt="" coords="245,2137,549,2164">
+<area shape="rect" href="$classCEGUI_1_1ItemListBaseProperties_1_1SortMode.html" title="Property to access the sorting mode." alt="" coords="253,2188,541,2214">
+<area shape="rect" href="$classCEGUI_1_1ItemListboxProperties_1_1MultiSelect.html" title="Property to access the state of the multiselect enabled setting." alt="" coords="255,2238,540,2265">
+<area shape="rect" href="$classCEGUI_1_1ListboxProperties_1_1ForceHorzScrollbar.html" title="Property to access the &#39;always show&#39; setting for the horizontal scroll bar..." alt="" coords="244,2289,551,2316">
+<area shape="rect" href="$classCEGUI_1_1ListboxProperties_1_1ForceVertScrollbar.html" title="Property to access the &#39;always show&#39; setting for the vertical scroll bar..." alt="" coords="245,2340,549,2366">
+<area shape="rect" href="$classCEGUI_1_1ListboxProperties_1_1ItemTooltips.html" title="Property to access the show item tooltips setting of the list box." alt="" coords="265,2390,529,2417">
+<area shape="rect" href="$classCEGUI_1_1ListboxProperties_1_1MultiSelect.html" title="Property to access the multi&#45;select setting of the list box." alt="" coords="269,2441,525,2468">
+<area shape="rect" href="$classCEGUI_1_1ListboxProperties_1_1Sort.html" title="Property to access the sort setting of the list box." alt="" coords="291,2492,504,2518">
+<area shape="rect" href="$classCEGUI_1_1ListHeaderProperties_1_1ColumnsMovable.html" title="Property to access the setting for user moving of the column headers." alt="" coords="237,2542,557,2569">
+<area shape="rect" href="$classCEGUI_1_1ListHeaderProperties_1_1ColumnsSizable.html" title="Property to access the setting for user sizing of the column headers." alt="" coords="241,2593,553,2620">
+<area shape="rect" href="$classCEGUI_1_1ListHeaderProperties_1_1SortColumnID.html" title="Property to access the current sort column (via ID code)." alt="" coords="248,2644,547,2670">
+<area shape="rect" href="$classCEGUI_1_1ListHeaderProperties_1_1SortDirection.html" title="Property to access the sort direction setting of the list header." alt="" coords="249,2694,545,2721">
+<area shape="rect" href="$classCEGUI_1_1ListHeaderProperties_1_1SortSettingEnabled.html" title="Property to access the setting for user modification of the sort column &amp; direction..." alt="" coords="229,2745,565,2772">
+<area shape="rect" href="$classCEGUI_1_1ListHeaderSegmentProperties_1_1Clickable.html" title="Property to access the click&#45;able setting of the header segment." alt="" coords="235,2796,560,2822">
+<area shape="rect" href="$classCEGUI_1_1ListHeaderSegmentProperties_1_1Dragable.html" title="Property to access the drag&#45;able setting of the header segment." alt="" coords="233,2846,561,2873">
+<area shape="rect" href="$classCEGUI_1_1ListHeaderSegmentProperties_1_1MovingCursorImage.html" title="Property to access the segment moving cursor image." alt="" coords="199,2897,596,2924">
+<area shape="rect" href="$classCEGUI_1_1ListHeaderSegmentProperties_1_1Sizable.html" title="Property to access the sizable setting of the header segment." alt="" coords="240,2948,555,2974">
+<area shape="rect" href="$classCEGUI_1_1ListHeaderSegmentProperties_1_1SizingCursorImage.html" title="Property to access the segment sizing cursor image." alt="" coords="203,2998,592,3025">
+<area shape="rect" href="$classCEGUI_1_1ListHeaderSegmentProperties_1_1SortDirection.html" title="Property to access the sort direction setting of the header segment." alt="" coords="220,3049,575,3076">
+<area shape="rect" href="$classCEGUI_1_1MenuBaseProperties_1_1AllowMultiplePopups.html" title="Property to access the state of the allow multiple popups setting." alt="" coords="229,3100,565,3126">
+<area shape="rect" href="$classCEGUI_1_1MenuBaseProperties_1_1ItemSpacing.html" title="Property to access the item spacing of the menu." alt="" coords="253,3150,541,3177">
+<area shape="rect" href="$classCEGUI_1_1MultiColumnListProperties_1_1ColumnHeader.html" title="Property to access a column." alt="" coords="228,3201,567,3228">
+<area shape="rect" href="$classCEGUI_1_1MultiColumnListProperties_1_1ColumnsMovable.html" title="Property to access the setting for user moving of the column headers." alt="" coords="221,3252,573,3278">
+<area shape="rect" href="$classCEGUI_1_1MultiColumnListProperties_1_1ColumnsSizable.html" title="Property to access the setting for user sizing of the column headers." alt="" coords="225,3302,569,3329">
+<area shape="rect" href="$classCEGUI_1_1MultiColumnListProperties_1_1ForceHorzScrollbar.html" title="Property to access the &#39;always show&#39; setting for the horizontal scroll bar..." alt="" coords="216,3353,579,3380">
+<area shape="rect" href="$classCEGUI_1_1MultiColumnListProperties_1_1ForceVertScrollbar.html" title="Property to access the &#39;always show&#39; setting for the vertical scroll bar..." alt="" coords="217,3404,577,3430">
+<area shape="rect" href="$classCEGUI_1_1MultiColumnListProperties_1_1NominatedSelectionColumnID.html" title="Property to access the nominated selection column (via ID)." alt="" coords="180,3454,615,3481">
+<area shape="rect" href="$classCEGUI_1_1MultiColumnListProperties_1_1NominatedSelectionRow.html" title="Property to access the nominated selection row." alt="" coords="199,3505,596,3532">
+<area shape="rect" href="$classCEGUI_1_1MultiColumnListProperties_1_1RowCount.html" title="Property to access the number of rows in the list (read&#45;only)." alt="" coords="244,3556,551,3582">
+<area shape="rect" href="$classCEGUI_1_1MultiColumnListProperties_1_1SelectionMode.html" title="Property to access the selection mode setting of the list." alt="" coords="229,3606,565,3633">
+<area shape="rect" href="$classCEGUI_1_1MultiColumnListProperties_1_1SortColumnID.html" title="Property to access the current sort column (via ID code)." alt="" coords="232,3657,563,3684">
+<area shape="rect" href="$classCEGUI_1_1MultiColumnListProperties_1_1SortDirection.html" title="Property to access the sort direction setting of the list." alt="" coords="233,3708,561,3734">
+<area shape="rect" href="$classCEGUI_1_1MultiColumnListProperties_1_1SortSettingEnabled.html" title="Property to access the setting for user modification of the sort column &amp; direction..." alt="" coords="213,3758,581,3785">
+<area shape="rect" href="$classCEGUI_1_1MultiLineEditboxProperties_1_1CaratIndex.html" title="Property to access the current carat index." alt="" coords="240,3809,555,3836">
+<area shape="rect" href="$classCEGUI_1_1MultiLineEditboxProperties_1_1ForceVertScrollbar.html" title="Property to access the &#39;always show&#39; setting for the vertical scroll bar..." alt="" coords="216,3860,579,3886">
+<area shape="rect" href="$classCEGUI_1_1MultiLineEditboxProperties_1_1MaxTextLength.html" title="Property to access the maximum text length for the edit box." alt="" coords="227,3910,568,3937">
+<area shape="rect" href="$classCEGUI_1_1MultiLineEditboxProperties_1_1ReadOnly.html" title="Property to access the read&#45;only setting of the edit box." alt="" coords="245,3961,549,3988">
+<area shape="rect" href="$classCEGUI_1_1MultiLineEditboxProperties_1_1SelectionBrushImage.html" title="Property to access the selection brush image." alt="" coords="207,4012,588,4038">
+<area shape="rect" href="$classCEGUI_1_1MultiLineEditboxProperties_1_1SelectionLength.html" title="Property to access the current selection length." alt="" coords="224,4062,571,4089">
+<area shape="rect" href="$classCEGUI_1_1MultiLineEditboxProperties_1_1SelectionStart.html" title="Property to access the current selection start index." alt="" coords="229,4113,565,4140">
+<area shape="rect" href="$classCEGUI_1_1MultiLineEditboxProperties_1_1WordWrap.html" title="Property to access the word&#45;wrap setting of the edit box." alt="" coords="243,4164,552,4190">
+<area shape="rect" href="$classCEGUI_1_1PopupMenuProperties_1_1FadeInTime.html" title="Property to access the fade in time in seconds of the popup menu." alt="" coords="253,4214,541,4241">
+<area shape="rect" href="$classCEGUI_1_1PopupMenuProperties_1_1FadeOutTime.html" title="Property to access the fade out time in seconds of the popup menu." alt="" coords="247,4265,548,4292">
+<area shape="rect" href="$classCEGUI_1_1ProgressBarProperties_1_1CurrentProgress.html" title="Property to access the current progress of the progress bar." alt="" coords="236,4316,559,4342">
+<area shape="rect" href="$classCEGUI_1_1ProgressBarProperties_1_1StepSize.html" title="Property to access the step size setting for the progress bar." alt="" coords="259,4366,536,4393">
+<area shape="rect" href="$classCEGUI_1_1PropertyDefinitionBase.html" title="common base class used for types representing a new property to be available on all..." alt="" coords="289,4417,505,4444">
+<area shape="rect" href="$classCEGUI_1_1RadioButtonProperties_1_1GroupID.html" title="Property to access the radio button group ID." alt="" coords="261,4468,533,4494">
+<area shape="rect" href="$classCEGUI_1_1RadioButtonProperties_1_1Selected.html" title="Property to access the selected state of the RadioButton." alt="" coords="260,4518,535,4545">
+<area shape="rect" href="$classCEGUI_1_1ScrollablePaneProperties_1_1ContentArea.html" title="Property to access the current content pane area rectangle (as window relative pixels)..." alt="" coords="239,4569,556,4596">
+<area shape="rect" href="$classCEGUI_1_1ScrollablePaneProperties_1_1ContentPaneAutoSized.html" title="Property to access the setting which controls whether the content pane is automatically..." alt="" coords="205,4620,589,4646">
+<area shape="rect" href="$classCEGUI_1_1ScrollablePaneProperties_1_1ForceHorzScrollbar.html" title="Property to access the setting which controls whether the horizontal scroll bar will..." alt="" coords="219,4670,576,4697">
+<area shape="rect" href="$classCEGUI_1_1ScrollablePaneProperties_1_1ForceVertScrollbar.html" title="Property to access the setting which controls whether the vertical scroll bar will..." alt="" coords="221,4721,573,4748">
+<area shape="rect" href="$classCEGUI_1_1ScrollablePaneProperties_1_1HorzOverlapSize.html" title="Property to access the overlap size for the horizontal Scrollbar." alt="" coords="227,4772,568,4798">
+<area shape="rect" href="$classCEGUI_1_1ScrollablePaneProperties_1_1HorzScrollPosition.html" title="Property to access the scroll position of the horizontal Scrollbar." alt="" coords="221,4822,573,4849">
+<area shape="rect" href="$classCEGUI_1_1ScrollablePaneProperties_1_1HorzStepSize.html" title="Property to access the step size for the horizontal Scrollbar." alt="" coords="236,4873,559,4900">
+<area shape="rect" href="$classCEGUI_1_1ScrollablePaneProperties_1_1VertOverlapSize.html" title="Property to access the overlap size for the vertical Scrollbar." alt="" coords="228,4924,567,4950">
+<area shape="rect" href="$classCEGUI_1_1ScrollablePaneProperties_1_1VertScrollPosition.html" title="Property to access the scroll position of the vertical Scrollbar." alt="" coords="224,4974,571,5001">
+<area shape="rect" href="$classCEGUI_1_1ScrollablePaneProperties_1_1VertStepSize.html" title="Property to access the step size for the vertical Scrollbar." alt="" coords="237,5025,557,5052">
+<area shape="rect" href="$classCEGUI_1_1ScrollbarProperties_1_1DocumentSize.html" title="Property to access the document size for the Scrollbar." alt="" coords="252,5076,543,5102">
+<area shape="rect" href="$classCEGUI_1_1ScrollbarProperties_1_1OverlapSize.html" title="Property to access the overlap size for the Scrollbar." alt="" coords="260,5126,535,5153">
+<area shape="rect" href="$classCEGUI_1_1ScrollbarProperties_1_1PageSize.html" title="Property to access the page size for the Scrollbar." alt="" coords="269,5177,525,5204">
+<area shape="rect" href="$classCEGUI_1_1ScrollbarProperties_1_1ScrollPosition.html" title="Property to access the scroll position of the Scrollbar." alt="" coords="256,5228,539,5254">
+<area shape="rect" href="$classCEGUI_1_1ScrollbarProperties_1_1StepSize.html" title="Property to access the step size for the Scrollbar." alt="" coords="269,5278,525,5305">
+<area shape="rect" href="$classCEGUI_1_1ScrolledContainerProperties_1_1ChildExtentsArea.html" title="Property offering read&#45;only access to the current content extents rectangle (as window..." alt="" coords="216,5329,579,5356">
+<area shape="rect" href="$classCEGUI_1_1ScrolledContainerProperties_1_1ContentArea.html" title="Property to access the current content pane area rectangle (as window relative pixels)..." alt="" coords="229,5380,565,5406">
+<area shape="rect" href="$classCEGUI_1_1ScrolledContainerProperties_1_1ContentPaneAutoSized.html" title="Property to access the setting which controls whether the content pane is automatically..." alt="" coords="196,5430,599,5457">
+<area shape="rect" href="$classCEGUI_1_1ScrolledItemListBaseProperties_1_1ForceHorzScrollbar.html" title="Property to access the state of the force horizontal scrollbar setting." alt="" coords="199,5481,596,5508">
+<area shape="rect" href="$classCEGUI_1_1ScrolledItemListBaseProperties_1_1ForceVertScrollbar.html" title="Property to access the state of the force vertical scrollbar setting." alt="" coords="201,5532,593,5558">
+<area shape="rect" href="$classCEGUI_1_1SliderProperties_1_1ClickStepSize.html" title="Property to access the click&#45;step size for the slider." alt="" coords="265,5582,529,5609">
+<area shape="rect" href="$classCEGUI_1_1SliderProperties_1_1CurrentValue.html" title="Property to access the current value of the slider." alt="" coords="267,5633,528,5660">
+<area shape="rect" href="$classCEGUI_1_1SliderProperties_1_1MaximumValue.html" title="Property to access the maximum value of the slider." alt="" coords="260,5684,535,5710">
+<area shape="rect" href="$classCEGUI_1_1SpinnerProperties_1_1CurrentValue.html" title="Property to access the current value of the spinner." alt="" coords="260,5734,535,5761">
+<area shape="rect" href="$classCEGUI_1_1SpinnerProperties_1_1MaximumValue.html" title="Property to access the maximum value setting of the spinner." alt="" coords="253,5785,541,5812">
+<area shape="rect" href="$classCEGUI_1_1SpinnerProperties_1_1MinimumValue.html" title="Property to access the minimum value setting of the spinner." alt="" coords="255,5836,540,5862">
+<area shape="rect" href="$classCEGUI_1_1SpinnerProperties_1_1StepSize.html" title="Property to access the step size of the spinner." alt="" coords="273,5886,521,5913">
+<area shape="rect" href="$classCEGUI_1_1SpinnerProperties_1_1TextInputMode.html" title="Property to access the TextInputMode setting." alt="" coords="256,5937,539,5964">
+<area shape="rect" href="$classCEGUI_1_1TabControlProperties_1_1TabHeight.html" title="Property to access the tab height setting of the tab control." alt="" coords="260,5988,535,6014">
+<area shape="rect" href="$classCEGUI_1_1TabControlProperties_1_1TabPanePosition.html" title="Property to query/set the position of the button pane in tab control." alt="" coords="240,6038,555,6065">
+<area shape="rect" href="$classCEGUI_1_1TabControlProperties_1_1TabTextPadding.html" title="Property to access the tab text padding setting of the tab control." alt="" coords="243,6089,552,6116">
+<area shape="rect" href="$classCEGUI_1_1ThumbProperties_1_1HorzFree.html" title="Property to access the state the setting to free the thumb horizontally." alt="" coords="276,6140,519,6166">
+<area shape="rect" href="$classCEGUI_1_1ThumbProperties_1_1HorzRange.html" title="Property to access the horizontal movement range for the thumb." alt="" coords="269,6190,525,6217">
+<area shape="rect" href="$classCEGUI_1_1ThumbProperties_1_1HotTracked.html" title="Property to access the state of the &quot;hot&#45;tracked&quot; setting for the thumb..." alt="" coords="268,6241,527,6268">
+<area shape="rect" href="$classCEGUI_1_1ThumbProperties_1_1VertFree.html" title="Property to access the state the setting to free the thumb vertically." alt="" coords="277,6292,517,6318">
+<area shape="rect" href="$classCEGUI_1_1ThumbProperties_1_1VertRange.html" title="Property to access the vertical movement range for the thumb." alt="" coords="272,6342,523,6369">
+<area shape="rect" href="$classCEGUI_1_1TitlebarProperties_1_1DraggingEnabled.html" title="Property to access the state of the dragging enabled setting for the Titlebar." alt="" coords="248,6393,547,6420">
+<area shape="rect" href="$classCEGUI_1_1TooltipProperties_1_1DisplayTime.html" title="Property to access the time after which the tooltip automatically de&#45;activates itself..." alt="" coords="268,6444,527,6470">
+<area shape="rect" href="$classCEGUI_1_1TooltipProperties_1_1FadeTime.html" title="Property to access the duration of the fade effect for the tooltip." alt="" coords="276,6494,519,6521">
+<area shape="rect" href="$classCEGUI_1_1TooltipProperties_1_1HoverTime.html" title="Property to access the timout that must expire before the tooltip gets activated..." alt="" coords="272,6545,523,6572">
+<area shape="rect" href="$classCEGUI_1_1TreeProperties_1_1ForceHorzScrollbar.html" title="Property to access the &#39;always show&#39; setting for the horizontal scroll bar..." alt="" coords="252,6596,543,6622">
+<area shape="rect" href="$classCEGUI_1_1TreeProperties_1_1ForceVertScrollbar.html" title="Property to access the &#39;always show&#39; setting for the vertical scroll bar..." alt="" coords="255,6646,540,6673">
+<area shape="rect" href="$classCEGUI_1_1TreeProperties_1_1ItemTooltips.html" title="Property to access the show item tooltips setting of the list box." alt="" coords="275,6697,520,6724">
+<area shape="rect" href="$classCEGUI_1_1TreeProperties_1_1MultiSelect.html" title="Property to access the multi&#45;select setting of the list box." alt="" coords="277,6748,517,6774">
+<area shape="rect" href="$classCEGUI_1_1TreeProperties_1_1Sort.html" title="Property to access the sort setting of the list box." alt="" coords="300,6798,495,6825">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1Alpha.html" title="Property to access window alpha setting." alt="" coords="285,6849,509,6876">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1AlwaysOnTop.html" title="Property to access window &quot;Always&#45;On&#45;Top&quot; setting." alt="" coords="261,6900,533,6926">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1AutoRepeatDelay.html" title="Property to access window autorepeat delay value." alt="" coords="248,6950,547,6977">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1AutoRepeatRate.html" title="Property to access window autorepeat rate value." alt="" coords="251,7001,544,7028">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1ClippedByParent.html" title="Property to access window &quot;clipped by parent&quot; setting." alt="" coords="251,7052,544,7078">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1CustomTooltipType.html" title="Property to access the custom tooltip for this Window." alt="" coords="243,7102,552,7129">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1DestroyedByParent.html" title="Property to access window Destroyed by Parent setting." alt="" coords="241,7153,553,7180">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1Disabled.html" title="Property to access window Disabled setting." alt="" coords="276,7204,519,7230">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1DistributeCapturedInputs.html" title="Property to access whether inputs are passed to child windows when input is captured..." alt="" coords="223,7254,572,7281">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1DragDropTarget.html" title="Property to get/set whether the Window will receive drag and drop related notifications..." alt="" coords="252,7305,543,7332">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1Font.html" title="Property to access window Font setting." alt="" coords="289,7356,505,7382">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1HorizontalAlignment.html" title="Property to access the horizontal alignment setting for the window." alt="" coords="237,7406,557,7433">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1ID.html" title="Property to access window ID field." alt="" coords="296,7457,499,7484">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1InheritsAlpha.html" title="Property to access window &quot;Inherits Alpha&quot; setting." alt="" coords="261,7508,533,7534">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1InheritsTooltipText.html" title="Property to access whether the window inherits its tooltip text from its parent whn..." alt="" coords="245,7558,549,7585">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1LookNFeel.html" title="Property to access/change the assigned look&#39;n&#39;feel." alt="" coords="269,7609,525,7636">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1MouseButtonDownAutoRepeat.html" title="Property to control whether the window will receive autorepeat mouse button down..." alt="" coords="205,7660,589,7686">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1MouseCursorImage.html" title="Property to access window mouse cursor setting." alt="" coords="241,7710,553,7737">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1MousePassThroughEnabled.html" title="Property to access whether the window ignores mouse events and pass them through..." alt="" coords="216,7761,579,7788">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1RestoreOldCapture.html" title="Property to access window Restore Old Capture setting." alt="" coords="243,7812,552,7838">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1RiseOnClick.html" title="Property to access whether the window rises to the top of the z order when clicked..." alt="" coords="267,7862,528,7889">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1Text.html" title="Property to access window text setting." alt="" coords="289,7913,505,7940">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1Tooltip.html" title="Property to access the tooltip text for this Window." alt="" coords="283,7964,512,7990">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1UnifiedAreaRect.html" title="Property to access the unified area rectangle of the window." alt="" coords="252,8014,543,8041">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1UnifiedHeight.html" title="Property to access the unified height of the window." alt="" coords="260,8065,535,8092">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1UnifiedMaxSize.html" title="Property to access the unified maximum size of the window." alt="" coords="255,8116,540,8142">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1UnifiedMinSize.html" title="Property to access the unified minimum size of the window." alt="" coords="256,8166,539,8193">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1UnifiedPosition.html" title="Property to access the unified position of the window." alt="" coords="256,8217,539,8244">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1UnifiedSize.html" title="Property to access the unified position of the window." alt="" coords="268,8268,527,8294">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1UnifiedWidth.html" title="Property to access the unified width of the window." alt="" coords="264,8318,531,8345">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1UnifiedXPosition.html" title="Property to access the unified position x&#45;coordinate of the window." alt="" coords="251,8369,544,8396">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1UnifiedYPosition.html" title="Property to access the unified position y&#45;coordinate of the window." alt="" coords="252,8420,543,8446">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1VerticalAlignment.html" title="Property to access the vertical alignment setting for the window." alt="" coords="247,8470,548,8497">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1Visible.html" title="Property to access window Visible setting." alt="" coords="283,8521,512,8548">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1WantsMultiClickEvents.html" title="Property to control whether the window will receive double/triple&#45;click events." alt="" coords="232,8572,563,8598">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1WindowRenderer.html" title="Property to access/change the assigned window renderer object." alt="" coords="251,8622,544,8649">
+<area shape="rect" href="$classCEGUI_1_1WindowProperties_1_1ZOrderChangeEnabled.html" title="Property to access window Z&#45;Order changing enabled setting." alt="" coords="229,8673,565,8700">
+<area shape="rect" href="$classCEGUI_1_1PropertyDefinition.html" title="Class representing a generic get/set property." alt="" coords="676,4392,860,4418">
+<area shape="rect" href="$classCEGUI_1_1PropertyLinkDefinition.html" title="Class representing a property that links to another property defined on an attached..." alt="" coords="664,4442,872,4469">

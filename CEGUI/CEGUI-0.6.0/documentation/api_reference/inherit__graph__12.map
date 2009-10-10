@@ -1,0 +1,11 @@
+<area shape="rect" href="$classCEGUI_1_1Exception.html" title="Root exception class used within the GUI system." alt="" coords="7,233,137,260">
+<area shape="rect" href="$classCEGUI_1_1AlreadyExistsException.html" title="Exception class used when an attempt is made to use an object name that is already..." alt="" coords="195,5,411,32">
+<area shape="rect" href="$classCEGUI_1_1FileIOException.html" title="Exception class used when a file handling problem occurs." alt="" coords="220,56,385,82">
+<area shape="rect" href="$classCEGUI_1_1GenericException.html" title="Exception class used when none of the other classes are applicable." alt="" coords="213,106,392,133">
+<area shape="rect" href="$classCEGUI_1_1InvalidRequestException.html" title="Exception class used when some impossible request was made for the current system..." alt="" coords="191,157,415,184">
+<area shape="rect" href="$classCEGUI_1_1MemoryException.html" title="Exception class used when a memory handling error is detected." alt="" coords="211,208,395,234">
+<area shape="rect" href="$classCEGUI_1_1NullObjectException.html" title="Exception class used when some required object or parameter is null." alt="" coords="205,258,400,285">
+<area shape="rect" href="$classCEGUI_1_1ObjectInUseException.html" title="Exception class used when some attempt to delete, remove, or otherwise invalidate..." alt="" coords="199,309,407,336">
+<area shape="rect" href="$classCEGUI_1_1RendererException.html" title="Exception class used when an problem is detected within the Renderer or related objects..." alt="" coords="208,360,397,386">
+<area shape="rect" href="$classCEGUI_1_1ScriptException.html" title="Exception class used when a scripting error occurs." alt="" coords="219,410,387,437">
+<area shape="rect" href="$classCEGUI_1_1UnknownObjectException.html" title="Exception class used when a request was made using a name of an unknown object." alt="" coords="188,461,417,488">
