@@ -1,0 +1,206 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NIDLs", "NIDLs", "{798777e9-b38c-4974-bee3-b1cd45f6a1e6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{832A854F-2030-4EA4-86FE-EDEEC017E78E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "db_win32", "addons_win32.db_win32.vcproj", "{C1C96E47-7FF2-4EE9-8685-BD72B3E26036}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "physics_win32", "addons_win32.physics_win32.vcproj", "{04C45198-472F-44CA-B72B-2D139DA7980C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "network_nidls_win32", "addons_win32.network_nidls_win32.vcproj", "{3BEF64E2-1F10-4E8B-903C-F61004E898F6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "network_win32", "addons_win32.network_win32.vcproj", "{1E449827-8A48-497F-B083-FE805F8C751B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3BEF64E2-1F10-4E8B-903C-F61004E898F6} = {3BEF64E2-1F10-4E8B-903C-F61004E898F6}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "scripting_nidls_win32", "addons_win32.scripting_nidls_win32.vcproj", "{42654BCD-2BB6-42EF-BDE6-4E21DBD289E5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "scripting_win32", "addons_win32.scripting_win32.vcproj", "{728D4DA4-FC42-41ED-B607-FBD30AABEBFF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{42654BCD-2BB6-42EF-BDE6-4E21DBD289E5} = {42654BCD-2BB6-42EF-BDE6-4E21DBD289E5}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "remote_nidls_win32", "addons_win32.remote_nidls_win32.vcproj", "{4B0D2E02-F4ED-4C95-A1E9-9121692728BD}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "remote_win32", "addons_win32.remote_win32.vcproj", "{6F884FF2-285B-4C14-98B2-8EAD3F64173A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4B0D2E02-F4ED-4C95-A1E9-9121692728BD} = {4B0D2E02-F4ED-4C95-A1E9-9121692728BD}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sui_nidls_win32", "addons_win32.sui_nidls_win32.vcproj", "{303AECAF-423C-47B2-8F0B-643F5FE0FF36}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sui_win32", "addons_win32.sui_win32.vcproj", "{5F4D8278-AF0C-4C09-9330-DD88320BF31F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{303AECAF-423C-47B2-8F0B-643F5FE0FF36} = {303AECAF-423C-47B2-8F0B-643F5FE0FF36}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+		Programming|Win32 = Programming|Win32
+		Public_Build|Win32 = Public_Build|Win32
+		Securom|Win32 = Securom|Win32
+		Maya_Debug|Win32 = Maya_Debug|Win32
+		Maya_Release|Win32 = Maya_Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C1C96E47-7FF2-4EE9-8685-BD72B3E26036}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C1C96E47-7FF2-4EE9-8685-BD72B3E26036}.Debug|Win32.Build.0 = Debug|Win32
+		{C1C96E47-7FF2-4EE9-8685-BD72B3E26036}.Release|Win32.ActiveCfg = Release|Win32
+		{C1C96E47-7FF2-4EE9-8685-BD72B3E26036}.Release|Win32.Build.0 = Release|Win32
+		{C1C96E47-7FF2-4EE9-8685-BD72B3E26036}.Programming|Win32.ActiveCfg = Programming|Win32
+		{C1C96E47-7FF2-4EE9-8685-BD72B3E26036}.Programming|Win32.Build.0 = Programming|Win32
+		{C1C96E47-7FF2-4EE9-8685-BD72B3E26036}.Public_Build|Win32.ActiveCfg = Public_Build|Win32
+		{C1C96E47-7FF2-4EE9-8685-BD72B3E26036}.Public_Build|Win32.Build.0 = Public_Build|Win32
+		{C1C96E47-7FF2-4EE9-8685-BD72B3E26036}.Securom|Win32.ActiveCfg = Securom|Win32
+		{C1C96E47-7FF2-4EE9-8685-BD72B3E26036}.Securom|Win32.Build.0 = Securom|Win32
+		{C1C96E47-7FF2-4EE9-8685-BD72B3E26036}.Maya_Debug|Win32.ActiveCfg = Maya_Debug|Win32
+		{C1C96E47-7FF2-4EE9-8685-BD72B3E26036}.Maya_Debug|Win32.Build.0 = Maya_Debug|Win32
+		{C1C96E47-7FF2-4EE9-8685-BD72B3E26036}.Maya_Release|Win32.ActiveCfg = Maya_Release|Win32
+		{C1C96E47-7FF2-4EE9-8685-BD72B3E26036}.Maya_Release|Win32.Build.0 = Maya_Release|Win32
+		{04C45198-472F-44CA-B72B-2D139DA7980C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{04C45198-472F-44CA-B72B-2D139DA7980C}.Debug|Win32.Build.0 = Debug|Win32
+		{04C45198-472F-44CA-B72B-2D139DA7980C}.Release|Win32.ActiveCfg = Release|Win32
+		{04C45198-472F-44CA-B72B-2D139DA7980C}.Release|Win32.Build.0 = Release|Win32
+		{04C45198-472F-44CA-B72B-2D139DA7980C}.Programming|Win32.ActiveCfg = Programming|Win32
+		{04C45198-472F-44CA-B72B-2D139DA7980C}.Programming|Win32.Build.0 = Programming|Win32
+		{04C45198-472F-44CA-B72B-2D139DA7980C}.Public_Build|Win32.ActiveCfg = Public_Build|Win32
+		{04C45198-472F-44CA-B72B-2D139DA7980C}.Public_Build|Win32.Build.0 = Public_Build|Win32
+		{04C45198-472F-44CA-B72B-2D139DA7980C}.Securom|Win32.ActiveCfg = Securom|Win32
+		{04C45198-472F-44CA-B72B-2D139DA7980C}.Securom|Win32.Build.0 = Securom|Win32
+		{04C45198-472F-44CA-B72B-2D139DA7980C}.Maya_Debug|Win32.ActiveCfg = Maya_Debug|Win32
+		{04C45198-472F-44CA-B72B-2D139DA7980C}.Maya_Debug|Win32.Build.0 = Maya_Debug|Win32
+		{04C45198-472F-44CA-B72B-2D139DA7980C}.Maya_Release|Win32.ActiveCfg = Maya_Release|Win32
+		{04C45198-472F-44CA-B72B-2D139DA7980C}.Maya_Release|Win32.Build.0 = Maya_Release|Win32
+		{3BEF64E2-1F10-4E8B-903C-F61004E898F6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3BEF64E2-1F10-4E8B-903C-F61004E898F6}.Debug|Win32.Build.0 = Debug|Win32
+		{3BEF64E2-1F10-4E8B-903C-F61004E898F6}.Release|Win32.ActiveCfg = Release|Win32
+		{3BEF64E2-1F10-4E8B-903C-F61004E898F6}.Release|Win32.Build.0 = Release|Win32
+		{3BEF64E2-1F10-4E8B-903C-F61004E898F6}.Programming|Win32.ActiveCfg = Programming|Win32
+		{3BEF64E2-1F10-4E8B-903C-F61004E898F6}.Programming|Win32.Build.0 = Programming|Win32
+		{3BEF64E2-1F10-4E8B-903C-F61004E898F6}.Public_Build|Win32.ActiveCfg = Public_Build|Win32
+		{3BEF64E2-1F10-4E8B-903C-F61004E898F6}.Public_Build|Win32.Build.0 = Public_Build|Win32
+		{3BEF64E2-1F10-4E8B-903C-F61004E898F6}.Securom|Win32.ActiveCfg = Securom|Win32
+		{3BEF64E2-1F10-4E8B-903C-F61004E898F6}.Securom|Win32.Build.0 = Securom|Win32
+		{3BEF64E2-1F10-4E8B-903C-F61004E898F6}.Maya_Debug|Win32.ActiveCfg = Maya_Debug|Win32
+		{3BEF64E2-1F10-4E8B-903C-F61004E898F6}.Maya_Debug|Win32.Build.0 = Maya_Debug|Win32
+		{3BEF64E2-1F10-4E8B-903C-F61004E898F6}.Maya_Release|Win32.ActiveCfg = Maya_Release|Win32
+		{3BEF64E2-1F10-4E8B-903C-F61004E898F6}.Maya_Release|Win32.Build.0 = Maya_Release|Win32
+		{1E449827-8A48-497F-B083-FE805F8C751B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1E449827-8A48-497F-B083-FE805F8C751B}.Debug|Win32.Build.0 = Debug|Win32
+		{1E449827-8A48-497F-B083-FE805F8C751B}.Release|Win32.ActiveCfg = Release|Win32
+		{1E449827-8A48-497F-B083-FE805F8C751B}.Release|Win32.Build.0 = Release|Win32
+		{1E449827-8A48-497F-B083-FE805F8C751B}.Programming|Win32.ActiveCfg = Programming|Win32
+		{1E449827-8A48-497F-B083-FE805F8C751B}.Programming|Win32.Build.0 = Programming|Win32
+		{1E449827-8A48-497F-B083-FE805F8C751B}.Public_Build|Win32.ActiveCfg = Public_Build|Win32
+		{1E449827-8A48-497F-B083-FE805F8C751B}.Public_Build|Win32.Build.0 = Public_Build|Win32
+		{1E449827-8A48-497F-B083-FE805F8C751B}.Securom|Win32.ActiveCfg = Securom|Win32
+		{1E449827-8A48-497F-B083-FE805F8C751B}.Securom|Win32.Build.0 = Securom|Win32
+		{1E449827-8A48-497F-B083-FE805F8C751B}.Maya_Debug|Win32.ActiveCfg = Maya_Debug|Win32
+		{1E449827-8A48-497F-B083-FE805F8C751B}.Maya_Debug|Win32.Build.0 = Maya_Debug|Win32
+		{1E449827-8A48-497F-B083-FE805F8C751B}.Maya_Release|Win32.ActiveCfg = Maya_Release|Win32
+		{1E449827-8A48-497F-B083-FE805F8C751B}.Maya_Release|Win32.Build.0 = Maya_Release|Win32
+		{42654BCD-2BB6-42EF-BDE6-4E21DBD289E5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{42654BCD-2BB6-42EF-BDE6-4E21DBD289E5}.Debug|Win32.Build.0 = Debug|Win32
+		{42654BCD-2BB6-42EF-BDE6-4E21DBD289E5}.Release|Win32.ActiveCfg = Release|Win32
+		{42654BCD-2BB6-42EF-BDE6-4E21DBD289E5}.Release|Win32.Build.0 = Release|Win32
+		{42654BCD-2BB6-42EF-BDE6-4E21DBD289E5}.Programming|Win32.ActiveCfg = Programming|Win32
+		{42654BCD-2BB6-42EF-BDE6-4E21DBD289E5}.Programming|Win32.Build.0 = Programming|Win32
+		{42654BCD-2BB6-42EF-BDE6-4E21DBD289E5}.Public_Build|Win32.ActiveCfg = Public_Build|Win32
+		{42654BCD-2BB6-42EF-BDE6-4E21DBD289E5}.Public_Build|Win32.Build.0 = Public_Build|Win32
+		{42654BCD-2BB6-42EF-BDE6-4E21DBD289E5}.Securom|Win32.ActiveCfg = Securom|Win32
+		{42654BCD-2BB6-42EF-BDE6-4E21DBD289E5}.Securom|Win32.Build.0 = Securom|Win32
+		{42654BCD-2BB6-42EF-BDE6-4E21DBD289E5}.Maya_Debug|Win32.ActiveCfg = Maya_Debug|Win32
+		{42654BCD-2BB6-42EF-BDE6-4E21DBD289E5}.Maya_Debug|Win32.Build.0 = Maya_Debug|Win32
+		{42654BCD-2BB6-42EF-BDE6-4E21DBD289E5}.Maya_Release|Win32.ActiveCfg = Maya_Release|Win32
+		{42654BCD-2BB6-42EF-BDE6-4E21DBD289E5}.Maya_Release|Win32.Build.0 = Maya_Release|Win32
+		{728D4DA4-FC42-41ED-B607-FBD30AABEBFF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{728D4DA4-FC42-41ED-B607-FBD30AABEBFF}.Debug|Win32.Build.0 = Debug|Win32
+		{728D4DA4-FC42-41ED-B607-FBD30AABEBFF}.Release|Win32.ActiveCfg = Release|Win32
+		{728D4DA4-FC42-41ED-B607-FBD30AABEBFF}.Release|Win32.Build.0 = Release|Win32
+		{728D4DA4-FC42-41ED-B607-FBD30AABEBFF}.Programming|Win32.ActiveCfg = Programming|Win32
+		{728D4DA4-FC42-41ED-B607-FBD30AABEBFF}.Programming|Win32.Build.0 = Programming|Win32
+		{728D4DA4-FC42-41ED-B607-FBD30AABEBFF}.Public_Build|Win32.ActiveCfg = Public_Build|Win32
+		{728D4DA4-FC42-41ED-B607-FBD30AABEBFF}.Public_Build|Win32.Build.0 = Public_Build|Win32
+		{728D4DA4-FC42-41ED-B607-FBD30AABEBFF}.Securom|Win32.ActiveCfg = Securom|Win32
+		{728D4DA4-FC42-41ED-B607-FBD30AABEBFF}.Securom|Win32.Build.0 = Securom|Win32
+		{728D4DA4-FC42-41ED-B607-FBD30AABEBFF}.Maya_Debug|Win32.ActiveCfg = Maya_Debug|Win32
+		{728D4DA4-FC42-41ED-B607-FBD30AABEBFF}.Maya_Debug|Win32.Build.0 = Maya_Debug|Win32
+		{728D4DA4-FC42-41ED-B607-FBD30AABEBFF}.Maya_Release|Win32.ActiveCfg = Maya_Release|Win32
+		{728D4DA4-FC42-41ED-B607-FBD30AABEBFF}.Maya_Release|Win32.Build.0 = Maya_Release|Win32
+		{4B0D2E02-F4ED-4C95-A1E9-9121692728BD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4B0D2E02-F4ED-4C95-A1E9-9121692728BD}.Debug|Win32.Build.0 = Debug|Win32
+		{4B0D2E02-F4ED-4C95-A1E9-9121692728BD}.Release|Win32.ActiveCfg = Release|Win32
+		{4B0D2E02-F4ED-4C95-A1E9-9121692728BD}.Release|Win32.Build.0 = Release|Win32
+		{4B0D2E02-F4ED-4C95-A1E9-9121692728BD}.Programming|Win32.ActiveCfg = Programming|Win32
+		{4B0D2E02-F4ED-4C95-A1E9-9121692728BD}.Programming|Win32.Build.0 = Programming|Win32
+		{4B0D2E02-F4ED-4C95-A1E9-9121692728BD}.Public_Build|Win32.ActiveCfg = Public_Build|Win32
+		{4B0D2E02-F4ED-4C95-A1E9-9121692728BD}.Public_Build|Win32.Build.0 = Public_Build|Win32
+		{4B0D2E02-F4ED-4C95-A1E9-9121692728BD}.Securom|Win32.ActiveCfg = Securom|Win32
+		{4B0D2E02-F4ED-4C95-A1E9-9121692728BD}.Securom|Win32.Build.0 = Securom|Win32
+		{4B0D2E02-F4ED-4C95-A1E9-9121692728BD}.Maya_Debug|Win32.ActiveCfg = Maya_Debug|Win32
+		{4B0D2E02-F4ED-4C95-A1E9-9121692728BD}.Maya_Debug|Win32.Build.0 = Maya_Debug|Win32
+		{4B0D2E02-F4ED-4C95-A1E9-9121692728BD}.Maya_Release|Win32.ActiveCfg = Maya_Release|Win32
+		{4B0D2E02-F4ED-4C95-A1E9-9121692728BD}.Maya_Release|Win32.Build.0 = Maya_Release|Win32
+		{6F884FF2-285B-4C14-98B2-8EAD3F64173A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6F884FF2-285B-4C14-98B2-8EAD3F64173A}.Debug|Win32.Build.0 = Debug|Win32
+		{6F884FF2-285B-4C14-98B2-8EAD3F64173A}.Release|Win32.ActiveCfg = Release|Win32
+		{6F884FF2-285B-4C14-98B2-8EAD3F64173A}.Release|Win32.Build.0 = Release|Win32
+		{6F884FF2-285B-4C14-98B2-8EAD3F64173A}.Programming|Win32.ActiveCfg = Programming|Win32
+		{6F884FF2-285B-4C14-98B2-8EAD3F64173A}.Programming|Win32.Build.0 = Programming|Win32
+		{6F884FF2-285B-4C14-98B2-8EAD3F64173A}.Public_Build|Win32.ActiveCfg = Public_Build|Win32
+		{6F884FF2-285B-4C14-98B2-8EAD3F64173A}.Public_Build|Win32.Build.0 = Public_Build|Win32
+		{6F884FF2-285B-4C14-98B2-8EAD3F64173A}.Securom|Win32.ActiveCfg = Securom|Win32
+		{6F884FF2-285B-4C14-98B2-8EAD3F64173A}.Securom|Win32.Build.0 = Securom|Win32
+		{6F884FF2-285B-4C14-98B2-8EAD3F64173A}.Maya_Debug|Win32.ActiveCfg = Maya_Debug|Win32
+		{6F884FF2-285B-4C14-98B2-8EAD3F64173A}.Maya_Debug|Win32.Build.0 = Maya_Debug|Win32
+		{6F884FF2-285B-4C14-98B2-8EAD3F64173A}.Maya_Release|Win32.ActiveCfg = Maya_Release|Win32
+		{6F884FF2-285B-4C14-98B2-8EAD3F64173A}.Maya_Release|Win32.Build.0 = Maya_Release|Win32
+		{303AECAF-423C-47B2-8F0B-643F5FE0FF36}.Debug|Win32.ActiveCfg = Debug|Win32
+		{303AECAF-423C-47B2-8F0B-643F5FE0FF36}.Debug|Win32.Build.0 = Debug|Win32
+		{303AECAF-423C-47B2-8F0B-643F5FE0FF36}.Release|Win32.ActiveCfg = Release|Win32
+		{303AECAF-423C-47B2-8F0B-643F5FE0FF36}.Release|Win32.Build.0 = Release|Win32
+		{303AECAF-423C-47B2-8F0B-643F5FE0FF36}.Programming|Win32.ActiveCfg = Programming|Win32
+		{303AECAF-423C-47B2-8F0B-643F5FE0FF36}.Programming|Win32.Build.0 = Programming|Win32
+		{303AECAF-423C-47B2-8F0B-643F5FE0FF36}.Public_Build|Win32.ActiveCfg = Public_Build|Win32
+		{303AECAF-423C-47B2-8F0B-643F5FE0FF36}.Public_Build|Win32.Build.0 = Public_Build|Win32
+		{303AECAF-423C-47B2-8F0B-643F5FE0FF36}.Securom|Win32.ActiveCfg = Securom|Win32
+		{303AECAF-423C-47B2-8F0B-643F5FE0FF36}.Securom|Win32.Build.0 = Securom|Win32
+		{303AECAF-423C-47B2-8F0B-643F5FE0FF36}.Maya_Debug|Win32.ActiveCfg = Maya_Debug|Win32
+		{303AECAF-423C-47B2-8F0B-643F5FE0FF36}.Maya_Debug|Win32.Build.0 = Maya_Debug|Win32
+		{303AECAF-423C-47B2-8F0B-643F5FE0FF36}.Maya_Release|Win32.ActiveCfg = Maya_Release|Win32
+		{303AECAF-423C-47B2-8F0B-643F5FE0FF36}.Maya_Release|Win32.Build.0 = Maya_Release|Win32
+		{5F4D8278-AF0C-4C09-9330-DD88320BF31F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5F4D8278-AF0C-4C09-9330-DD88320BF31F}.Debug|Win32.Build.0 = Debug|Win32
+		{5F4D8278-AF0C-4C09-9330-DD88320BF31F}.Release|Win32.ActiveCfg = Release|Win32
+		{5F4D8278-AF0C-4C09-9330-DD88320BF31F}.Release|Win32.Build.0 = Release|Win32
+		{5F4D8278-AF0C-4C09-9330-DD88320BF31F}.Programming|Win32.ActiveCfg = Programming|Win32
+		{5F4D8278-AF0C-4C09-9330-DD88320BF31F}.Programming|Win32.Build.0 = Programming|Win32
+		{5F4D8278-AF0C-4C09-9330-DD88320BF31F}.Public_Build|Win32.ActiveCfg = Public_Build|Win32
+		{5F4D8278-AF0C-4C09-9330-DD88320BF31F}.Public_Build|Win32.Build.0 = Public_Build|Win32
+		{5F4D8278-AF0C-4C09-9330-DD88320BF31F}.Securom|Win32.ActiveCfg = Securom|Win32
+		{5F4D8278-AF0C-4C09-9330-DD88320BF31F}.Securom|Win32.Build.0 = Securom|Win32
+		{5F4D8278-AF0C-4C09-9330-DD88320BF31F}.Maya_Debug|Win32.ActiveCfg = Maya_Debug|Win32
+		{5F4D8278-AF0C-4C09-9330-DD88320BF31F}.Maya_Debug|Win32.Build.0 = Maya_Debug|Win32
+		{5F4D8278-AF0C-4C09-9330-DD88320BF31F}.Maya_Release|Win32.ActiveCfg = Maya_Release|Win32
+		{5F4D8278-AF0C-4C09-9330-DD88320BF31F}.Maya_Release|Win32.Build.0 = Maya_Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C1C96E47-7FF2-4EE9-8685-BD72B3E26036} = {832A854F-2030-4EA4-86FE-EDEEC017E78E}
+		{04C45198-472F-44CA-B72B-2D139DA7980C} = {832A854F-2030-4EA4-86FE-EDEEC017E78E}
+		{3BEF64E2-1F10-4E8B-903C-F61004E898F6} = {798777e9-b38c-4974-bee3-b1cd45f6a1e6}
+		{1E449827-8A48-497F-B083-FE805F8C751B} = {832A854F-2030-4EA4-86FE-EDEEC017E78E}
+		{42654BCD-2BB6-42EF-BDE6-4E21DBD289E5} = {798777e9-b38c-4974-bee3-b1cd45f6a1e6}
+		{728D4DA4-FC42-41ED-B607-FBD30AABEBFF} = {832A854F-2030-4EA4-86FE-EDEEC017E78E}
+		{4B0D2E02-F4ED-4C95-A1E9-9121692728BD} = {798777e9-b38c-4974-bee3-b1cd45f6a1e6}
+		{6F884FF2-285B-4C14-98B2-8EAD3F64173A} = {832A854F-2030-4EA4-86FE-EDEEC017E78E}
+		{303AECAF-423C-47B2-8F0B-643F5FE0FF36} = {798777e9-b38c-4974-bee3-b1cd45f6a1e6}
+		{5F4D8278-AF0C-4C09-9330-DD88320BF31F} = {832A854F-2030-4EA4-86FE-EDEEC017E78E}
+	EndGlobalSection
+EndGlobal

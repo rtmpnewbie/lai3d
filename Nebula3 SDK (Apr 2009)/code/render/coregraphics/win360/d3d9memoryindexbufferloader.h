@@ -1,0 +1,29 @@
+#pragma once
+#ifndef WIN360_D3D9MEMORYINDEXBUFFERLOADER_H
+#define WIN360_D3D9MEMORYINDEXBUFFERLOADER_H
+//------------------------------------------------------------------------------
+/**
+    @class Win360::D3D9MemoryIndexBufferLoader
+    
+    Initialize a D3D9IndexBuffer from data in memory for the Win32/Xbox360
+    platform. This resource loader only creates static IndexBuffers which are 
+    initialized once and are not accessible by the CPU.
+    
+    (C) 2007 Radon Labs GmbH
+*/
+#include "coregraphics/base/memoryindexbufferloaderbase.h"
+
+//------------------------------------------------------------------------------
+namespace Win360
+{
+class D3D9MemoryIndexBufferLoader : public Base::MemoryIndexBufferLoaderBase
+{
+    __DeclareClass(D3D9MemoryIndexBufferLoader);
+public:
+    /// called by resource when a load is requested
+    virtual bool OnLoadRequested();
+};
+
+} // namespace Win360
+//------------------------------------------------------------------------------
+#endif

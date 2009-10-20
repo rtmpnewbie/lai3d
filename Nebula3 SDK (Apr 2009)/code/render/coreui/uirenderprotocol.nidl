@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Nebula3>
+    <Protocol namespace="CoreUI" name="DebugRenderProtocol">
+        <!-- dependencies -->
+        <Dependency header="util/string.h"/>        
+        <Dependency header="util/array.h"/>
+        <Dependency header="threading/threadid.h"/>
+        <Dependency header="coreui/uielement.h"/>
+
+        <!-- render a simple box for gui -->
+        <Message name="RenderUIElements" fourcc="ruie">            
+            <InArg name="ThreadId" type="Threading::ThreadId"/>
+            <InArg name="UIElements" type="Util::Array<CoreUI::UIElement>" />
+        </Message>      
+      
+        <!-- set the UI texture for following UV - coordinates-->
+        <Message name="LoadUITexture" fourcc="suit">
+          <InArg name="ResourceName" type="Util::String"/>
+        </Message>
+
+        <!-- Flush the element -->
+        <Message name="FlushAllUIElements" fourcc="fuie">
+          <InArg name="ThreadId" type="Threading::ThreadId"/>
+        </Message>
+
+        <!-- flush a gui element -->
+        <Message name="FlushUIElement" fourcc="flie">
+          <InArg name="ThreadId" type="Threading::ThreadId"/>
+          <InArg name="UIElement" type="CoreUI::UIElement" />          
+        </Message>
+
+        <!-- update a gui element, doesn't fade out on erase -->
+        <Message name="UpdateUIElement" fourcc="upie">
+          <InArg name="ThreadId" type="Threading::ThreadId"/>
+          <InArg name="UIElements" type="Util::Array<CoreUI::UIElement>" />        
+        </Message>
+
+    </Protocol>
+</Nebula3>    
+    

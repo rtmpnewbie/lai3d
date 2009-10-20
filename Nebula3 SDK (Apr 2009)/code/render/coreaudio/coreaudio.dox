@@ -1,0 +1,11 @@
+/**
+@namespace CoreAudio
+
+@section Nebula3CoreAudioSystem The Nebula3 CoreAudio Subsystem
+
+The CoreAudio subsystem contains the audio components which are running in the
+audio thread. Instead of using CoreAudio directly to play sound, Nebula3 application
+code should use the Audio subsystem which contains front-end classes for audio playback.
+
+Continue to the @ref Audio subsystem documentation:
+*/

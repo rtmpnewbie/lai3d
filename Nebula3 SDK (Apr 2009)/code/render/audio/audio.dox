@@ -1,0 +1,216 @@
+/**
+@namespace Audio
+
+@section Nebula3AudioSubsystem The Nebula3 Audio Subsystem
+
+@subsection AudioHowTo Nebula3 Audio Howtos
+
+To setup the Audio playback on the system's default audio device first create and open the 
+required singletons:
+
+@code
+    // setup the AudioInterface, this starts the audio thread
+    this->audioInterface = AudioInterface::Create();
+    this->audioInterface->Open();
+    
+    // setup the AudioServer
+    this->audioServer = AudioServer::Create();
+    this->audioServer->Open();
+    
+    // create the AudioPlayer if you want to play fire-and-forget sounds
+    this->audioPlayer = AudioPlayer::Create();
+@endcode
+
+If you need to open another then the default audio device, or need to provide a global settings
+file other then "audio:globals.xgs", or want to let the user select the audio device, 
+you can do so before opening the AudioServer:
+
+@code
+    // setup the audio server to use a non-default audio device
+    this->audioServer = AudioServer::Create();
+
+    // query existing adapters...
+    Array<AudioAdapterInfo> audioAdapters = this->audioServer->GetAdapterInfos();
+    
+    // ...select another adapter...
+    this->audioServer->SetAdapterIndex(1);
+
+    // optionally set a different global settings file
+    this->audioServer->SetGlobalSettingsURI(URI("audio:globalsettings.xgs"));
+    
+    // finally open the audio server
+    this->audioServer->Open():
+@endcode
+
+Before playing sounds one or more sound banks must be loaded:
+
+@code
+    // load an in-memory sound bank
+    this->audioServer->LoadSoundBank(ResourceId("effects"), false);
+
+    // load a streaming sound bank
+    this->audioServer->LoadSoundBank(ResourceId("music"), true);
+@endcode
+
+Nebula3 will now look for the following files:
+
+    - audio:effects.xwb
+    - audio:effects.xsb
+    - stream:music.xwb
+    - stream:music.xsb
+    
+Since streaming wave banks cannot be loaded through Nebula3's zip filesystem they need
+to be accessible directly as disc files, thus the extra "stream:" assign.    
+
+Playing fire-and-forget sounds through the AudioPlayer is the most simple way to play
+sounds. Just make sure the sounds is NOT infinitely looping, as this would prevent the
+CoreAudio garbage collection from releasing the sound (there's no error-checking for
+this case yet):
+
+@code 
+    // play a simple 2D audio cue:
+    AudioPlayer::Instance()->PlayCue(CueId("effect1"));
+    
+    // play a non-moving 3d audio cue at position (10, 0, 0) 
+    AudioPlayer::Instance()->PlayCue3D(CueId("effect1"), matrix44::translation(10, 0, 0), vector::nullvec());
+@endcode
+
+For anything that is not a fire-and-forget sound, AudioEmitter objects should be used. AudioEmitters
+allow to manipulate position and velocity while it is playing, and because it can be stopped is
+also the only useful way to play indefinitely looping sounds.
+
+@code
+    bool MyApp::Open()
+    {
+        ...
+    
+        // create an audio emitter set an initial position, and start playing a cue...
+        this->audioEmitter = AudioEmitter::Create();
+        this->audioEmitter->Setup();
+        this->audioEmitter->SetTransform(matrix44::translation(10, 0, 0));
+        this->audioEmitter->SetVelocity(vector::nullvec);
+        this->audioEmitter->Play(CueId("music1"));
+        
+        ...
+    }
+    
+    void MyApp::OnFrame()
+    {
+        ...
+        
+        // update the audio listener
+        AudioListener::Instance()->SetTransform(...);
+        AudioListener::Instance()->SetVelocity(...);
+        
+        // update audio emitter position and velocity
+        this->audioEmitter->SetTransform(...);
+        this->audioEmitter->SetVelocity(...);
+        
+        // let the AudioServer do its per-frame stuff...
+        AudioServer::Instance()->OnFrame();
+        
+        ...
+    }
+@endcode
+
+@subsection Nebula3AudioIntro Overview
+
+Nebula3 applications use the Audio subsystem classes to play 2D and 3D sound.
+
+The Audio subsystem is wrapped closely around XACT, the DirectX and Xbox360 audio API,
+thus it's a good idea to study the XACT documentation and concepts to make full use
+of the Nebula3 Audio subsystem.
+
+The Nebula3 CoreAudio subsystem runs in its own thread and is controlled by the
+"client-side" Audio subsystem which provide convenient front-end classes. Applications
+typically use the Audio subsystem running in the main-thread and do not talk to 
+CoreAudio directly.
+
+Running CoreAudio in its own thread mainly has the advantage to provide stutter-free
+audio-playback for streaming sounds even when the main-thread isn't able to call XACT's
+DoWork() regularly.
+
+@subsection AudioSamples Samples
+
+Nebula3 contains a sample XACT project file and sound data under "/work/audio".
+
+The <b>tests.sln</b> solution contains an <b>audiotest</b> project which demonstrates how an
+application uses the Audio subsystem.
+
+@subsection AudioInspection CoreAudio Debug Info
+
+Simply navigate your web browser to http://127.0.0.1:2100/coreaudio to display
+CoreAudio debug data while a Nebula3 application is running.
+
+@subsection AudioConcepts Keyconcepts Of The Audio Subsystem
+
+    - <b>SoundBanks</b>: Nebula3 SoundBanks represent a collection of sounds (Cues and Waves) and
+      all of their properties. While XACT differs between wave banks (contains the actual PCM data)
+      and sound banks (contains cue descriptions), Nebula's SoundBanks contain one XACT sound bank
+      AND one associated XACT wave bank.A SoundBank can be streamed from disc, or loaded completely
+      into memory. Music and dialog are usually streamed, while sound effects are
+      usually in-memory. Streamed SoundBanks use very little memory, but playing a
+      streamed sounds suffers from latency until playback can begin (XACT offers
+      the concept of preparing a Cue or Wave for exact synchronisation). Sound bank data can use
+      all of XACT's compression schemes (uncompressed PCM, ADPCM and xWMA on the PC, PCM and 
+      XMA on the Xbox360).
+    - <b>Cue</b>: A Cue is a "smart sound" and represents a description how one or more sounds
+      should be played under a single name (a CueId). Cues are built by the audio designer 
+      in XACT's authoring tool. A typical usage for a Cue is for instance randomly selecting one 
+      of several step sounds. Cues are the normal way to play sound in Nebula3.
+    - <b>Wave</b>: A Wave represents raw sound data contained in an XACT wave bank, or in a single
+      file. Nebula3 currently offers to play Waves from within an XACT wave bank.
+    - <b>Fire-And-Forget-Sound</b>: FaF-sounds are the most convenient types of sounds, since they
+      are fired with a simple method call and then can be "forgotten" by the caller. FaF sounds will
+      finish playing and expired sounds will be garbage collected by the CoreAudio subsystem. FoF sounds
+      are played through the Audio::AudioPlayer class. Non-looping sounds which are either 2D, or don't
+      change their position in the 3d world are ideal candidates for Fire-And-Forget-sounds.
+    - <b>AudioEmitter</b>: AudioEmitter objects are the only way to playback sound where the position,
+      orientation or velocity changes over the play-time of the sound, or which need to loop indefinitely.
+    - <b>Categories</b>: XACT can group sounds into categories (and sub-categories), and allows to 
+      control and define rules for categories. One obvious use for categories is to set category
+      volumes (different volumes for speech, music and effects for instance). Categories are
+      also very useful for background music, since XACT can automatically limit the number of
+      play-instances per category, and offers play-scheduling like shuffle or play-lists.
+      
+@subsection AudioContent Preparing Audio Content
+
+To compile audio data into the runtime format usable by Nebula3 use one of the following methods:
+
+<b>msbuild buildassets.msbuild</b>
+
+This will export all game assets (graphics, level, audio, etc...).
+
+Or call Nebula3's audio batcher <b>audiobatcher3.exe</b> tool manually.
+
+Audio content must be prepared by the audio designer in the XACT Audio Creation Tool (part of the
+DirectX or Xbox360 SDK) and then compiled into runtime data files using Nebula3's audiobatcher3.exe
+tool (which calls XACT's build tool xactbld3.exe).
+
+All source data should reside under "proj:work/audio", at least the XACT project file which is
+used by the authoring tool should be placed under "proj:work/audio/audio.xap". Wav files should
+be grouped in subdirectories under the "audio" directory.
+
+Nebula3 audio batcher requires some configuration data in the projectinfo.xml file (see Nebula3's projectinfo.xml file
+for an example).
+
+At runtime, Nebula3 (or better the underlying XACT) requires 3 types of data files:
+
+    - one or more XACT wave banks
+    - one or more XACT sound banks
+    - one XACT global settings file
+    
+Wave bank and sound bank files must have a 1:1 relationship (for instance "audio:effects.xwb" would
+be the wave bank, and "audio:effects.xsb" the associated sound bank).
+
+@subsection Audio3DContent Preparing 3D Audio Content
+
+XACT has fairly advanced 3D audio playback capabilities which are mainly controlled by the audio designer
+through the XACT authoring tool. Nebula3 applications only need to provide position, orientation and
+velocity of an audio listener, and for each 3d audio emitter.
+
+The audio designer should at least provide a distance-volume curve for each sound, which describes how
+volume is attenuated over distance, but the audio designer may map any other effects to Distance
+(see the XACT documentation in the DirectX SDK for details).
+
+*/
