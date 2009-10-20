@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Nebula3>
+    <Protocol namespace="Multiplayer" name="MultiplayerProtocol">
+      <!-- dependencies -->
+      <Dependency header="io/uri.h"/>
+      <Dependency header="util/string.h"/>
+      <Dependency header="util/guid.h"/>
+      <Dependency header="math/matrix44.h"/>
+
+      <!-- connect client to a server, not send over network -->
+      <Message name="Connect" fourcc="conc">
+        <InArg name="ServerAddress" type="IO::URI"/> 
+      </Message>
+
+      <!-- disconnect client from server, not send over network -->
+      <Message name="Disconnect" fourcc="dcon">      
+      </Message>
+
+      <!-- connection succeeded notification -->
+      <Message name="ConnectionSucceeded" fourcc="cosu">
+      </Message>
+
+      <!-- connection lost notification -->
+      <Message name="ConnectionLost" fourcc="colo">
+      </Message>
+
+      <!-- connection failed notification -->
+      <Message name="ConnectionFailed" fourcc="cofa">
+      </Message>
+
+      <!-- send a chat message,  send over network -->
+      <Message name="Chatmsg" fourcc="chms">
+        <InArg name="Text" type="Util::String" serialize="true"/>
+      </Message>
+
+      <!-- check if client is connected -->
+      <Message name="IsClientConnected" fourcc="clco">
+        <OutArg name="IsConnected" type="bool" />
+      </Message>
+
+      <!-- object persistence messages -->
+      <!-- load level -->
+      <Message name="LoadLevel" fourcc="lolv">
+        <InArg name="Levelname" type="Util::String" serialize="true"/>
+      </Message>
+
+      <Message name="LevelLoaded" fourcc="lvld">        
+      </Message>
+
+      <Message name="SynchronizationFinished" fourcc="syfi">
+      </Message>
+      
+      <Message name="CreateEntity" fourcc="cren">
+        <InArg name="Category" type="Util::String" serialize="true"/>
+        <InArg name="EntityId" type="Util::String" serialize="true"/>
+        <InArg name="Guid" type="Util::Guid" serialize="true"/>
+      </Message>
+
+      <Message name="DoesEntityExist" fourcc="dene">        
+        <InArg name="Guid" type="Util::Guid" serialize="true"/>
+      </Message>
+
+      <Message name="EntityExists" fourcc="enex">
+        <InArg name="Guid" type="Util::Guid" serialize="true"/>
+        <InArg name="EntityExists" type="bool" serialize="true"/>
+      </Message>
+
+      <!-- table for mapping guid to netId-->
+      <Message name="GuidNetIdTable" fourcc="guit">
+        <InArg name="IdTable" type="Util::Blob" serialize="true"/>
+      </Message>
+
+      <Message name="SetTransformOfEntity" fourcc="stoe">
+        <InArg name="Matrix" type="Math::matrix44" serialize="true"/>
+        <InArg name="Guid" type="Util::Guid" serialize="true"/>
+      </Message>
+
+      <Message name="UpdateTransformOfEntity" fourcc="upte">
+        <InArg name="Matrix" type="Math::matrix44" serialize="true"/>
+        <InArg name="Guid" type="Util::Guid" serialize="true"/>
+      </Message>
+
+      <Message name="CreateClientSideEntity" fourcc="crce">
+        <InArg name="Category" type="Util::String" serialize="true"/>
+        <InArg name="TemplateName" type="Util::String" serialize="true"/>
+        <InArg name="Guid" type="Util::Guid" serialize="true"/>
+        <InArg name="Matrix" type="Math::matrix44" serialize="true"/>
+      </Message>
+
+      <Message name="DeleteClientSideEntity" fourcc="dcse">
+        <InArg name="Guid" type="Util::Guid" serialize="true"/>        
+      </Message>
+      
+    </Protocol>    
+</Nebula3>

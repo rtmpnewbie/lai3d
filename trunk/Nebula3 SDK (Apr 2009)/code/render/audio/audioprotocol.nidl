@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Nebula3>
+    <Protocol namespace="Audio" name="AudioProtocol">
+        <!-- dependencies -->
+        <Dependency header="io/uri.h"/>
+        <Dependency header="util/array.h"/>
+        <Dependency header="coreaudio/audioadapterinfo.h"/>
+        <Dependency header="resources/resourceid.h"/>
+        <Dependency header="coreaudio/cueid.h"/>
+        <Dependency header="coreaudio/waveid.h"/>
+        <Dependency header="coreaudio/soundstate.h"/>
+        <Dependency header="math/matrix44.h"/>
+        <Dependency header="math/vector.h"/>
+        <Dependency header="audio/cuehandle.h"/>
+        <Dependency header="audio/wavehandle.h"/>
+        <Dependency header="audio/audioserver.h"/>
+        
+        <!-- setup the audio subsystem -->
+        <Message name="SetupAudio" fourcc="saud">
+            <InArg name="AdapterIndex" type="IndexT" default="AudioServer::DefaultAdapter"/>
+            <InArg name="GlobalSettingsURI" type="IO::URI"/>
+        </Message>
+        
+        <!-- get available audio adapters -->
+        <Message name="GetAudioAdapterInfos" fourcc="gaad">
+            <OutArg name="Result" type="Util::Array<CoreAudio::AudioAdapterInfo>"/>
+        </Message>
+        
+        <!-- load a sound bank -->
+        <Message name="LoadSoundBank" fourcc="lsbk">
+            <InArg name="ResourceId" type="Resources::ResourceId"/>
+            <InArg name="Streaming" type="bool" default="false"/>
+            <InArg name="Result" type="bool" default="false"/>
+        </Message>
+        
+        <!-- unload a sound bank -->
+        <Message name="UnloadSoundBank" fourcc="ulsk">
+            <InArg name="ResourceId" type="Resources::ResourceId"/>
+        </Message>
+        
+        <!-- play a cue -->
+        <Message name="PlayCue" fourcc="pcue">
+            <InArg name="CueId" type="CoreAudio::CueId"/>
+            <InArg name="StartPlaying" type="bool" default="true"/>
+            <InArg name="Enable3D" type="bool" default="false"/>
+            <InArg name="Transform" type="Math::matrix44" default="Math::matrix44::identity()"/>
+            <InArg name="Velocity" type="Math::vector" default="Math::vector::nullvec()"/>
+            <OutArg name="CueHandle" type="Audio::CueHandle"/>
+        </Message>
+        
+        <!-- update a 3d cue -->
+        <Message name="UpdateCue" fourcc="ucue">
+            <InArg name="CueHandle" type="Audio::CueHandle"/>
+            <InArg name="Transform" type="Math::matrix44"/>
+            <InArg name="Velocity" type="Math::vector"/>
+            <OutArg name="StateMask" type="CoreAudio::SoundState::Mask" default="0"/>
+        </Message>
+        
+        <!-- stop a specific cue -->
+        <Message name="StopCue" fourcc="scue">
+            <InArg name="CueHandle" type="Audio::CueHandle"/>
+        </Message>
+
+        <!-- pause a specific cue -->
+        <Message name="PauseCue" fourcc="paus">
+          <InArg name="CueHandle" type="Audio::CueHandle"/>
+        </Message>
+
+        <!-- resume a specific cue -->
+        <Message name="ResumeCue" fourcc="resu">
+          <InArg name="CueHandle" type="Audio::CueHandle"/>
+        </Message>
+      
+        <!-- stop all instances of a cue -->
+        <Message name="StopCueInstances" fourcc="scui">
+            <InArg name="CueId" type="CoreAudio::CueId"/>
+            <InArg name="StopImmediate" type="bool" default="false"/>
+        </Message>
+        
+        <!-- play a wave -->
+        <Message name="PlayWave" fourcc="pwav">
+            <InArg name="WaveId" type="CoreAudio::WaveId"/>
+            <InArg name="StartPlaying" type="bool" default="true"/>
+            <InArg name="LoopCount" type="SizeT" default="1"/>
+            <InArg name="Volume" type="float" default="1.0f"/>
+            <InArg name="Pitch" type="float" default="0.0f"/>
+            <InArg name="Enable3D" type="bool" default="false"/>
+            <InArg name="Transform" type="Math::matrix44" default="Math::matrix44::identity()"/>
+            <InArg name="Velocity" type="Math::vector" default="Math::vector::nullvec()"/>
+            <OutArg name="WaveHandle" type="Audio::WaveHandle"/>            
+        </Message>
+        
+        <!-- stop instances of a wave -->
+        <Message name="StopWaveInstances" fourcc="swav">
+            <InArg name="WaveId" type="CoreAudio::WaveId"/>
+            <InArg name="StopImmediate" type="bool" default="false"/>
+        </Message>
+        
+        <!-- update the 3D-listener parameters -->
+        <Message name="UpdateListener" fourcc="updl">
+            <InArg name="Transform" type="Math::matrix44"/>
+            <InArg name="Velocity" type="Math::vector"/>
+        </Message>
+      
+        <!-- set global variable-->
+        <Message name="SetGlobalVariable" fourcc="sgva">
+            <InArg name="VariableName" type="Util::StringAtom"/>
+            <InArg name="VaribaleValue" type="float"/>
+        </Message>
+
+        <!-- get global variable-->
+        <Message name="GetGlobalVariable" fourcc="ggva">
+            <InArg name="VariableName" type="Util::StringAtom"/>
+            <OutArg name="VaribaleValue" type="float"/>
+        </Message>
+    </Protocol>    
+</Nebula3>

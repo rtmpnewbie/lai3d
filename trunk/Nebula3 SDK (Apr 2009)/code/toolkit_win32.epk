@@ -1,0 +1,215 @@
+#-------------------------------------------------------------------------------
+#   toolkit_win32.epk
+#   (C) 2006 Radon Labs GmbH
+#-------------------------------------------------------------------------------
+set Win32Libs { dbghelp.lib dxguid.lib wsock32.lib rpcrt4.lib wininet.lib d3d9.lib d3dx9.lib dinput8.lib xinput.lib dxerr9.lib }
+
+#-------------------------------------------------------------------------------
+begintarget toolkitutil_win32
+    settype lib
+    setbasedir toolkit
+    setprecompiledheader stdneb    
+    setincpath_win32 "../foundation;../render;../extlibs;../tests;..addons;../toolkit"    
+    setclusters { toolkitutil }
+endtarget
+#-------------------------------------------------------------------------------
+begintarget buildclassregistryheader
+    settype exe
+    setbasedir toolkit
+    setprecompiledheader stdneb    
+    setincpath_win32 "../foundation;../render;../extlibs;../tests;..addons;../toolkit"    
+    setclusters { buildclassregistryheader }
+    setdepends {
+        foundation_win32
+        zlib_win32
+        tinyxml_win32
+    }        
+    setlibs_win32 $Win32Libs
+endtarget
+#-------------------------------------------------------------------------------
+begintarget charxmltodb3
+    settype exe
+    setbasedir toolkit
+    setprecompiledheader stdneb
+    setincpath_win32 "../foundation;../extlibs;../tools;../render"
+    setclusters { charxmltodb3 }
+    setdepends {
+		foundation_win32
+        render_win32
+		zlib_win32
+        tinyxml_win32
+		sqlite_win32
+		db_win32
+    }
+    setlibs_win32 $Win32Libs      
+endtarget
+#-------------------------------------------------------------------------------
+begintarget shaderbatcher3
+    settype exe
+    setbasedir toolkit
+    setprecompiledheader stdneb    
+    setincpath_win32 "../foundation;../render;../extlibs;../tests;..addons;../toolkit"    
+    setclusters { shaderbatcher3 }
+    setdepends {
+        foundation_win32
+        zlib_win32
+        tinyxml_win32
+        toolkitutil_win32
+    }        
+    setlibs_win32 $Win32Libs
+endtarget
+#-------------------------------------------------------------------------------
+begintarget texturebatcher3
+    settype exe
+    setbasedir toolkit
+    setprecompiledheader stdneb    
+    setincpath_win32 "../foundation;../render;../extlibs;../tests;..addons;../toolkit" 
+    setlibpath_win32 "../../lib"
+    setclusters { texturebatcher3 }
+    setdepends {
+        foundation_win32
+        zlib_win32
+        tinyxml_win32
+        toolkitutil_win32
+    }        
+    setlibs_win32 "$Win32Libs devil.lib ilu.lib"
+endtarget
+#-------------------------------------------------------------------------------
+begintarget buildresdict3
+    settype exe
+    setbasedir toolkit
+    setprecompiledheader stdneb    
+    setincpath_win32 "../foundation;../render;../extlibs;../tests;..addons;../toolkit" 
+    setlibpath_win32 "../../lib"
+    setclusters { buildresdict3 }
+    setdepends {
+        foundation_win32
+        zlib_win32
+        tinyxml_win32
+        toolkitutil_win32
+    }        
+    setlibs_win32 "$Win32Libs"
+endtarget
+#-------------------------------------------------------------------------------
+begintarget audiobatcher3
+    settype exe
+    setbasedir toolkit
+    setprecompiledheader stdneb    
+    setincpath_win32 "../foundation;../render;../extlibs;../tests;..addons;../toolkit" 
+    setlibpath_win32 "../../lib"
+    setclusters { audiobatcher3 }
+    setdepends {
+        foundation_win32
+        zlib_win32
+        tinyxml_win32
+        toolkitutil_win32
+    }        
+    setlibs_win32 "$Win32Libs"
+endtarget
+#-------------------------------------------------------------------------------
+begintarget n2converter3
+    settype exe
+    setbasedir toolkit
+    setprecompiledheader stdneb    
+    setincpath_win32 "../foundation;../render;../extlibs;../tests;..addons;../toolkit" 
+    setlibpath_win32 "../../lib"
+    setclusters { n2converter3 }
+    setdepends {
+        foundation_win32
+        zlib_win32
+        tinyxml_win32
+        toolkitutil_win32
+    }        
+    setlibs_win32 "$Win32Libs"
+endtarget
+#-------------------------------------------------------------------------------
+begintarget synctool3
+    settype exe
+    setbasedir toolkit
+    setprecompiledheader stdneb    
+    setincpath_win32 "../foundation;../render;../extlibs;../tests;..addons;../toolkit" 
+    setlibpath_win32 "../../lib"
+    setclusters { synctool3 }
+    setdepends {
+        foundation_win32
+        zlib_win32
+        tinyxml_win32
+        toolkitutil_win32
+    }        
+    setlibs_win32 "$Win32Libs"
+endtarget
+#-------------------------------------------------------------------------------
+begintarget archiver3
+    settype exe
+    setbasedir toolkit
+    setprecompiledheader stdneb    
+    setincpath_win32 "../foundation;../render;../extlibs;../tests;..addons;../toolkit" 
+    setlibpath_win32 "../../lib"
+    setclusters { archiver3 }
+    setdepends {
+        foundation_win32
+        zlib_win32
+        tinyxml_win32
+        toolkitutil_win32
+    }        
+    setlibs_win32 "$Win32Libs"    
+endtarget
+#-------------------------------------------------------------------------------
+begintarget countlines3
+    settype exe
+    setbasedir toolkit
+    setprecompiledheader stdneb    
+    setincpath_win32 "../foundation;../toolkit" 
+    setlibpath_win32 "../../lib"
+    setclusters { countlines3 }
+    setdepends {
+        foundation_win32
+        zlib_win32
+        tinyxml_win32
+        toolkitutil_win32
+    }        
+    setlibs_win32 "$Win32Libs"    
+endtarget
+#-------------------------------------------------------------------------------
+begintarget suiconverter3
+    settype exe
+    setbasedir toolkit
+    setprecompiledheader stdneb    
+    setincpath_win32 "../foundation;../render;../extlibs;../tests;..addons;../toolkit" 
+    setlibpath_win32 "../../lib"
+    setclusters { suiconverter3 }
+    setdepends {
+        foundation_win32
+        zlib_win32
+        tinyxml_win32
+        toolkitutil_win32
+    }        
+    setlibs_win32 "$Win32Libs"    
+endtarget
+#-------------------------------------------------------------------------------
+beginsolution toolkit_win32 win32
+    settargets {
+        foundation_nidls_win32
+        render_nidls_win32
+
+        foundation_win32
+        render_win32        
+        tinyxml_win32
+        zlib_win32
+        db_win32
+        sqlite_win32      
+        toolkitutil_win32
+
+        charxmltodb3
+        shaderbatcher3
+        texturebatcher3
+        buildresdict3
+        audiobatcher3
+        buildclassregistryheader
+        n2converter3
+        synctool3
+        archiver3
+        suiconverter3
+        countlines3
+    }
+endsolution

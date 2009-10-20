@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Nebula3>
+    <Protocol namespace="Remote" name="RemoteProtocol">
+
+        <!-- dependencies -->
+        <Dependency header="remote/remoterequesthandler.h"/>
+
+        <!-- attach a RemoteRequestHandler -->
+        <Message name="AttachRequestHandler" fourcc="arrq">
+          <InArg name="RequestHandler" type="Ptr<Remote::RemoteRequestHandler>"/>
+            
+        </Message>
+
+        <!-- remove an HttpRequestHandler -->
+        <Message name="RemoveRequestHandler" fourcc="rrrq">
+          <InArg name="RequestHandler" type="Ptr<Remote::RemoteRequestHandler>"/>
+            
+        </Message>
+
+    </Protocol>
+    
+</Nebula3>    
+    

@@ -1,0 +1,63 @@
+#-------------------------------------------------------------------------------
+#   render_win32.epk
+#   (C) 2006 Radon Labs GmbH
+#-------------------------------------------------------------------------------
+begintarget render_nidls_win32
+    settype nidl
+    setbasedir render
+    setnidlclusters {
+        graphics
+        internalgraphics
+        debugrender
+        audio
+        coreui
+        corefx
+        posteffect
+        video
+        vibration
+    }
+endtarget
+
+begintarget render_win32
+    settype lib
+    setbasedir render
+    setprecompiledheader stdneb
+    setincpath_win32 "../foundation;../extlibs;../render;../addons;"
+    setdepends {
+        render_nidls_win32
+    }
+    setclusters {
+        apprender
+        attr
+        characters characters/base characters/win360
+        debugrender
+        coreaudio coreaudio/base coreaudio/win360 coreaudio/debug
+        coregraphics coregraphics/base coregraphics/win32 coregraphics/win360 coregraphics/d3d9 coregraphics/legacy coregraphics/debug
+        corefx corefx/effects corefx/mixer
+        input input/base input/win32 input/xinput
+        models models/nodes
+        frame
+        resources
+        internalgraphics internalgraphics/debug
+        lighting lighting/base lighting/sm30
+        renderutil
+        graphics
+        coreanimation
+        animation animation/handler
+        audio
+        coreui coreui/base coreui/win360
+        posteffect posteffect/params
+        particles particles/base particles/d3d9
+        vegetation
+        video video/base video/win32
+        rendermodules rendermodules/rt        
+        vibration
+    }
+endtarget            
+
+beginsolution render_win32 win32
+    settargets {
+        render_nidls_win32
+        render_win32
+    }
+endsolution
