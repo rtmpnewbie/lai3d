@@ -19,6 +19,8 @@ class D3D9StreamTextureLoader : public Resources::StreamResourceLoader
 private:
     /// setup the texture from a Nebula3 stream
     virtual bool SetupResourceFromStream(const Ptr<IO::Stream>& stream);
+	bool IsBLPTexture( const Ptr<IO::Stream>& stream ) const;
+	bool LoadBLPTexture( const Ptr<IO::Stream>& stream );
 };
 
 } // namespace Direct3D9
