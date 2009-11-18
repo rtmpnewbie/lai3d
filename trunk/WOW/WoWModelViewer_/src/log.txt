@@ -1,85 +1,77 @@
-14:15:17: Starting:
+22:23:01: Starting:
 World of Warcraft Model Viewer v0.5.08 (Fans Update v0.23)
 
 
-14:15:17: Initiating Objects...
-14:15:17: Creating Anim Control...
-14:15:18: Creating Char Control...
-14:15:18: Error: Could not find items.csv to load an item list from.
-14:15:18: Creating Light Control...
-14:15:18: Creating Model Control...
-14:15:18: Creating Settings Control...
-14:15:18: Creating Model Bank Control...
-14:15:18: Creating OpenGL Canvas...
-14:15:18: Initiating OpenGL...
-14:15:18: Info: GLEW successfully initiated.
+22:23:07: Initiating Objects...
+22:23:07: Creating Anim Control...
+22:23:08: Creating Char Control...
+22:23:08: Error: Could not find items.csv to load an item list from.
+22:23:08: Creating Light Control...
+22:23:08: Creating Model Control...
+22:23:08: Creating Settings Control...
+22:23:08: Creating Model Bank Control...
+22:23:08: Creating OpenGL Canvas...
+22:23:08: Initiating OpenGL...
+22:23:10: Info: GLEW successfully initiated.
 
-14:15:18: Video Renderer: GeForce 8600 GT/PCI/SSE2/3DNOW!
-14:15:18: Video Vendor: NVIDIA Corporation
-14:15:18: Driver Version: 2.1.2
-14:15:18: Support wglPixelFormat: true
-14:15:18: Support Texture Compression: true
-14:15:18: Support Multi-Textures: true
-14:15:18: Support Draw Range Elements: true
-14:15:18: Support Vertex Buffer Objects: true
-14:15:18: Support Point Sprites: true
-14:15:18: Support Pixel Shaders: true
-14:15:18: Support Vertex Shaders: true
-14:15:18: Support GLSL: true
-14:15:18: Support Anti-Aliasing: true
-14:15:18: Support Pixel Buffer Objects: true
-14:15:18: Support Frame Buffer Objects: true
-14:15:18: Support Non-Power-of-Two: true
-14:15:18: Support Rectangle Textures: true
-14:15:18: Support OpenGL 2.0: true
-14:15:18: Max Rectangle Texture Size Supported: 8192
-14:15:18: Max Texture Size Supported: 8192
+22:23:10: Video Renderer: GeForce 8600 GT/PCI/SSE2/3DNOW!
+22:23:10: Video Vendor: NVIDIA Corporation
+22:23:10: Driver Version: 2.1.2
+22:23:10: Support wglPixelFormat: true
+22:23:10: Support Texture Compression: true
+22:23:10: Support Multi-Textures: true
+22:23:10: Support Draw Range Elements: true
+22:23:10: Support Vertex Buffer Objects: true
+22:23:10: Support Point Sprites: true
+22:23:10: Support Pixel Shaders: true
+22:23:10: Support Vertex Shaders: true
+22:23:10: Support GLSL: true
+22:23:10: Support Anti-Aliasing: true
+22:23:10: Support Pixel Buffer Objects: true
+22:23:10: Support Frame Buffer Objects: true
+22:23:10: Support Non-Power-of-Two: true
+22:23:10: Support Rectangle Textures: true
+22:23:10: Support OpenGL 2.0: true
+22:23:10: Max Rectangle Texture Size Supported: 8192
+22:23:10: Max Texture Size Supported: 8192
 
-14:15:18: Creating OpenGL Canvas...
-14:15:18: Initiating OpenGL...
-14:15:18: Loading Session settings from: e:\SvnHome\WowModelViewer\src\Debug\Config.ini
+22:23:10: Creating OpenGL Canvas...
+22:23:10: Initiating OpenGL...
+22:23:10: Loading Session settings from: e:\svnhome\lai3d\trunk\wow\wowmodelviewer_\src\debug\Config.ini
 
-14:15:18: Initiating File Menu..
-14:15:18: Initiating GUI Docking.
-14:15:18: Max Lights used: 4
-14:15:18: Setting OpenGL render state...
-14:15:18: Initiating Archives...
+22:23:10: Initiating File Menu..
+22:23:10: Initiating GUI Docking.
+22:23:10: Max Lights used: 4
+22:23:10: Setting OpenGL render state...
+22:23:10: Initiating Archives...
 
-14:15:18: Game Data Path: F:\WOW\
-14:15:18: Use Local Files: true
+22:23:10: Game Data Path: C:\
+22:23:10: Use Local Files: false
 
-14:15:18: Opening F:\WOW\Data\patch.MPQ
-14:15:18: Opening E:\WOW\Data\enCN\patch-enCN.MPQ
-14:15:19: Opening E:\WOW\Data\enCN\base-enCN.MPQ
-14:15:19: Opening E:\WOW\Data\lichking.MPQ
-14:15:19: Opening E:\WOW\Data\expansion.MPQ
-14:15:19: Opening E:\WOW\Data\common.MPQ
-14:15:19: Opening E:\WOW\Data\common-2.MPQ
-14:15:19: Opening E:\WOW\Data\patch-2.MPQ
-14:15:22: Initiating Databases...
-14:15:22: Error: Could not open the Creatures DB.
-14:15:22: Error: Could not open the CreatureDisplayInfo DB.
-14:15:22: Error: Could not open the Hair Geoset DB.
-14:15:22: Error: Could not open the Character DB.
-14:15:22: Error: Could not open the Char Races DB.
-14:15:22: Error: Could not open the Char Classes DB.
-14:15:22: Error: Could not open the Char Facial Hair DB.
-14:15:22: Error: Could not open the ItemVisuals DB.
-14:15:22: Error: Could not open the ItemVisualEffects DB.
-14:15:22: Error: Could not open the Item Subclasses DB.
-14:15:22: Error: Could not open the Start Outfit Sets DB.
-14:15:22: Error: Could not open the Start Outfit NPC DB.
-14:15:22: Error: Could not open the Creature Type DB.
-14:15:22: Error: Could not open the ItemDisplayInfo DB.
-14:15:22: Error: Could not open the Item Sets DB.
-14:15:22: Error: Could not find npcs.csv, unable to create NPC list.
-14:15:22: Error: Could not open the SpellVisualEffects DB.
-14:15:22: Finished initiating database files.
+22:23:10: Initiating Databases...
+22:23:10: Error: Could not open the Animation DB.
+22:23:10: Error: Could not open the Creatures DB.
+22:23:10: Error: Could not open the CreatureDisplayInfo DB.
+22:23:10: Error: Could not open the Hair Geoset DB.
+22:23:10: Error: Could not open the Character DB.
+22:23:10: Error: Could not open the Char Races DB.
+22:23:10: Error: Could not open the Char Classes DB.
+22:23:10: Error: Could not open the Char Facial Hair DB.
+22:23:10: Error: Could not open the ItemVisuals DB.
+22:23:10: Error: Could not open the ItemVisualEffects DB.
+22:23:10: Error: Could not open the Item Subclasses DB.
+22:23:10: Error: Could not open the Start Outfit Sets DB.
+22:23:10: Error: Could not open the Start Outfit NPC DB.
+22:23:10: Error: Could not open the Creature Type DB.
+22:23:10: Error: Could not open the ItemDisplayInfo DB.
+22:23:10: Error: Could not open the Item Sets DB.
+22:23:10: Error: Could not find npcs.csv, unable to create NPC list.
+22:23:10: Error: Could not open the SpellVisualEffects DB.
+22:23:10: Finished initiating database files.
 
-14:15:24: Info: GUI Layout loaded from previous session.
-14:15:24: WoW Model Viewer successfully loaded!
+22:23:12: WoW Model Viewer successfully loaded!
 ----
 
-14:15:29: Shuting down the program...
+22:23:31: Shuting down the program...
 
-14:15:29: Info: GUI Layout was saved.
+22:23:31: Info: GUI Layout was saved.

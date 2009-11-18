@@ -252,8 +252,8 @@ struct ModelAttachment {
 class Model: public ManagedItem, public Displayable
 {
 	// VBO Data
-	GLuint vbuf, nbuf, tbuf;
-	size_t vbufsize;
+	GLuint m_vbuf, m_nbuf, m_tbuf;
+	size_t m_vbufsize;
 
 	// Non VBO Data
 	GLuint dlist;
@@ -263,13 +263,13 @@ class Model: public ManagedItem, public Displayable
 
 	void init(MPQFile &f);
 
-	TextureAnim		*texAnims;
-	int				*globalSequences;
-	ModelColor		*colors;
-	ModelTransparency *transparency;
-	ModelLight		*lights;
-	ParticleSystem	*particleSystems;
-	RibbonEmitter	*ribbons;
+	TextureAnim		*m_texAnims;
+	int				*m_globalSequences;
+	ModelColor		*m_colors;
+	ModelTransparency *m_transparency;
+	ModelLight		*m_lights;
+	ParticleSystem	*m_particleSystems;
+	RibbonEmitter	*m_ribbons;
 
 	inline void drawModel();
 	void initCommon(MPQFile &f);
