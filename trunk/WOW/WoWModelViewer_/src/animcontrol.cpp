@@ -232,7 +232,7 @@ void AnimControl::UpdateModel(Model *m)
     if(g_selModel->animated && g_selModel->anims)
     {
         wxString strName;
-        for(unsigned int i = 0; i < g_selModel->header.nAnimations; i++)
+        for(unsigned int i = 0; i < g_selModel->m_header.nAnimations; i++)
         {
             try
             {

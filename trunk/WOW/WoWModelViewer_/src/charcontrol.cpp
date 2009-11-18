@@ -244,8 +244,8 @@ void CharControl::UpdateModel(Attachment *a)
 	td.showCustom = false;
 
 	// hide most geosets
-	for (size_t i=0; i<model->geosets.size(); i++) {
-		int id = model->geosets[i].id;
+	for (size_t i=0; i<model->m_geosets.size(); i++) {
+		int id = model->m_geosets[i].id;
 		model->showGeosets[i] = (id==0);
 	}
 
@@ -432,8 +432,8 @@ void CharControl::UpdateNPCModel(Attachment *a, unsigned int id)
 	td.showCustom = false;
 
 	// hide most geosets
-	for (size_t i=0; i<model->geosets.size(); i++) {
-		int id = model->geosets[i].id;
+	for (size_t i=0; i<model->m_geosets.size(); i++) {
+		int id = model->m_geosets[i].id;
 		model->showGeosets[i] = (id==0);
 	}
 
@@ -852,8 +852,8 @@ void CharControl::RefreshModel()
 			unsigned int section = it->getUInt(CharHairGeosetsDB::Section);
 
 			if (id!=0) {
-				for (size_t j=0; j<model->geosets.size(); j++) {
-					if (model->geosets[j].id == id) 
+				for (size_t j=0; j<model->m_geosets.size(); j++) {
+					if (model->m_geosets[j].id == id) 
 						model->showGeosets[j] = (cd.hairStyle == section) && showHair;
 				}
 
@@ -1025,8 +1025,8 @@ void CharControl::RefreshModel()
 	}
 
 	// reset geosets
-	for (size_t j=0; j<model->geosets.size(); j++) {
-		int id = model->geosets[j].id;
+	for (size_t j=0; j<model->m_geosets.size(); j++) {
+		int id = model->m_geosets[j].id;
 
 		// hide top-of-head if we have hair.
 		if (id == 1)
@@ -1187,8 +1187,8 @@ void CharControl::RefreshNPCModel()
 			unsigned int id = it->getUInt(CharHairGeosetsDB::Geoset);
 			unsigned int section = it->getUInt(CharHairGeosetsDB::Section);
 			if (id!=0) {
-				for (size_t j=0; j<model->geosets.size(); j++) {
-					if (model->geosets[j].id == id)
+				for (size_t j=0; j<model->m_geosets.size(); j++) {
+					if (model->m_geosets[j].id == id)
 						model->showGeosets[j] = (cd.hairStyle==section) && showHair;
 				}
 			} else if (cd.hairStyle==section) 
@@ -1264,8 +1264,8 @@ void CharControl::RefreshNPCModel()
 	
 
 	// reset geosets
-	for (size_t j=0; j<model->geosets.size(); j++) {
-		int id = model->geosets[j].id;
+	for (size_t j=0; j<model->m_geosets.size(); j++) {
+		int id = model->m_geosets[j].id;
 		
 		// hide top-of-head if we have hair.
 		if (id == 1) 
@@ -2240,7 +2240,7 @@ void CharControl::OnUpdateItem(int type, int id)
 			g_animControl->UpdateModel(m);
 			
 			// find the "mount" animation
-			for (size_t i=0; i<model->header.nAnimations; i++) {
+			for (size_t i=0; i<model->m_header.nAnimations; i++) {
 				if (model->anims[i].animID == 91) {
 					model->animManager->Stop();
 					model->currentAnim = (int)i;

@@ -272,14 +272,14 @@ void ModelControl::Update()
     // Loop through all the geosets.
     wxArrayString geosetItems;
     //geosets->Clear();
-    for(unsigned int i = 0; i < model->geosets.size(); i++)
+    for(unsigned int i = 0; i < model->m_geosets.size(); i++)
     {
         geosetItems.Add(wxString::Format("%i", i), 1);
     }
     //geosets->InsertItems(items, 0);
     geosets->Set(geosetItems, 0);
 
-    for(unsigned int i = 0; i < model->geosets.size(); i++)
+    for(unsigned int i = 0; i < model->m_geosets.size(); i++)
     {
         geosets->Check(i, model->showGeosets[i]);
     }
@@ -399,7 +399,7 @@ void ModelControl::OnList(wxCommandEvent &event)
         return ;
     }
 
-    for(unsigned int i = 0; i < model->geosets.size(); i++)
+    for(unsigned int i = 0; i < model->m_geosets.size(); i++)
     {
         model->showGeosets[i] = geosets->IsChecked(i);
     }

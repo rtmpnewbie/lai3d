@@ -1163,7 +1163,7 @@ inline void ModelCanvas::Render()
     {
         Vec4D la;
 
-        if(model->header.nLights > 0)
+        if(model->m_header.nLights > 0)
         {
             la = Vec4D(0.0f, 0.0f, 0.0f, 1.0f);
         }
@@ -1213,7 +1213,7 @@ inline void ModelCanvas::Render()
     {
         if(useCamera && model->hasCamera)
         {
-            model->cam.setup();
+            model->m_cam.setup();
         }
         else
         {
@@ -1739,7 +1739,7 @@ void ModelCanvas::RenderToBuffer()
     {
         if(useCamera && model->hasCamera)
         {
-            model->cam.setup();
+            model->m_cam.setup();
         }
         else
         {
