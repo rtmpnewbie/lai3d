@@ -1,4 +1,3 @@
-
 #ifndef MAX3DSHEADER_H
 #define MAX3DSHEADER_H
 
@@ -38,7 +37,7 @@
 //#define EDIT_UNKNW09  0x2201
 //#define EDIT_UNKNW10  0x2210
 //#define EDIT_UNKNW11  0x2300
-//#define EDIT_UNKNW12  0x2302 
+//#define EDIT_UNKNW12  0x2302
 //#define EDIT_UNKNW13  0x3000
 //#define EDIT_UNKNW14  0xAFFF
 
@@ -52,15 +51,17 @@
 #define MATMAPFILE		0xA300 // This holds the file name of the texture
 
 //------ sub defines of EDIT_OBJECT
-#define OBJ_MESH		0x4100 // This lets us know that we are reading a new object
+#define OBJ_MESH		0x4100
+// This lets us know that we are reading a new object
 #define OBJ_LIGHT		0x4600 // This lets un know we are reading a light object
-#define OBJ_CAMERA		0x4700 // This lets un know we are reading a camera object
+#define OBJ_CAMERA		0x4700
+// This lets un know we are reading a camera object
 
 //#define OBJ_UNKNWN01  0x4010
 //#define OBJ_UNKNWN02  0x4012 //---- Could be shadow
 
 //------ sub defines of OBJ_CAMERA
-//#define CAM_UNKNWN01	0x4710 
+//#define CAM_UNKNWN01	0x4710
 #define CAM_RANGES		0x4720 // The camera range values
 
 //------ sub defines of OBJ_LIGHT
@@ -68,11 +69,12 @@
 #define LIT_SPOT      0x4610
 #define LIT_UNKNWN01  0x465A
 
- //------ sub defines of OBJ_MESH
+//------ sub defines of OBJ_MESH
 #define MESH_VERTICES	0x4110 // The objects vertices
 #define MESH_FACEL2		0x4111 // ?
 #define MESH_FACEL1		0x4120 // The objects faces
-#define MESH_MATERIAL	0x4130 // This is found if the object has a material, either texture map or color
+#define MESH_MATERIAL	0x4130
+// This is found if the object has a material, either texture map or color
 #define MESH_UV			0x4140 // The UV texture coordinates
 #define MESH_SMOOTH		0x4150 // ?
 #define MESH_LOCAL		0x4160 // The Object Matrix - Trans Matrix
@@ -104,41 +106,47 @@
 #define DISABLED      0x0010
 #define BOGUS         0x0011
 
-__declspec(align(2)) struct MAX3DS_CHUNK {
-	unsigned short id;
-	unsigned int size;
+__declspec(align(2) )struct MAX3DS_CHUNK
+{
+    unsigned short id;
+    unsigned int size;
 
-	MAX3DS_CHUNK() : size(6) {};
+    MAX3DS_CHUNK(): size(6){}
+    ;
 };
 
 // Index / Indice into the vertex list
-__declspec(align(2)) struct MAX3DS_FACE {
-	unsigned short x;
-	unsigned short y;
-	unsigned short z;
+__declspec(align(2) )struct MAX3DS_FACE
+{
+    unsigned short x;
+    unsigned short y;
+    unsigned short z;
 };
 
-__declspec(align(2)) struct MAX3DS_HEADER {
-	MAX3DS_CHUNK primary;
-	MAX3DS_CHUNK version;
-	unsigned int nVersion;
+__declspec(align(2) )struct MAX3DS_HEADER
+{
+    MAX3DS_CHUNK primary;
+    MAX3DS_CHUNK version;
+    unsigned int nVersion;
 
-	MAX3DS_HEADER() {
-		primary.id = MAIN3DS;
+    MAX3DS_HEADER()
+    {
+        primary.id = MAIN3DS;
 
-		version.id = VERSION3DS;
-		version.size = 10;
-		nVersion = 3;
+        version.id = VERSION3DS;
+        version.size = 10;
+        nVersion = 3;
 
-		primary.size += version.size;
-	};
+        primary.size += version.size;
+    };
 
 };
 
-__declspec(align(2)) struct Vertex3f {
-	float x;
-	float y;
-	float z;
+__declspec(align(2) )struct Vertex3f
+{
+    float x;
+    float y;
+    float z;
 };
 
 #pragma pack(pop)
