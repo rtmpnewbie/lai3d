@@ -94,9 +94,9 @@ void SaveTexture(wxString fn)
 
 void AddCount(Model *m)
 {
-    for(size_t i = 0; i < m->passes.size(); i++)
+    for(size_t i = 0; i < m->m_passes.size(); i++)
     {
-        ModelRenderPass &p = m->passes[i];
+        ModelRenderPass &p = m->m_passes[i];
 
         if(p.init(m) )
         {
@@ -142,9 +142,9 @@ void AddVertices(Model *m, Attachment *att)
         scale.z = mat.m[2][2];
     }
 
-    for(size_t i = 0; i < m->passes.size(); i++)
+    for(size_t i = 0; i < m->m_passes.size(); i++)
     {
-        ModelRenderPass &p = m->passes[i];
+        ModelRenderPass &p = m->m_passes[i];
 
         if(p.init(m) )
         {
@@ -164,11 +164,11 @@ void AddVertices(Model *m, Attachment *att)
                     if(video.supportVBO)
                     {
                         verts[vertIndex].normal.x = (m->vertices[m
-                            ->header.nVertices + a].x + pos.x);
+                            ->m_header.nVertices + a].x + pos.x);
                         verts[vertIndex].normal.y = (m->vertices[m
-                            ->header.nVertices + a].y + pos.y);
+                            ->m_header.nVertices + a].y + pos.y);
                         verts[vertIndex].normal.z = (m->vertices[m
-                            ->header.nVertices + a].z + pos.z);
+                            ->m_header.nVertices + a].z + pos.z);
                     }
                     else
                     {
@@ -179,23 +179,23 @@ void AddVertices(Model *m, Attachment *att)
                 }
                 else
                 {
-                    verts[vertIndex].vertex.x = ( (m->origVertices[a].pos.x
+                    verts[vertIndex].vertex.x = ( (m->m_origVertices[a].pos.x
                         *scale.x) + pos.x);
-                    verts[vertIndex].vertex.y = ( (m->origVertices[a].pos.y
+                    verts[vertIndex].vertex.y = ( (m->m_origVertices[a].pos.y
                         *scale.y) + pos.y);
-                    verts[vertIndex].vertex.z = ( (m->origVertices[a].pos.z
+                    verts[vertIndex].vertex.z = ( (m->m_origVertices[a].pos.z
                         *scale.z) + pos.z);
 
-                    verts[vertIndex].normal.x = m->origVertices[a].normal.x;
-                    verts[vertIndex].normal.y = m->origVertices[a].normal.y;
-                    verts[vertIndex].normal.z = m->origVertices[a].normal.z;
+                    verts[vertIndex].normal.x = m->m_origVertices[a].normal.x;
+                    verts[vertIndex].normal.y = m->m_origVertices[a].normal.y;
+                    verts[vertIndex].normal.z = m->m_origVertices[a].normal.z;
                 }
 
-                verts[vertIndex].tu = m->origVertices[a].texcoords.x;
-                verts[vertIndex].tv = m->origVertices[a].texcoords.y;
+                verts[vertIndex].tu = m->m_origVertices[a].texcoords.x;
+                verts[vertIndex].tv = m->m_origVertices[a].texcoords.y;
 
                 verts[vertIndex].groupIndex = grpIndex;
-                verts[vertIndex].boneid = m->origVertices[a].bones[0];
+                verts[vertIndex].boneid = m->m_origVertices[a].bones[0];
 
                 vertIndex++;
             }
@@ -328,7 +328,7 @@ void ExportM2to3DS(Model *m, const char *fn)
     }
     }
      */
-    numVerts = m->header.nVertices;
+    numVerts = m->m_header.nVertices;
 
     Vertex3f *verts = new Vertex3f[numVerts];
     for(int i = 0; i < numVerts; i++)
@@ -341,11 +341,11 @@ void ExportM2to3DS(Model *m, const char *fn)
     unsigned int numIndices = 0;
 
     // Indice count
-    for(size_t i = 0; i < m->passes.size(); i++)
+    for(size_t i = 0; i < m->m_passes.size(); i++)
     {
-        if(m->passes[i].init(m) )
+        if(m->m_passes[i].init(m) )
         {
-            numIndices += m->passes[i].indexCount;
+            numIndices += m->m_passes[i].indexCount;
         }
     }
 
@@ -355,9 +355,9 @@ void ExportM2to3DS(Model *m, const char *fn)
     int count = 0;
     int triCount = 0;
 
-    for(size_t i = 0; i < m->passes.size(); i++)
+    for(size_t i = 0; i < m->m_passes.size(); i++)
     {
-        ModelRenderPass &p = m->passes[i];
+        ModelRenderPass &p = m->m_passes[i];
 
         if(p.init(m) )
         {
@@ -718,7 +718,7 @@ void ExportM2toMS3D(Attachment *att, Model *m, const char *fn)
 
     // number of joints
 
-    unsigned short numJoints = (unsigned short)m->header.nBones;
+    unsigned short numJoints = (unsigned short)m->m_header.nBones;
 
     f.Write(reinterpret_cast < char * > (&numJoints), sizeof(numJoints) );
 
@@ -903,9 +903,9 @@ void ExportM2toLWO(Model *m, const char *fn)
     fileLen += 8;
 
     // output all the vertice data
-    for(size_t i = 0; i < m->passes.size(); i++)
+    for(size_t i = 0; i < m->m_passes.size(); i++)
     {
-        ModelRenderPass &p = m->passes[i];
+        ModelRenderPass &p = m->m_passes[i];
 
         if(p.init(m) )
         {
@@ -940,9 +940,9 @@ void ExportM2toLWO(Model *m, const char *fn)
     wxString surfName;
     int surfaceCounter = 0;
 
-    for(size_t i = 0; i < m->passes.size(); i++)
+    for(size_t i = 0; i < m->m_passes.size(); i++)
     {
-        ModelRenderPass &p = m->passes[i];
+        ModelRenderPass &p = m->m_passes[i];
 
         if(p.init(m) )
         {
@@ -982,9 +982,9 @@ void ExportM2toLWO(Model *m, const char *fn)
     int16 surfCounter = 0;
     POLYCHUNK tri;
 
-    for(size_t i = 0; i < m->passes.size(); i++)
+    for(size_t i = 0; i < m->m_passes.size(); i++)
     {
-        ModelRenderPass &p = m->passes[i];
+        ModelRenderPass &p = m->m_passes[i];
 
         if(p.init(m) )
         {
@@ -1022,9 +1022,9 @@ void ExportM2toLWO(Model *m, const char *fn)
 
     surfaceCounter = 0;
 
-    for(size_t i = 0; i < m->passes.size(); i++)
+    for(size_t i = 0; i < m->m_passes.size(); i++)
     {
-        ModelRenderPass &p = m->passes[i];
+        ModelRenderPass &p = m->m_passes[i];
 
         if(p.init(m) )
         {
@@ -1257,9 +1257,9 @@ void ExportM2toOBJ(Model *m, const char *fn)
     //locale::global(locale("C"));
 
     // output all the vertice data
-    for(size_t i = 0; i < m->passes.size(); i++)
+    for(size_t i = 0; i < m->m_passes.size(); i++)
     {
-        ModelRenderPass &p = m->passes[i];
+        ModelRenderPass &p = m->m_passes[i];
 
         if(p.init(m) )
         {
@@ -1270,9 +1270,9 @@ void ExportM2toOBJ(Model *m, const char *fn)
                 uint16 a = m->indices[b];
                 if(m->vertices == NULL)
                 {
-                    f << "v " << m->origVertices[a].pos.x << " " << m
-                        ->origVertices[a].pos.y << " " << m
-                        ->origVertices[a].pos.z << " " << "1.0" << endl;
+                    f << "v " << m->m_origVertices[a].pos.x << " " << m
+                        ->m_origVertices[a].pos.y << " " << m
+                        ->m_origVertices[a].pos.z << " " << "1.0" << endl;
                 }
                 else
                 {
@@ -1306,42 +1306,42 @@ void ExportM2toOBJ(Model *m, const char *fn)
     f << "mtllib " << matName.c_str() << endl;
 
     // output all the texture coordinate data
-    for(size_t i = 0; i < m->passes.size(); i++)
+    for(size_t i = 0; i < m->m_passes.size(); i++)
     {
-        ModelRenderPass &p = m->passes[i];
+        ModelRenderPass &p = m->m_passes[i];
         // we don't want to render completely transparent parts
         if(p.init(m) )
         {
             for(size_t k = 0, b = p.indexStart; k < p.indexCount; k++, b++)
             {
                 uint16 a = m->indices[b];
-                f << "vt " << m->origVertices[a].texcoords.x << " " << (1-m
-                    ->origVertices[a].texcoords.y) << endl;
+                f << "vt " << m->m_origVertices[a].texcoords.x << " " << (1-m
+                    ->m_origVertices[a].texcoords.y) << endl;
             }
         }
     }
 
     // output all the vertice normals data
-    for(size_t i = 0; i < m->passes.size(); i++)
+    for(size_t i = 0; i < m->m_passes.size(); i++)
     {
-        ModelRenderPass &p = m->passes[i];
+        ModelRenderPass &p = m->m_passes[i];
         if(p.init(m) )
         {
             for(size_t k = 0, b = p.indexStart; k < p.indexCount; k++, b++)
             {
                 uint16 a = m->indices[b];
-                f << "vn " << m->origVertices[a].normal.x << " " << m
-                    ->origVertices[a].normal.y << " " << m
-                    ->origVertices[a].normal.z << endl;
+                f << "vn " << m->m_origVertices[a].normal.x << " " << m
+                    ->m_origVertices[a].normal.y << " " << m
+                    ->m_origVertices[a].normal.z << endl;
             }
         }
     }
 
     int counter = 1;
     // output the indice data
-    for(size_t i = 0; i < m->passes.size(); i++)
+    for(size_t i = 0; i < m->m_passes.size(); i++)
     {
-        ModelRenderPass &p = m->passes[i];
+        ModelRenderPass &p = m->m_passes[i];
 
         if(p.init(m) )
         {

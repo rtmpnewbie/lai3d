@@ -363,8 +363,8 @@ Model::Model(std::string name, bool forceAnim): ManagedItem(name), forceAnim
 
 
     dlist = 0;
-    bounds = 0;
-    boundTris = 0;
+    m_bounds = 0;
+    m_boundTris = 0;
     showGeosets = 0;
 
     hasCamera = false;
@@ -383,7 +383,7 @@ Model::Model(std::string name, bool forceAnim): ManagedItem(name), forceAnim
 
     m_vbuf = m_nbuf = m_tbuf = 0;
 
-    origVertices = 0;
+    m_origVertices = 0;
     vertices = 0;
     normals = 0;
     texCoords = 0;
@@ -394,8 +394,8 @@ Model::Model(std::string name, bool forceAnim): ManagedItem(name), forceAnim
     anims = 0;
     animManager = NULL;
     bones = 0;
-    bounds = 0;
-    boundTris = 0;
+    m_bounds = 0;
+    m_boundTris = 0;
     currentAnim = 0;
     m_colors = 0;
     m_globalSequences = 0;
@@ -418,15 +418,15 @@ Model::Model(std::string name, bool forceAnim): ManagedItem(name), forceAnim
     }
     ok = true;
 
-    memcpy(&header, f.getBuffer(), sizeof(ModelHeader) );
+    memcpy(&m_header, f.getBuffer(), sizeof(ModelHeader) );
     animated = isAnimated(f) || forceAnim;
     // isAnimated will set animGeometry and animTextures
 
     wxLogMessage(_T("Loading model: %s\n"), tempname);
 
     // Error check
-    if(header.id[0] != 'M' && header.id[1] != 'D' && header.id[2] != '2' &&
-        header.id[3] != '0')
+    if(m_header.id[0] != 'M' && m_header.id[1] != 'D' && m_header.id[2] != '2' &&
+        m_header.id[3] != '0')
     {
         wxLogMessage(_T("Error:\t\tInvalid model!  May be corrupted.") );
         ok = false;
@@ -513,21 +513,21 @@ Model::Model(std::string name, bool forceAnim): ManagedItem(name), forceAnim
 #ifdef WotLK
     fullname = name;
 
-    if(header.nameOfs != 304 && header.nameOfs != 320)
+    if(m_header.nameOfs != 304 && m_header.nameOfs != 320)
     {
         wxLogMessage(_T(
             "Error:\t\tInvalid model nameOfs=%d/%d!  May be corrupted."),
-            header.nameOfs, sizeof(ModelHeader) );
+            m_header.nameOfs, sizeof(ModelHeader) );
         ok = false;
         f.close();
         return ;
     }
 #else 
-    if(header.nameOfs != 336)
+    if(m_header.nameOfs != 336)
     {
         wxLogMessage(_T(
             "Error:\t\tInvalid model nameOfs=%d/%d!  May be corrupted."),
-            header.nameOfs, sizeof(ModelHeader) );
+            m_header.nameOfs, sizeof(ModelHeader) );
         ok = false;
         f.close();
         return ;
@@ -537,15 +537,15 @@ Model::Model(std::string name, bool forceAnim): ManagedItem(name), forceAnim
     // Error check
     // 4 1 0 0 = WoW 2.0 models
     // 0 1 0 0 = WoW 1.0 models
-    if(header.version[0] != 4 && header.version[1] != 1 && header.version[2] !=
-        0 && header.version[3] != 0)
+    if(m_header.version[0] != 4 && m_header.version[1] != 1 && m_header.version[2] !=
+        0 && m_header.version[3] != 0)
     {
         wxLogMessage(_T(
             "Error:\t\tModel version is incorrect!\n\t\tMake sure you are loading models from World of Warcraft 2.0.1 or newer client.") );
         ok = false;
         f.close();
 
-        if(header.version[0] == 0)
+        if(m_header.version[0] == 0)
         {
             wxMessageBox(wxString::Format(_T(
                 "An error occured while trying to load the model %s.\nWoW Model Viewer 0.5.x only supports loading WoW 2.0 models\nModels from WoW 1.12 or earlier are not supported"), tempname), _T("Error: Unable to load model"), wxICON_ERROR);
@@ -554,18 +554,18 @@ Model::Model(std::string name, bool forceAnim): ManagedItem(name), forceAnim
         return ;
     }
 
-    if(f.getSize() < header.ofsParticleEmitters)
+    if(f.getSize() < m_header.ofsParticleEmitters)
     {
         wxLogMessage(_T(
             "Error: Unable to load the Model \"%s\", appears to be corrupted."),
             tempname);
     }
 
-    if(header.nGlobalSequences)
+    if(m_header.nGlobalSequences)
     {
-        m_globalSequences = new int[header.nGlobalSequences];
-        memcpy(m_globalSequences, (f.getBuffer() + header.ofsGlobalSequences),
-            header.nGlobalSequences *4);
+        m_globalSequences = new int[m_header.nGlobalSequences];
+        memcpy(m_globalSequences, (f.getBuffer() + m_header.ofsGlobalSequences),
+            m_header.nGlobalSequences *4);
     }
 
     if(forceAnim)
@@ -606,14 +606,14 @@ Model::~Model()
         // There is a small memory leak somewhere with the textures.
         // Especially if the texture was built into the model.
         // No matter what I try though I can't find the memory to unload.
-        if(header.nTextures)
+        if(m_header.nTextures)
         {
 
             // For character models, the texture isn't loaded into the texture manager, manually remove it
             glDeleteTextures(1, &replaceTextures[1]);
 
             // Clears textures that were loaded from Model::InitCommon()
-            for(size_t i = 0; i < header.nTextures; i++)
+            for(size_t i = 0; i < m_header.nTextures; i++)
             {
                 if(textures[i] > 0)
                 {
@@ -636,8 +636,8 @@ Model::~Model()
 
         wxDELETEA(m_globalSequences);
 
-        wxDELETEA(bounds);
-        wxDELETEA(boundTris);
+        wxDELETEA(m_bounds);
+        wxDELETEA(m_boundTris);
         wxDELETEA(showGeosets);
 
         wxDELETE(animManager);
@@ -662,7 +662,7 @@ Model::~Model()
 
             wxDELETEA(indices);
             wxDELETEA(anims);
-            wxDELETEA(origVertices);
+            wxDELETEA(m_origVertices);
 
             wxDELETEA(bones);
             wxDELETEA(m_texAnims);
@@ -686,14 +686,14 @@ Model::~Model()
 bool Model::isAnimated(MPQFile &f)
 {
     // see if we have any animated bones
-    ModelBoneDef *bo = (ModelBoneDef*) (f.getBuffer() + header.ofsBones);
+    ModelBoneDef *bo = (ModelBoneDef*) (f.getBuffer() + m_header.ofsBones);
 
     animGeometry = false;
     animBones = false;
     ind = false;
 
-    ModelVertex *verts = (ModelVertex*) (f.getBuffer() + header.ofsVertices);
-    for(size_t i = 0; i < header.nVertices && !animGeometry; i++)
+    ModelVertex *verts = (ModelVertex*) (f.getBuffer() + m_header.ofsVertices);
+    for(size_t i = 0; i < m_header.nVertices && !animGeometry; i++)
     {
         for(size_t b = 0; b < 4; b++)
         {
@@ -721,7 +721,7 @@ bool Model::isAnimated(MPQFile &f)
     }
     else
     {
-        for(size_t i = 0; i < header.nBones; i++)
+        for(size_t i = 0; i < m_header.nBones; i++)
         {
             ModelBoneDef &bb = bo[i];
             if(bb.translation.type || bb.rotation.type || bb.scaling.type)
@@ -732,12 +732,12 @@ bool Model::isAnimated(MPQFile &f)
         }
     }
 
-    animTextures = header.nTexAnims > 0;
+    animTextures = m_header.nTexAnims > 0;
 
-    bool animMisc = header.nCameras > 0 || 
+    bool animMisc = m_header.nCameras > 0 || 
     // why waste time, pretty much all models with cameras need animation
-    header.nLights > 0 ||  // same here
-    header.nParticleEmitters > 0 || header.nRibbonEmitters > 0;
+    m_header.nLights > 0 ||  // same here
+    m_header.nParticleEmitters > 0 || m_header.nRibbonEmitters > 0;
 
     if(animMisc)
     {
@@ -745,11 +745,11 @@ bool Model::isAnimated(MPQFile &f)
     }
 
     // animated colors
-    if(header.nColors)
+    if(m_header.nColors)
     {
         ModelColorDef *cols = (ModelColorDef*) (f.getBuffer() +
-            header.ofsColors);
-        for(size_t i = 0; i < header.nColors; i++)
+            m_header.ofsColors);
+        for(size_t i = 0; i < m_header.nColors; i++)
         {
             if(cols[i].color.type != 0 || cols[i].opacity.type != 0)
             {
@@ -760,11 +760,11 @@ bool Model::isAnimated(MPQFile &f)
     }
 
     // animated opacity
-    if(header.nTransparency && !animMisc)
+    if(m_header.nTransparency && !animMisc)
     {
         ModelTransDef *trs = (ModelTransDef*) (f.getBuffer() +
-            header.ofsTransparency);
-        for(size_t i = 0; i < header.nTransparency; i++)
+            m_header.ofsTransparency);
+        for(size_t i = 0; i < m_header.nTransparency; i++)
         {
             if(trs[i].trans.type != 0)
             {
@@ -808,22 +808,22 @@ void Model::initCommon(MPQFile &f)
     // assume: origVertices already set
 
     // This data is needed for both VBO and non-VBO cards.
-    vertices = new Vec3D[header.nVertices];
-    normals = new Vec3D[header.nVertices];
+    vertices = new Vec3D[m_header.nVertices];
+    normals = new Vec3D[m_header.nVertices];
 
     // Correct the data from the model, so that its using the Y-Up axis mode.
-    for(size_t i = 0; i < header.nVertices; i++)
+    for(size_t i = 0; i < m_header.nVertices; i++)
     {
-        origVertices[i].pos = fixCoordSystem(origVertices[i].pos);
-        origVertices[i].normal = fixCoordSystem(origVertices[i].normal);
+        m_origVertices[i].pos = fixCoordSystem(m_origVertices[i].pos);
+        m_origVertices[i].normal = fixCoordSystem(m_origVertices[i].normal);
 
         // Set the data for our vertices, normals from the model data
         //if (!animGeometry || !supportVBO) {
-        vertices[i] = origVertices[i].pos;
-        normals[i] = origVertices[i].normal.normalize();
+        vertices[i] = m_origVertices[i].pos;
+        normals[i] = m_origVertices[i].normal.normalize();
         //}
 
-        float len = origVertices[i].pos.lengthSquared();
+        float len = m_origVertices[i].pos.lengthSquared();
         if(len > rad)
         {
             rad = len;
@@ -834,33 +834,33 @@ void Model::initCommon(MPQFile &f)
     rad = sqrtf(rad);
 
     // bounds
-    if(header.nBoundingVertices > 0)
+    if(m_header.nBoundingVertices > 0)
     {
-        bounds = new Vec3D[header.nBoundingVertices];
-        Vec3D *b = (Vec3D*) (f.getBuffer() + header.ofsBoundingVertices);
-        for(size_t i = 0; i < header.nBoundingVertices; i++)
+        m_bounds = new Vec3D[m_header.nBoundingVertices];
+        Vec3D *b = (Vec3D*) (f.getBuffer() + m_header.ofsBoundingVertices);
+        for(size_t i = 0; i < m_header.nBoundingVertices; i++)
         {
-            bounds[i] = fixCoordSystem(b[i]);
+            m_bounds[i] = fixCoordSystem(b[i]);
         }
     }
-    if(header.nBoundingTriangles > 0)
+    if(m_header.nBoundingTriangles > 0)
     {
-        boundTris = new uint16[header.nBoundingTriangles];
-        memcpy(boundTris, f.getBuffer() + header.ofsBoundingTriangles,
-            header.nBoundingTriangles *sizeof(uint16) );
+        m_boundTris = new uint16[m_header.nBoundingTriangles];
+        memcpy(m_boundTris, f.getBuffer() + m_header.ofsBoundingTriangles,
+            m_header.nBoundingTriangles *sizeof(uint16) );
     }
 
     // textures
     ModelTextureDef *texdef = (ModelTextureDef*) (f.getBuffer() +
-        header.ofsTextures);
-    if(header.nTextures)
+        m_header.ofsTextures);
+    if(m_header.nTextures)
     {
 
         // Error check
-        if(header.nTextures <= 32)
+        if(m_header.nTextures <= 32)
         {
-            textures = new TextureID[header.nTextures];
-            for(size_t i = 0; i < header.nTextures; i++)
+            textures = new TextureID[m_header.nTextures];
+            for(size_t i = 0; i < m_header.nTextures; i++)
             {
                 char texname[256];
                 if(texdef[i].type == 0)
@@ -908,11 +908,11 @@ void Model::initCommon(MPQFile &f)
 
     // attachments
     // debug code here
-    if(header.nAttachments)
+    if(m_header.nAttachments)
     {
         ModelAttachmentDef *attachments = (ModelAttachmentDef*) (f.getBuffer() 
-            + header.ofsAttachments);
-        for(size_t i = 0; i < header.nAttachments; i++)
+            + m_header.ofsAttachments);
+        for(size_t i = 0; i < m_header.nAttachments; i++)
         {
             ModelAttachment att;
             att.model = this;
@@ -921,10 +921,10 @@ void Model::initCommon(MPQFile &f)
         }
     }
 
-    if(header.nAttachLookup)
+    if(m_header.nAttachLookup)
     {
-        int16 *p = (int16*) (f.getBuffer() + header.ofsAttachLookup);
-        for(size_t i = 0; i < header.nAttachLookup; i++)
+        int16 *p = (int16*) (f.getBuffer() + m_header.ofsAttachLookup);
+        for(size_t i = 0; i < m_header.nAttachLookup; i++)
         {
             attLookup[i] = p[i];
         }
@@ -932,26 +932,26 @@ void Model::initCommon(MPQFile &f)
 
 
     // init colors
-    if(header.nColors)
+    if(m_header.nColors)
     {
-        m_colors = new ModelColor[header.nColors];
+        m_colors = new ModelColor[m_header.nColors];
         ModelColorDef *colorDefs = (ModelColorDef*) (f.getBuffer() +
-            header.ofsColors);
-        for(size_t i = 0; i < header.nColors; i++)
+            m_header.ofsColors);
+        for(size_t i = 0; i < m_header.nColors; i++)
         {
             m_colors[i].init(f, colorDefs[i], m_globalSequences);
         }
     }
 
     // init transparency
-    int16 *transLookup = (int16*) (f.getBuffer() + header.ofsTransparencyLookup)
+    int16 *transLookup = (int16*) (f.getBuffer() + m_header.ofsTransparencyLookup)
         ;
-    if(header.nTransparency)
+    if(m_header.nTransparency)
     {
-        m_transparency = new ModelTransparency[header.nTransparency];
+        m_transparency = new ModelTransparency[m_header.nTransparency];
         ModelTransDef *trDefs = (ModelTransDef*) (f.getBuffer() +
-            header.ofsTransparency);
-        for(size_t i = 0; i < header.nTransparency; i++)
+            m_header.ofsTransparency);
+        for(size_t i = 0; i < m_header.nTransparency; i++)
         {
             m_transparency[i].init(f, trDefs[i], m_globalSequences);
         }
@@ -984,19 +984,19 @@ void Model::initCommon(MPQFile &f)
     tempname[length - 3] = 0;
     fullname = tempname;
     strcat(tempname, "00.skin");
-    MPQFile g(tempname);
-    if(g.isEof() )
+    MPQFile mpqFile(tempname);
+    if(mpqFile.isEof() )
     {
         wxLogMessage("Error: Unable to load model: [%s]", tempname);
-        g.close();
+        mpqFile.close();
         return ;
     }
 
-    ModelView *view = (ModelView*) (g.getBuffer() );
+    ModelView *view = (ModelView*) (mpqFile.getBuffer() );
 
     // Indices,  Triangles
-    uint16 *indexLookup = (uint16*) (g.getBuffer() + view->ofsIndex);
-    uint16 *triangles = (uint16*) (g.getBuffer() + view->ofsTris);
+    uint16 *indexLookup = (uint16*) (mpqFile.getBuffer() + view->ofsIndex);
+    uint16 *triangles = (uint16*) (mpqFile.getBuffer() + view->ofsTris);
     nIndices = view->nTris;
     indices = new uint16[nIndices];
     for(size_t i = 0; i < nIndices; i++)
@@ -1005,10 +1005,10 @@ void Model::initCommon(MPQFile &f)
     }
 
     // render ops
-    ModelGeoset *ops = (ModelGeoset*) (g.getBuffer() + view->ofsSub);
-    ModelTexUnit *tex = (ModelTexUnit*) (g.getBuffer() + view->ofsTex);
+    ModelGeoset *ops = (ModelGeoset*) (mpqFile.getBuffer() + view->ofsSub);
+    ModelTexUnit *tex = (ModelTexUnit*) (mpqFile.getBuffer() + view->ofsTex);
 #else // not WotLK
-    ModelView *view = (ModelView*) (f.getBuffer() + header.ofsViews);
+    ModelView *view = (ModelView*) (f.getBuffer() + m_header.ofsViews);
 
     // Indices,  Triangles
     uint16 *indexLookup = (uint16*) (f.getBuffer() + view->ofsIndex);
@@ -1026,16 +1026,16 @@ void Model::initCommon(MPQFile &f)
 #endif // WotLK
 
     ModelRenderFlags *renderFlags = (ModelRenderFlags*) (f.getBuffer() +
-        header.ofsTexFlags);
-    uint16 *texlookup = (uint16*) (f.getBuffer() + header.ofsTexLookup);
-    uint16 *texanimlookup = (uint16*) (f.getBuffer() + header.ofsTexAnimLookup);
-    int16 *texunitlookup = (int16*) (f.getBuffer() + header.ofsTexUnitLookup);
+        m_header.ofsTexFlags);
+    uint16 *texlookup = (uint16*) (f.getBuffer() + m_header.ofsTexLookup);
+    uint16 *texanimlookup = (uint16*) (f.getBuffer() + m_header.ofsTexAnimLookup);
+    int16 *texunitlookup = (int16*) (f.getBuffer() + m_header.ofsTexUnitLookup);
 
 
     showGeosets = new bool[view->nSub];
     for(size_t i = 0; i < view->nSub; i++)
     {
-        geosets.push_back(ops[i]);
+        m_geosets.push_back(ops[i]);
         showGeosets[i] = true;
     }
 
@@ -1142,11 +1142,11 @@ void Model::initCommon(MPQFile &f)
             pass.texanim =  - 1; // no texture animation
         }
 
-        passes.push_back(pass);
+        m_passes.push_back(pass);
     }
 
     // transparent parts come later
-    std::sort(passes.begin(), passes.end() );
+    std::sort(m_passes.begin(), m_passes.end() );
 
     // zomg done
 }
@@ -1155,7 +1155,7 @@ void Model::initCommon(MPQFile &f)
 
 void Model::initStatic(MPQFile &f)
 {
-    origVertices = (ModelVertex*) (f.getBuffer() + header.ofsVertices);
+    m_origVertices = (ModelVertex*) (f.getBuffer() + m_header.ofsVertices);
 
     initCommon(f);
 
@@ -1179,32 +1179,32 @@ void Model::initStatic(MPQFile &f)
 
 void Model::initAnimated(MPQFile &f)
 {
-    if(origVertices)
+    if(m_origVertices)
     {
-        delete [] origVertices;
-        origVertices = NULL;
+        delete [] m_origVertices;
+        m_origVertices = NULL;
     }
 
-    origVertices = new ModelVertex[header.nVertices];
-    memcpy(origVertices, f.getBuffer() + header.ofsVertices,
-        header.nVertices*sizeof(ModelVertex) );
+    m_origVertices = new ModelVertex[m_header.nVertices];
+    memcpy(m_origVertices, f.getBuffer() + m_header.ofsVertices,
+        m_header.nVertices*sizeof(ModelVertex) );
 
     initCommon(f);
 
-    if(header.nAnimations > 0)
+    if(m_header.nAnimations > 0)
     {
-        anims = new ModelAnimation[header.nAnimations];
+        anims = new ModelAnimation[m_header.nAnimations];
 
 #ifndef WotLK
-        memcpy(anims, f.getBuffer() + header.ofsAnimations,
-            header.nAnimations*sizeof(ModelAnimation) );
+        memcpy(anims, f.getBuffer() + m_header.ofsAnimations,
+            m_header.nAnimations*sizeof(ModelAnimation) );
 #else 
         ModelAnimationWotLK animsWotLK;
         char tempname[256];
-        animfiles = new MPQFile[header.nAnimations];
-        for(size_t i = 0; i < header.nAnimations; i++)
+        animfiles = new MPQFile[m_header.nAnimations];
+        for(size_t i = 0; i < m_header.nAnimations; i++)
         {
-            memcpy(&animsWotLK, f.getBuffer() + header.ofsAnimations + i *
+            memcpy(&animsWotLK, f.getBuffer() + m_header.ofsAnimations + i *
                 sizeof(ModelAnimationWotLK), sizeof(ModelAnimationWotLK) );
             anims[i].animID = animsWotLK.animID;
             anims[i].timeStart = 0;
@@ -1234,9 +1234,9 @@ void Model::initAnimated(MPQFile &f)
     if(animBones)
     {
         // init bones...
-        bones = new Bone[header.nBones];
-        ModelBoneDef *mb = (ModelBoneDef*) (f.getBuffer() + header.ofsBones);
-        for(size_t i = 0; i < header.nBones; i++)
+        bones = new Bone[m_header.nBones];
+        ModelBoneDef *mb = (ModelBoneDef*) (f.getBuffer() + m_header.ofsBones);
+        for(size_t i = 0; i < m_header.nBones; i++)
         {
             //if (i==0) mb[i].rotation.ofsRanges = 1.0f;
 #ifdef WotLK
@@ -1248,8 +1248,8 @@ void Model::initAnimated(MPQFile &f)
 
         // Block BoneLookup is a lookup table for Key Skeletal Bones, hands, arms, legs, etc.
         //header.nBoneLookup
-        int16 *p = (int16*) (f.getBuffer() + header.ofsBoneLookup);
-        for(size_t i = 0; i < header.nBoneLookup; i++)
+        int16 *p = (int16*) (f.getBuffer() + m_header.ofsBoneLookup);
+        for(size_t i = 0; i < m_header.nBoneLookup; i++)
         {
             boneLookup[i] = p[i];
         }
@@ -1257,9 +1257,9 @@ void Model::initAnimated(MPQFile &f)
 
 #ifdef WotLK
     // free MPQFile
-    if(header.nAnimations > 0)
+    if(m_header.nAnimations > 0)
     {
-        for(size_t i = 0; i < header.nAnimations; i++)
+        for(size_t i = 0; i < m_header.nAnimations; i++)
         {
             if(animfiles[i].getSize() > 0)
             {
@@ -1270,14 +1270,14 @@ void Model::initAnimated(MPQFile &f)
     }
 #endif 
 
-    const size_t size = (header.nVertices *sizeof(float) );
+    const size_t size = (m_header.nVertices *sizeof(float) );
     m_vbufsize = (3 *size);
     // we multiple by 3 for the x, y, z positions of the vertex
 
-    texCoords = new Vec2D[header.nVertices];
-    for(size_t i = 0; i < header.nVertices; i++)
+    texCoords = new Vec2D[m_header.nVertices];
+    for(size_t i = 0; i < m_header.nVertices; i++)
     {
-        texCoords[i] = origVertices[i].texcoords;
+        texCoords[i] = m_origVertices[i].texcoords;
     }
 
     if(video.supportVBO)
@@ -1306,23 +1306,23 @@ void Model::initAnimated(MPQFile &f)
 
     if(animTextures)
     {
-        m_texAnims = new TextureAnim[header.nTexAnims];
+        m_texAnims = new TextureAnim[m_header.nTexAnims];
         ModelTexAnimDef *ta = (ModelTexAnimDef*) (f.getBuffer() +
-            header.ofsTexAnims);
-        for(size_t i = 0; i < header.nTexAnims; i++)
+            m_header.ofsTexAnims);
+        for(size_t i = 0; i < m_header.nTexAnims; i++)
         {
             m_texAnims[i].init(f, ta[i], m_globalSequences);
         }
     }
 
     // particle systems
-    if(header.nParticleEmitters)
+    if(m_header.nParticleEmitters)
     {
         ModelParticleEmitterDef *pdefs = (ModelParticleEmitterDef*)(f.getBuffer
-            () + header.ofsParticleEmitters);
-        m_particleSystems = new ParticleSystem[header.nParticleEmitters];
+            () + m_header.ofsParticleEmitters);
+        m_particleSystems = new ParticleSystem[m_header.nParticleEmitters];
         hasParticles = true;
-        for(size_t i = 0; i < header.nParticleEmitters; i++)
+        for(size_t i = 0; i < m_header.nParticleEmitters; i++)
         {
             m_particleSystems[i].model = this;
             m_particleSystems[i].init(f, pdefs[i], m_globalSequences);
@@ -1330,12 +1330,12 @@ void Model::initAnimated(MPQFile &f)
     }
 
     // ribbons
-    if(header.nRibbonEmitters)
+    if(m_header.nRibbonEmitters)
     {
         ModelRibbonEmitterDef *rdefs = (ModelRibbonEmitterDef*) (f.getBuffer() 
-            + header.ofsRibbonEmitters);
-        m_ribbons = new RibbonEmitter[header.nRibbonEmitters];
-        for(size_t i = 0; i < header.nRibbonEmitters; i++)
+            + m_header.ofsRibbonEmitters);
+        m_ribbons = new RibbonEmitter[m_header.nRibbonEmitters];
+        for(size_t i = 0; i < m_header.nRibbonEmitters; i++)
         {
             m_ribbons[i].model = this;
             m_ribbons[i].init(f, rdefs[i], m_globalSequences);
@@ -1343,21 +1343,21 @@ void Model::initAnimated(MPQFile &f)
     }
 
     // just use the first camera, meh
-    if(header.nCameras > 0)
+    if(m_header.nCameras > 0)
     {
         ModelCameraDef *camDefs = (ModelCameraDef*) (f.getBuffer() +
-            header.ofsCameras);
-        cam.init(f, camDefs[0], m_globalSequences);
+            m_header.ofsCameras);
+        m_cam.init(f, camDefs[0], m_globalSequences);
         hasCamera = true;
     }
 
     // init lights
-    if(header.nLights)
+    if(m_header.nLights)
     {
-        m_lights = new ModelLight[header.nLights];
+        m_lights = new ModelLight[m_header.nLights];
         ModelLightDef *lDefs = (ModelLightDef*) (f.getBuffer() +
-            header.ofsLights);
-        for(size_t i = 0; i < header.nLights; i++)
+            m_header.ofsLights);
+        for(size_t i = 0; i < m_header.nLights; i++)
         {
             m_lights[i].init(f, lDefs[i], m_globalSequences);
         }
@@ -1497,7 +1497,7 @@ void Model::setLOD(MPQFile &f, int index)
 void Model::calcBones(int anim, int time)
 {
     // Reset all bones to 'false' which means they haven't been animated yet.
-    for(size_t i = 0; i < header.nBones; i++)
+    for(size_t i = 0; i < m_header.nBones; i++)
     {
         bones[i].calc = false;
     }
@@ -1517,7 +1517,7 @@ void Model::calcBones(int anim, int time)
 
         // Find the close hands animation id
         int closeFistID = 0;
-        for(unsigned int i = 0; i < header.nAnimations; i++)
+        for(unsigned int i = 0; i < m_header.nAnimations; i++)
         {
             if(anims[i].animID == 15)
             {
@@ -1643,7 +1643,7 @@ void Model::calcBones(int anim, int time)
     }
 
     // Animate everything thats left with the 'default' animation
-    for(size_t i = 0; i < header.nBones; i++)
+    for(size_t i = 0; i < m_header.nBones; i++)
     {
         bones[i].calcMatrix(bones, anim, time);
     }
@@ -1704,8 +1704,8 @@ void Model::animate(int anim)
         }
 
         // transform vertices
-        ModelVertex *ov = origVertices;
-        for(size_t i = 0; i < header.nVertices; ++i, ++ov)
+        ModelVertex *ov = m_origVertices;
+        for(size_t i = 0; i < m_header.nVertices; ++i, ++ov)
         {
             //,k=0
             Vec3D v(0, 0, 0), n(0, 0, 0);
@@ -1724,7 +1724,7 @@ void Model::animate(int anim)
             vertices[i] = v;
             if(video.supportVBO)
             {
-                vertices[header.nVertices + i] = n.normalize();
+                vertices[m_header.nVertices + i] = n.normalize();
             }
             // shouldn't these be normal by default?
             else
@@ -1739,7 +1739,7 @@ void Model::animate(int anim)
         }
     }
 
-    for(size_t i = 0; i < header.nLights; i++)
+    for(size_t i = 0; i < m_header.nLights; i++)
     {
         if(m_lights[i].parent >= 0)
         {
@@ -1748,7 +1748,7 @@ void Model::animate(int anim)
         }
     }
 
-    for(size_t i = 0; i < header.nParticleEmitters; i++)
+    for(size_t i = 0; i < m_header.nParticleEmitters; i++)
     {
         // random time distribution for teh win ..?
         int pt = a.timeStart + (t + (int) (tmax *m_particleSystems[i].tofs) ) %
@@ -1756,14 +1756,14 @@ void Model::animate(int anim)
         m_particleSystems[i].setup(anim, pt);
     }
 
-    for(size_t i = 0; i < header.nRibbonEmitters; i++)
+    for(size_t i = 0; i < m_header.nRibbonEmitters; i++)
     {
         m_ribbons[i].setup(anim, t);
     }
 
     if(animTextures)
     {
-        for(size_t i = 0; i < header.nTexAnims; i++)
+        for(size_t i = 0; i < m_header.nTexAnims; i++)
         {
             m_texAnims[i].calc(anim, t);
         }
@@ -2176,9 +2176,9 @@ inline void Model::drawModel()
     }
 
     // Render the various parts of the model.
-    for(size_t i = 0; i < passes.size(); i++)
+    for(size_t i = 0; i < m_passes.size(); i++)
     {
-        ModelRenderPass &p = passes[i];
+        ModelRenderPass &p = m_passes[i];
 
         if(p.init(this) )
         {
@@ -2206,7 +2206,7 @@ inline void Model::drawModel()
                     {
                         uint16 a = indices[b];
                         glNormal3fv(normals[a]);
-                        glTexCoord2fv(origVertices[a].texcoords);
+                        glTexCoord2fv(m_origVertices[a].texcoords);
                         glVertex3fv(vertices[a]);
                     }
                     glEnd();
@@ -2219,7 +2219,7 @@ inline void Model::drawModel()
                 {
                     uint16 a = indices[b];
                     glNormal3fv(normals[a]);
-                    glTexCoord2fv(origVertices[a].texcoords);
+                    glTexCoord2fv(m_origVertices[a].texcoords);
                     glVertex3fv(vertices[a]);
                 }
                 glEnd();
@@ -2593,7 +2593,7 @@ inline void Model::draw()
 void Model::lightsOn(GLuint lbase)
 {
     // setup lights
-    for(unsigned int i = 0, l = lbase; i < header.nLights; i++)
+    for(unsigned int i = 0, l = lbase; i < m_header.nLights; i++)
     {
         m_lights[i].setup(animtime, l++);
     }
@@ -2602,7 +2602,7 @@ void Model::lightsOn(GLuint lbase)
 // These aren't really needed in the model viewer.. only wowmapviewer
 void Model::lightsOff(GLuint lbase)
 {
-    for(unsigned int i = 0, l = lbase; i < header.nLights; i++)
+    for(unsigned int i = 0, l = lbase; i < m_header.nLights; i++)
     {
         glDisable(l++);
     }
@@ -2616,7 +2616,7 @@ void Model::updateEmitters(float dt)
         return ;
     }
 
-    for(size_t i = 0; i < header.nParticleEmitters; i++)
+    for(size_t i = 0; i < m_header.nParticleEmitters; i++)
     {
         m_particleSystems[i].update(dt);
     }
@@ -2628,7 +2628,7 @@ void Model::drawBones()
 {
     glDisable(GL_DEPTH_TEST);
     glBegin(GL_LINES);
-    for(size_t i = 0; i < header.nBones; i++)
+    for(size_t i = 0; i < m_header.nBones; i++)
     {
         //for (size_t i=30; i<40; i++) {
         if(bones[i].parent !=  - 1)
@@ -2666,12 +2666,12 @@ void Model::drawBoundingVolume()
 {
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     glBegin(GL_TRIANGLES);
-    for(size_t i = 0; i < header.nBoundingTriangles; i++)
+    for(size_t i = 0; i < m_header.nBoundingTriangles; i++)
     {
-        size_t v = boundTris[i];
-        if(v < header.nBoundingVertices)
+        size_t v = m_boundTris[i];
+        if(v < m_header.nBoundingVertices)
         {
-            glVertex3fv(bounds[v]);
+            glVertex3fv(m_bounds[v]);
         }
         else
         {
@@ -2686,13 +2686,13 @@ void Model::drawBoundingVolume()
 void Model::drawParticles()
 {
     // draw particle systems
-    for(size_t i = 0; i < header.nParticleEmitters; i++)
+    for(size_t i = 0; i < m_header.nParticleEmitters; i++)
     {
         m_particleSystems[i].draw();
     }
 
     // draw ribbons
-    for(size_t i = 0; i < header.nRibbonEmitters; i++)
+    for(size_t i = 0; i < m_header.nRibbonEmitters; i++)
     {
         m_ribbons[i].draw();
     }
@@ -2728,8 +2728,9 @@ void ModelManager::resetAnim()
 // same as other updateEmitter except does it for the all the models being managed - for WMO's
 void ModelManager::updateEmitters(float dt)
 {
-    for(std::map < int, ManagedItem * > ::iterator it = items.begin(); it !=
-        items.end(); ++it)
+    for(std::map < int, ManagedItem * > ::iterator it = items.begin()
+		; it != items.end()
+		; ++it)
     {
         ( (Model*)it->second)->updateEmitters(dt);
     }
@@ -2739,8 +2740,9 @@ void ModelManager::updateEmitters(float dt)
 
 void ModelManager::clear()
 {
-    for(std::map < int, ManagedItem * > ::iterator it = items.begin(); it !=
-        items.end(); ++it)
+    for(std::map < int, ManagedItem * > ::iterator it = items.begin()
+		; it != items.end()
+		; ++it)
     {
         doDelete(it->first);
         delete it->second;

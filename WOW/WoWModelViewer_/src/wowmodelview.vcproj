@@ -359,26 +359,6 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\3dsheader.h"
-				>
-			</File>
-			<File
-				RelativePath=".\animated.h"
-				>
-			</File>
-			<File
-				RelativePath=".\animcontrol.h"
-				>
-			</File>
-			<File
-				RelativePath=".\AnimExporter.h"
-				>
-			</File>
-			<File
-				RelativePath=".\app.h"
-				>
-			</File>
-			<File
 				RelativePath=".\arrows.h"
 				>
 			</File>
@@ -388,26 +368,6 @@
 			</File>
 			<File
 				RelativePath=".\camera.h"
-				>
-			</File>
-			<File
-				RelativePath=".\charcontrol.h"
-				>
-			</File>
-			<File
-				RelativePath=".\database.h"
-				>
-			</File>
-			<File
-				RelativePath=".\dbcfile.h"
-				>
-			</File>
-			<File
-				RelativePath=".\ddslib.h"
-				>
-			</File>
-			<File
-				RelativePath=".\displayable.h"
 				>
 			</File>
 			<File
@@ -431,75 +391,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\lightcontrol.h"
-				>
-			</File>
-			<File
-				RelativePath=".\lwoheader.h"
-				>
-			</File>
-			<File
 				RelativePath=".\manager.h"
 				>
 			</File>
 			<File
-				RelativePath=".\matrix.h"
-				>
-			</File>
-			<File
-				RelativePath=".\model.h"
-				>
-			</File>
-			<File
-				RelativePath=".\modelbankcontrol.h"
-				>
-			</File>
-			<File
-				RelativePath=".\modelcanvas.h"
-				>
-			</File>
-			<File
-				RelativePath=".\modelcontrol.h"
-				>
-			</File>
-			<File
-				RelativePath=".\modelexport.h"
-				>
-			</File>
-			<File
-				RelativePath=".\modelheaders.h"
-				>
-			</File>
-			<File
-				RelativePath=".\modelviewer.h"
-				>
-			</File>
-			<File
-				RelativePath=".\mpq.h"
-				>
-			</File>
-			<File
-				RelativePath=".\mpq_libmpq.h"
-				>
-			</File>
-			<File
-				RelativePath=".\ms3dheader.h"
-				>
-			</File>
-			<File
 				RelativePath=".\OpenGLHeaders.h"
-				>
-			</File>
-			<File
-				RelativePath=".\particle.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Quantize.h"
-				>
-			</File>
-			<File
-				RelativePath=".\quaternion.h"
 				>
 			</File>
 			<File
@@ -516,18 +412,6 @@
 			</File>
 			<File
 				RelativePath=".\util.h"
-				>
-			</File>
-			<File
-				RelativePath=".\vec3d.h"
-				>
-			</File>
-			<File
-				RelativePath=".\video.h"
-				>
-			</File>
-			<File
-				RelativePath=".\wmo.h"
 				>
 			</File>
 		</Filter>
@@ -653,6 +537,158 @@
 			</File>
 			<File
 				RelativePath=".\opengl\wglext.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="model"
+			>
+			<File
+				RelativePath=".\charcontrol.h"
+				>
+			</File>
+			<File
+				RelativePath=".\model.h"
+				>
+			</File>
+			<File
+				RelativePath=".\modelbankcontrol.h"
+				>
+			</File>
+			<File
+				RelativePath=".\modelcanvas.h"
+				>
+			</File>
+			<File
+				RelativePath=".\modelcontrol.h"
+				>
+			</File>
+			<File
+				RelativePath=".\modelexport.h"
+				>
+			</File>
+			<File
+				RelativePath=".\modelheaders.h"
+				>
+			</File>
+			<File
+				RelativePath=".\modelviewer.h"
+				>
+			</File>
+			<File
+				RelativePath=".\wmo.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="particle"
+			>
+			<File
+				RelativePath=".\particle.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="math"
+			>
+			<File
+				RelativePath=".\matrix.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Quantize.h"
+				>
+			</File>
+			<File
+				RelativePath=".\quaternion.h"
+				>
+			</File>
+			<File
+				RelativePath=".\vec3d.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="core"
+			>
+			<File
+				RelativePath=".\app.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="renderInstance"
+			>
+			<File
+				RelativePath=".\displayable.h"
+				>
+			</File>
+			<File
+				RelativePath=".\video.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="animations"
+			>
+			<File
+				RelativePath=".\animated.h"
+				>
+			</File>
+			<File
+				RelativePath=".\animcontrol.h"
+				>
+			</File>
+			<File
+				RelativePath=".\AnimExporter.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="dbc"
+			>
+			<File
+				RelativePath=".\database.h"
+				>
+			</File>
+			<File
+				RelativePath=".\dbcfile.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="light"
+			>
+			<File
+				RelativePath=".\lightcontrol.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="fileHeader"
+			>
+			<File
+				RelativePath=".\3dsheader.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ddslib.h"
+				>
+			</File>
+			<File
+				RelativePath=".\lwoheader.h"
+				>
+			</File>
+			<File
+				RelativePath=".\mpq.h"
+				>
+			</File>
+			<File
+				RelativePath=".\mpq_libmpq.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ms3dheader.h"
 				>
 			</File>
 		</Filter>

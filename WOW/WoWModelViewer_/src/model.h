@@ -283,12 +283,12 @@ class Model: public ManagedItem, public Displayable
 	void lightsOn(GLuint lbase);
 	void lightsOff(GLuint lbase);
 
-	Vec3D *bounds;
-	uint16 *boundTris;
+	Vec3D *m_bounds;
+	uint16 *m_boundTris;
 
 public:
 	// Raw Data
-	ModelVertex *origVertices;
+	ModelVertex *m_origVertices;
 
 	Vec3D *vertices, *normals;
 	Vec2D *texCoords;
@@ -300,14 +300,14 @@ public:
 	Model(std::string name, bool forceAnim=false);
 	~Model();
 
-	ModelHeader header;
-	ModelCamera cam;
+	ModelHeader m_header;
+	ModelCamera m_cam;
 #ifdef WotLK
 	string fullname;
 #endif
 	
-	std::vector<ModelRenderPass> passes;
-	std::vector<ModelGeoset> geosets;
+	std::vector<ModelRenderPass> m_passes;
+	std::vector<ModelGeoset> m_geosets;
 
 	// ===============================
 	// Toggles
@@ -351,12 +351,15 @@ public:
 	bool animcalc;
 	int anim, animtime;
 
-	void reset() { 
+	void reset() 
+	{ 
 		animcalc = false; 
 	}
 
 	
-	void update(int dt) {  // (float dt)
+	void update(int dt) 
+	{  
+		// (float dt)
 		if (animated)
 			animManager->Tick(dt);
 
