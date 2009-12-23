@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8,00"
 	Name="remote_win32"
-	ProjectGUID="{6C542A33-D826-466A-843E-5A54BB2EC570}"
+	ProjectGUID="{48AFBE67-0C57-4BA0-AAE9-ED76C186FA0E}"
 	>
 	<Platforms>
 		<Platform

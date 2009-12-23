@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9,00"
 	Name="genrandtable"
-	ProjectGUID="{A3879336-4203-4527-9233-491DA850497E}"
+	ProjectGUID="{14E0AE19-6AD2-4B5B-A0D8-47725F27AA4D}"
 	>
 	<Platforms>
 		<Platform

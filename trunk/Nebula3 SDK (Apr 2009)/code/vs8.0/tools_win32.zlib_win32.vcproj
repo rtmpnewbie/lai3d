@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8,00"
 	Name="zlib_win32"
-	ProjectGUID="{6542D534-5AAC-43C7-8DA0-7235A2C33CAD}"
+	ProjectGUID="{781B6A20-C12F-4DC7-AA63-9FDF5D571898}"
 	>
 	<Platforms>
 		<Platform

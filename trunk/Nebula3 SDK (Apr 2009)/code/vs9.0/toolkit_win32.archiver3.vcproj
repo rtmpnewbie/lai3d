@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9,00"
 	Name="archiver3"
-	ProjectGUID="{B15E151E-9B87-4DA0-9C49-BF31E494C044}"
+	ProjectGUID="{00D80993-E808-4FC8-AB83-CA8C809C00E1}"
 	>
 	<Platforms>
 		<Platform

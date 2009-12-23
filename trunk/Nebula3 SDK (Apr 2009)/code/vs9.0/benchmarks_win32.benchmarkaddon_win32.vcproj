@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9,00"
 	Name="benchmarkaddon_win32"
-	ProjectGUID="{86114962-9581-4022-A91A-177CC2CD1F2E}"
+	ProjectGUID="{90FE9E0B-93A9-4B2C-8BF7-414E45ECF26A}"
 	>
 	<Platforms>
 		<Platform

@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8,00"
 	Name="synctool3"
-	ProjectGUID="{3666FB54-E1C6-4F63-B747-0E4D43EECF36}"
+	ProjectGUID="{24CE4E3A-F013-41A5-8820-E482001011A4}"
 	>
 	<Platforms>
 		<Platform

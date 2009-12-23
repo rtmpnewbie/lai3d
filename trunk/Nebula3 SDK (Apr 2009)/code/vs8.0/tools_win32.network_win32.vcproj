@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8,00"
 	Name="network_win32"
-	ProjectGUID="{462FEF00-9D50-42CA-B8EB-2BF7F4667270}"
+	ProjectGUID="{C12E1142-0AD0-4B8B-8AFE-DA4CA1DDF6A7}"
 	>
 	<Platforms>
 		<Platform

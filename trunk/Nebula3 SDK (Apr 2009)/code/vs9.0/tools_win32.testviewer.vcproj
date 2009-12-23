@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9,00"
 	Name="testviewer"
-	ProjectGUID="{79D2A60C-1DFE-4679-B621-E5D1DA916718}"
+	ProjectGUID="{9675D9F2-2E49-428F-96A4-210512E3DE2F}"
 	>
 	<Platforms>
 		<Platform

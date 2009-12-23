@@ -4,11 +4,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NIDLs", "NIDLs", "{798777e9
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{832A854F-2030-4EA4-86FE-EDEEC017E78E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "render_nidls_win32", "render_win32.render_nidls_win32.vcproj", "{D6137A40-4C20-4445-B6CA-E32B4512F270}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "render_nidls_win32", "render_win32.render_nidls_win32.vcproj", "{1E9ECCDC-BC4E-408E-9C03-F5D6440F118D}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "render_win32", "render_win32.render_win32.vcproj", "{897F3071-C0C6-48E4-A76E-E3A5C39B2125}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "render_win32", "render_win32.render_win32.vcproj", "{20DE22FD-4973-4798-8903-3810356A41BB}"
 	ProjectSection(ProjectDependencies) = postProject
-		{D6137A40-4C20-4445-B6CA-E32B4512F270} = {D6137A40-4C20-4445-B6CA-E32B4512F270}
+		{1E9ECCDC-BC4E-408E-9C03-F5D6440F118D} = {1E9ECCDC-BC4E-408E-9C03-F5D6440F118D}
 	EndProjectSection
 EndProject
 Global
@@ -22,40 +22,40 @@ Global
 		Maya_Release|Win32 = Maya_Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D6137A40-4C20-4445-B6CA-E32B4512F270}.Debug|Win32.ActiveCfg = Debug|Win32
-		{D6137A40-4C20-4445-B6CA-E32B4512F270}.Debug|Win32.Build.0 = Debug|Win32
-		{D6137A40-4C20-4445-B6CA-E32B4512F270}.Release|Win32.ActiveCfg = Release|Win32
-		{D6137A40-4C20-4445-B6CA-E32B4512F270}.Release|Win32.Build.0 = Release|Win32
-		{D6137A40-4C20-4445-B6CA-E32B4512F270}.Programming|Win32.ActiveCfg = Programming|Win32
-		{D6137A40-4C20-4445-B6CA-E32B4512F270}.Programming|Win32.Build.0 = Programming|Win32
-		{D6137A40-4C20-4445-B6CA-E32B4512F270}.Public_Build|Win32.ActiveCfg = Public_Build|Win32
-		{D6137A40-4C20-4445-B6CA-E32B4512F270}.Public_Build|Win32.Build.0 = Public_Build|Win32
-		{D6137A40-4C20-4445-B6CA-E32B4512F270}.Securom|Win32.ActiveCfg = Securom|Win32
-		{D6137A40-4C20-4445-B6CA-E32B4512F270}.Securom|Win32.Build.0 = Securom|Win32
-		{D6137A40-4C20-4445-B6CA-E32B4512F270}.Maya_Debug|Win32.ActiveCfg = Maya_Debug|Win32
-		{D6137A40-4C20-4445-B6CA-E32B4512F270}.Maya_Debug|Win32.Build.0 = Maya_Debug|Win32
-		{D6137A40-4C20-4445-B6CA-E32B4512F270}.Maya_Release|Win32.ActiveCfg = Maya_Release|Win32
-		{D6137A40-4C20-4445-B6CA-E32B4512F270}.Maya_Release|Win32.Build.0 = Maya_Release|Win32
-		{897F3071-C0C6-48E4-A76E-E3A5C39B2125}.Debug|Win32.ActiveCfg = Debug|Win32
-		{897F3071-C0C6-48E4-A76E-E3A5C39B2125}.Debug|Win32.Build.0 = Debug|Win32
-		{897F3071-C0C6-48E4-A76E-E3A5C39B2125}.Release|Win32.ActiveCfg = Release|Win32
-		{897F3071-C0C6-48E4-A76E-E3A5C39B2125}.Release|Win32.Build.0 = Release|Win32
-		{897F3071-C0C6-48E4-A76E-E3A5C39B2125}.Programming|Win32.ActiveCfg = Programming|Win32
-		{897F3071-C0C6-48E4-A76E-E3A5C39B2125}.Programming|Win32.Build.0 = Programming|Win32
-		{897F3071-C0C6-48E4-A76E-E3A5C39B2125}.Public_Build|Win32.ActiveCfg = Public_Build|Win32
-		{897F3071-C0C6-48E4-A76E-E3A5C39B2125}.Public_Build|Win32.Build.0 = Public_Build|Win32
-		{897F3071-C0C6-48E4-A76E-E3A5C39B2125}.Securom|Win32.ActiveCfg = Securom|Win32
-		{897F3071-C0C6-48E4-A76E-E3A5C39B2125}.Securom|Win32.Build.0 = Securom|Win32
-		{897F3071-C0C6-48E4-A76E-E3A5C39B2125}.Maya_Debug|Win32.ActiveCfg = Maya_Debug|Win32
-		{897F3071-C0C6-48E4-A76E-E3A5C39B2125}.Maya_Debug|Win32.Build.0 = Maya_Debug|Win32
-		{897F3071-C0C6-48E4-A76E-E3A5C39B2125}.Maya_Release|Win32.ActiveCfg = Maya_Release|Win32
-		{897F3071-C0C6-48E4-A76E-E3A5C39B2125}.Maya_Release|Win32.Build.0 = Maya_Release|Win32
+		{1E9ECCDC-BC4E-408E-9C03-F5D6440F118D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1E9ECCDC-BC4E-408E-9C03-F5D6440F118D}.Debug|Win32.Build.0 = Debug|Win32
+		{1E9ECCDC-BC4E-408E-9C03-F5D6440F118D}.Release|Win32.ActiveCfg = Release|Win32
+		{1E9ECCDC-BC4E-408E-9C03-F5D6440F118D}.Release|Win32.Build.0 = Release|Win32
+		{1E9ECCDC-BC4E-408E-9C03-F5D6440F118D}.Programming|Win32.ActiveCfg = Programming|Win32
+		{1E9ECCDC-BC4E-408E-9C03-F5D6440F118D}.Programming|Win32.Build.0 = Programming|Win32
+		{1E9ECCDC-BC4E-408E-9C03-F5D6440F118D}.Public_Build|Win32.ActiveCfg = Public_Build|Win32
+		{1E9ECCDC-BC4E-408E-9C03-F5D6440F118D}.Public_Build|Win32.Build.0 = Public_Build|Win32
+		{1E9ECCDC-BC4E-408E-9C03-F5D6440F118D}.Securom|Win32.ActiveCfg = Securom|Win32
+		{1E9ECCDC-BC4E-408E-9C03-F5D6440F118D}.Securom|Win32.Build.0 = Securom|Win32
+		{1E9ECCDC-BC4E-408E-9C03-F5D6440F118D}.Maya_Debug|Win32.ActiveCfg = Maya_Debug|Win32
+		{1E9ECCDC-BC4E-408E-9C03-F5D6440F118D}.Maya_Debug|Win32.Build.0 = Maya_Debug|Win32
+		{1E9ECCDC-BC4E-408E-9C03-F5D6440F118D}.Maya_Release|Win32.ActiveCfg = Maya_Release|Win32
+		{1E9ECCDC-BC4E-408E-9C03-F5D6440F118D}.Maya_Release|Win32.Build.0 = Maya_Release|Win32
+		{20DE22FD-4973-4798-8903-3810356A41BB}.Debug|Win32.ActiveCfg = Debug|Win32
+		{20DE22FD-4973-4798-8903-3810356A41BB}.Debug|Win32.Build.0 = Debug|Win32
+		{20DE22FD-4973-4798-8903-3810356A41BB}.Release|Win32.ActiveCfg = Release|Win32
+		{20DE22FD-4973-4798-8903-3810356A41BB}.Release|Win32.Build.0 = Release|Win32
+		{20DE22FD-4973-4798-8903-3810356A41BB}.Programming|Win32.ActiveCfg = Programming|Win32
+		{20DE22FD-4973-4798-8903-3810356A41BB}.Programming|Win32.Build.0 = Programming|Win32
+		{20DE22FD-4973-4798-8903-3810356A41BB}.Public_Build|Win32.ActiveCfg = Public_Build|Win32
+		{20DE22FD-4973-4798-8903-3810356A41BB}.Public_Build|Win32.Build.0 = Public_Build|Win32
+		{20DE22FD-4973-4798-8903-3810356A41BB}.Securom|Win32.ActiveCfg = Securom|Win32
+		{20DE22FD-4973-4798-8903-3810356A41BB}.Securom|Win32.Build.0 = Securom|Win32
+		{20DE22FD-4973-4798-8903-3810356A41BB}.Maya_Debug|Win32.ActiveCfg = Maya_Debug|Win32
+		{20DE22FD-4973-4798-8903-3810356A41BB}.Maya_Debug|Win32.Build.0 = Maya_Debug|Win32
+		{20DE22FD-4973-4798-8903-3810356A41BB}.Maya_Release|Win32.ActiveCfg = Maya_Release|Win32
+		{20DE22FD-4973-4798-8903-3810356A41BB}.Maya_Release|Win32.Build.0 = Maya_Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{D6137A40-4C20-4445-B6CA-E32B4512F270} = {798777e9-b38c-4974-bee3-b1cd45f6a1e6}
-		{897F3071-C0C6-48E4-A76E-E3A5C39B2125} = {832A854F-2030-4EA4-86FE-EDEEC017E78E}
+		{1E9ECCDC-BC4E-408E-9C03-F5D6440F118D} = {798777e9-b38c-4974-bee3-b1cd45f6a1e6}
+		{20DE22FD-4973-4798-8903-3810356A41BB} = {832A854F-2030-4EA4-86FE-EDEEC017E78E}
 	EndGlobalSection
 EndGlobal

@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9,00"
 	Name="countlines3"
-	ProjectGUID="{47CA40CF-F820-4F12-AFDC-12397A2C1BFE}"
+	ProjectGUID="{B0EEBEBE-833B-473A-BC1C-EDF72DB088E9}"
 	>
 	<Platforms>
 		<Platform

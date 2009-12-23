@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9,00"
 	Name="testrender_win32"
-	ProjectGUID="{70FB0977-912A-4D9C-8022-564ACE9C1557}"
+	ProjectGUID="{C66D8EE9-BA3F-43EB-B6BF-9D44F997B2F5}"
 	>
 	<Platforms>
 		<Platform
