@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9,00"
 	Name="buildclassregistryheader"
-	ProjectGUID="{474F0775-BC13-47AE-844B-F956AAE5D7E2}"
+	ProjectGUID="{A25D203C-B8C0-49EF-AF67-D39FC2985CD3}"
 	>
 	<Platforms>
 		<Platform

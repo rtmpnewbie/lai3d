@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9,00"
 	Name="scripting_win32"
-	ProjectGUID="{728D4DA4-FC42-41ED-B607-FBD30AABEBFF}"
+	ProjectGUID="{C07372DB-766B-46C0-A194-636F2DA913D2}"
 	>
 	<Platforms>
 		<Platform

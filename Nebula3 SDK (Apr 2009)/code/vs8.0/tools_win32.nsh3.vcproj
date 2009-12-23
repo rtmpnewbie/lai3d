@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8,00"
 	Name="nsh3"
-	ProjectGUID="{983A603A-EB34-4064-AC1E-844BD99346CC}"
+	ProjectGUID="{4B059EED-03EA-4602-986B-0BBEC13912B9}"
 	>
 	<Platforms>
 		<Platform

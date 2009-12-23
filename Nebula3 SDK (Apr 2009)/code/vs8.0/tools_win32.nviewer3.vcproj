@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8,00"
 	Name="nviewer3"
-	ProjectGUID="{3FB90042-FF3C-45BA-B3D9-3C8BAB11D6A8}"
+	ProjectGUID="{0C194192-D5DD-4AD7-90BF-58B4ACE046C3}"
 	>
 	<Platforms>
 		<Platform

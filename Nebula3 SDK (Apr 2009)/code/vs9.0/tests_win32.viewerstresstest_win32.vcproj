@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9,00"
 	Name="viewerstresstest_win32"
-	ProjectGUID="{A07BF8AF-05A7-43A7-B82D-F177B76E68CD}"
+	ProjectGUID="{4F46DA0F-E8E8-4127-AD43-FDDEA6B7C613}"
 	>
 	<Platforms>
 		<Platform

@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9,00"
 	Name="scripting_nidls_win32"
-	ProjectGUID="{42654BCD-2BB6-42EF-BDE6-4E21DBD289E5}"
+	ProjectGUID="{EC377751-4D8F-4890-A62C-D20696DC8632}"
 	>
 	<Platforms>
 		<Platform

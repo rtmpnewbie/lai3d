@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8,00"
 	Name="sui_win32"
-	ProjectGUID="{18EDB1D5-C256-44EA-9F6B-D2C00557AE45}"
+	ProjectGUID="{168E337E-3CDC-473C-B231-4782D3B67A1E}"
 	>
 	<Platforms>
 		<Platform

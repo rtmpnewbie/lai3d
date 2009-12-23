@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8,00"
 	Name="testfoundation_win32"
-	ProjectGUID="{0E519669-D37D-4638-8040-6DE56A402766}"
+	ProjectGUID="{AEDB0FFB-4DD3-4E75-B17D-9ADEA38B6408}"
 	>
 	<Platforms>
 		<Platform

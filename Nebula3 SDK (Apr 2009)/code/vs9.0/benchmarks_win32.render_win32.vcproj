@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9,00"
 	Name="render_win32"
-	ProjectGUID="{897F3071-C0C6-48E4-A76E-E3A5C39B2125}"
+	ProjectGUID="{20DE22FD-4973-4798-8903-3810356A41BB}"
 	>
 	<Platforms>
 		<Platform
