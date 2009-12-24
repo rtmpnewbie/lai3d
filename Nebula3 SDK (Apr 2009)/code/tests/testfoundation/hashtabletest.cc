@@ -21,7 +21,7 @@ HashTableTest::Run()
     const int capacity = 64;
 
     Array<String> titles;
-    titles.Append("Nausicaä of the Valley of Wind");
+    titles.Append("Nausica?of the Valley of Wind");
     titles.Append("Laputa: The Castle in the Sky");
     titles.Append("My Neighbor Totoro");
     titles.Append("Kiki's Delivery Service");
