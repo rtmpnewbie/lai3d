@@ -779,7 +779,8 @@ void CharControl::RefreshModel()
 		cd.skinColor = 5;
 
 	// base character layer/texture
-	try {
+	try 
+	{
 		rec = chardb.getByParams(cd.race, cd.gender, CharSectionsDB::SkinType, 0, cd.skinColor, cd.useNPC);
 		tex.addLayer(rec.getString(CharSectionsDB::Tex1), CR_BASE, 0);
 		
@@ -788,12 +789,15 @@ void CharControl::RefreshModel()
 		if (strlen(furTexName))
 			furTex = texturemanager.add(furTexName);
 
-	} catch (CharSectionsDB::NotFound) {
+	} 
+	catch (CharSectionsDB::NotFound) 
+	{
 		wxLogMessage(_T("Assertion base character Error: %s : line #%i : %s"), __FILE__, __LINE__, __FUNCTION__);
 	}
 
 	// HACK: for goblin males, explicitly load a hair texture
-	if (cd.race==9 && cd.gender==0 && gobTex==0) {
+	if (cd.race==9 && cd.gender==0 && gobTex==0) 
+	{
         gobTex = texturemanager.add("Creature\\Goblin\\Goblin.blp");		
 	}
 
@@ -802,94 +806,122 @@ void CharControl::RefreshModel()
 	bool showHair = cd.showHair;
 	bool showFacialHair = cd.showFacialHair;
 
-	if (cd.race != 9) { // Goblin chars base texture already contains all this stuff.
+	if (cd.race != 9) 
+	{ // Goblin chars base texture already contains all this stuff.
 
 		// Display underwear on the model?
-		if (cd.showUnderwear) {
-			try {
+		if (cd.showUnderwear) 
+		{
+			try
+			{
 				rec = chardb.getByParams(cd.race, cd.gender, CharSectionsDB::UnderwearType, 0, cd.skinColor, cd.useNPC);
 				tex.addLayer(rec.getString(CharSectionsDB::Tex1), CR_PELVIS_UPPER, 1); // pants
 				tex.addLayer(rec.getString(CharSectionsDB::Tex2), CR_TORSO_UPPER, 1); // top
-			} catch (CharSectionsDB::NotFound) {
+			} 
+			catch (CharSectionsDB::NotFound) 
+			{
 				wxLogMessage(_T("DBC underwear Error: %s : line #%i : %s"), __FILE__, __LINE__, __FUNCTION__);
 			}
 		}
 
 		// face
-		try {
+		try 
+		{
 			rec = chardb.getByParams(cd.race, cd.gender, CharSectionsDB::FaceType, cd.faceType, cd.skinColor, cd.useNPC);
 			tex.addLayer(rec.getString(CharSectionsDB::Tex1), CR_FACE_LOWER, 1);
 			tex.addLayer(rec.getString(CharSectionsDB::Tex2), CR_FACE_UPPER, 1);
-		} catch (CharSectionsDB::NotFound) {
+		} 
+		catch (CharSectionsDB::NotFound) 
+		{
 			wxLogMessage(_T("DBC face Error: %s : line #%i : %s"), __FILE__, __LINE__, __FUNCTION__);
 		}
 
 		// facial feature geosets
-		try {
+		try 
+		{
 			CharFacialHairDB::Record frec = facialhairdb.getByParams(cd.race, cd.gender, cd.facialHair);
 			cd.geosets[1] = frec.getUInt(CharFacialHairDB::Geoset100);
 			cd.geosets[2] = frec.getUInt(CharFacialHairDB::Geoset200);
 			cd.geosets[3] = frec.getUInt(CharFacialHairDB::Geoset300);
-		} catch (CharFacialHairDB::NotFound) {
+		} 
+		catch (CharFacialHairDB::NotFound) 
+		{
 			wxLogMessage(_T("DBC facial feature geosets Error: %s : line #%i : %s"), __FILE__, __LINE__, __FUNCTION__);
 		}
 
 		// facial feature, gone ?
-		try {
+		try 
+		{
 			rec = chardb.getByParams(cd.race, cd.gender, CharSectionsDB::FacialHairType, cd.facialHair, cd.facialColor, 0);
 			tex.addLayer(rec.getString(CharSectionsDB::Tex1), CR_FACE_LOWER, 2);
 			tex.addLayer(rec.getString(CharSectionsDB::Tex2), CR_FACE_UPPER, 2);
-		} catch (CharSectionsDB::NotFound) {
+		} 
+		catch (CharSectionsDB::NotFound)
+		{
 			wxLogMessage(_T("DBC facial feature Error: %s : line #%i : %s"), __FILE__, __LINE__, __FUNCTION__);
 		}
 	
 	}
 
 	// select hairstyle geoset(s)
-	for (CharHairGeosetsDB::Iterator it = hairdb.begin(); it != hairdb.end(); ++it) {
-		if (it->getUInt(CharHairGeosetsDB::Race)==cd.race && it->getUInt(CharHairGeosetsDB::Gender)==cd.gender) {
+	for (CharHairGeosetsDB::Iterator it = hairdb.begin(); it != hairdb.end(); ++it) 
+	{
+		if (it->getUInt(CharHairGeosetsDB::Race)==cd.race && it->getUInt(CharHairGeosetsDB::Gender)==cd.gender) 
+		{
 			unsigned int id = it->getUInt(CharHairGeosetsDB::Geoset);
 			unsigned int section = it->getUInt(CharHairGeosetsDB::Section);
 
-			if (id!=0) {
-				for (size_t j=0; j<model->m_geosets.size(); j++) {
+			if (id!=0) 
+			{
+				for (size_t j=0; j<model->m_geosets.size(); j++) 
+				{
 					if (model->m_geosets[j].id == id) 
 						model->showGeosets[j] = (cd.hairStyle == section) && showHair;
 				}
 
-			} else if (cd.hairStyle==section) {
+			} 
+			else if (cd.hairStyle==section)
+			{
 				bald = true;
 			}
 		}
 	}
 
 	// hair
-	try {
+	try 
+	{
 		rec = chardb.getByParams(cd.race, cd.gender, CharSectionsDB::HairType, cd.hairStyle, cd.hairColor, 0);
 		const char* hairTexfn = rec.getString(CharSectionsDB::Tex1);
 		if (strlen(hairTexfn)) 
 			hairTex = texturemanager.add(hairTexfn);
-		else {
+		else 
+		{
 			// oops, looks like we're missing a hair texture. Let's try with hair style #0.
 			// (only a problem for orcs with no hair but some beard
-			try {
+			try 
+			{
 				rec = chardb.getByParams(cd.race, cd.gender, CharSectionsDB::HairType, 0, cd.hairColor, 0);
 				hairTexfn = rec.getString(CharSectionsDB::Tex1);
 				if (strlen(hairTexfn)) 
 					hairTex = texturemanager.add(hairTexfn);
 				else 
 					hairTex = 0;
-			} catch (CharSectionsDB::NotFound) {
+			} 
+			catch (CharSectionsDB::NotFound) 
+			{
 				// oh well, give up.
 				hairTex = 0; // or chartex?
 			}
 		}
-		if (!bald) {
+		if (!bald) 
+		{
 			tex.addLayer(rec.getString(CharSectionsDB::Tex2), CR_FACE_LOWER, 3);
 			tex.addLayer(rec.getString(CharSectionsDB::Tex3), CR_FACE_UPPER, 3);
 		}
 
-	} catch (CharSectionsDB::NotFound) {
+	} 
+	catch (CharSectionsDB::NotFound) 
+	{
 		wxLogMessage(_T("DBC hair Error: %s : line #%i : %s"), __FILE__, __LINE__, __FUNCTION__);
 		hairTex = 0;
 	}
@@ -899,16 +931,21 @@ void CharControl::RefreshModel()
 		bald = true;
 	
 	// Hide facial hair if it isn't toggled and they don't have tusks, horns, etc.
-	if (!showFacialHair) {		
-		try {
+	if (!showFacialHair) 
+	{		
+		try 
+		{
 			CharRacesDB::Record race = racedb.getById(cd.race);
 			wxString tmp = race.getString(CharRacesDB::GeoType1);
-			if (tmp == "NORMAL") {
+			if (tmp == "NORMAL") 
+			{
 				cd.geosets[1] = 1;
 				cd.geosets[2] = 1;
 				cd.geosets[3] = 1;
 			}
-		} catch (CharRacesDB::NotFound) {
+		} 
+		catch (CharRacesDB::NotFound) 
+		{
 			wxLogMessage(_T("Assertion FacialHair Error: %s : line #%i : %s"), __FILE__, __LINE__, __FUNCTION__);
 		}
     }
@@ -965,22 +1002,29 @@ void CharControl::RefreshModel()
 
 	// check if we have a robe on
 	bool hadRobe = false;
-	if (cd.equipment[CS_CHEST] != 0) {
-		try {
+	if (cd.equipment[CS_CHEST] != 0)
+	{
+		try 
+		{
 			const ItemRecord &item = items.get(cd.equipment[CS_CHEST]);
-			if (item.type==IT_ROBE) {
+			if (item.type==IT_ROBE)
+			{
 				ItemDisplayDB::Record r = itemdb.getById(item.model);
 				if (r.getUInt(ItemDisplayDB::GeosetC)==1) 
 					hadRobe = true;
 			}
-		} catch (ItemDisplayDB::NotFound) {
+		} 
+		catch (ItemDisplayDB::NotFound)
+		{
 			wxLogMessage(_T("Assertion robe Error: %s : line #%i : %s"), __FILE__, __LINE__, __FUNCTION__);
 		}
 	}
 
 	// check if we have a kilt on, just like our robes
-	if (cd.equipment[CS_PANTS] != 0) {
-		try {
+	if (cd.equipment[CS_PANTS] != 0) 
+	{
+		try
+		{
 			const ItemRecord &item = items.get(cd.equipment[CS_PANTS]);
 			int type = item.type;
 			if (type==IT_PANTS) {
@@ -988,7 +1032,9 @@ void CharControl::RefreshModel()
 				if (r.getUInt(ItemDisplayDB::GeosetC)==1) 
 					hadRobe = true;
 			}
-		} catch (ItemDisplayDB::NotFound) {
+		} 
+		catch (ItemDisplayDB::NotFound) 
+		{
 			wxLogMessage(_T("Assertion kilt Error: %s : line #%i : %s"), __FILE__, __LINE__, __FUNCTION__);
 		}
 	}
@@ -998,41 +1044,49 @@ void CharControl::RefreshModel()
 	slotOrderWithRobe[8] = CS_GLOVES;
 
 	// check the order of robe/gloves
-	if (cd.equipment[CS_CHEST] && cd.equipment[CS_GLOVES]) {
-		try {
+	if (cd.equipment[CS_CHEST] && cd.equipment[CS_GLOVES])
+	{
+		try 
+		{
 			//const ItemRecord &item = items.get(cd.equipment[CS_CHEST]);
 			//if (item.type==IT_ROBE) {
 			//	ItemDisplayDB::Record r = itemdb.getById(item.model);
 				//if (r.getUInt(ItemDisplayDB::GeosetA)>0) {
 					const ItemRecord &item2 = items.get(cd.equipment[CS_GLOVES]);
 					ItemDisplayDB::Record r2 = itemdb.getById(item2.model);
-					if (r2.getUInt(ItemDisplayDB::GeosetA)==0) {
+					if (r2.getUInt(ItemDisplayDB::GeosetA)==0) 
+					{
 						slotOrderWithRobe[7] = CS_GLOVES;
 						slotOrderWithRobe[8] = CS_CHEST;
 					}
 				//}
 			//}
-		} catch (ItemDisplayDB::NotFound) {
+		} 
+		catch (ItemDisplayDB::NotFound) 
+		{
 			wxLogMessage(_T("Assertion robe/gloves Error: %s : line #%i : %s"), __FILE__, __LINE__, __FUNCTION__);
 		}
 	}
 	
 	// dressup
-	for (int i=0; i<NUM_CHAR_SLOTS; i++) {
+	for (int i=0; i<NUM_CHAR_SLOTS; i++) 
+	{
 		int sn = hadRobe ? slotOrderWithRobe[i] : slotOrder[i];
 		if (cd.equipment[sn] != 0) 
 			AddEquipment(sn, cd.equipment[sn], 10+i, tex);
 	}
 
 	// reset geosets
-	for (size_t j=0; j<model->m_geosets.size(); j++) {
+	for (size_t j=0; j<model->m_geosets.size(); j++)
+	{
 		int id = model->m_geosets[j].id;
 
 		// hide top-of-head if we have hair.
 		if (id == 1)
 			model->showGeosets[j] = bald;
 
-		for (int i=1; i<16; i++) {
+		for (int i=1; i<16; i++) 
+		{
 			int a = i*100, b = (i+1) * 100;
 			if (id>a && id<b) 
 				model->showGeosets[j] = (id == (a + cd.geosets[i]));

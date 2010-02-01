@@ -529,18 +529,6 @@
 			</File>
 		</Filter>
 		<Filter
-			Name="opengl"
-			>
-			<File
-				RelativePath=".\opengl\glext.h"
-				>
-			</File>
-			<File
-				RelativePath=".\opengl\wglext.h"
-				>
-			</File>
-		</Filter>
-		<Filter
 			Name="model"
 			>
 			<File
@@ -689,6 +677,18 @@
 			</File>
 			<File
 				RelativePath=".\ms3dheader.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="opengl"
+			>
+			<File
+				RelativePath=".\opengl\glext.h"
+				>
+			</File>
+			<File
+				RelativePath=".\opengl\wglext.h"
 				>
 			</File>
 		</Filter>
