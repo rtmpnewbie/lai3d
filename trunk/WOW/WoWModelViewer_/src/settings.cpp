@@ -182,18 +182,18 @@ void Settings_Page2::Update()
 {
 	oglMode->Clear();
 
-	for (size_t i=0; i<video.capsList.size(); i++) {
-		wxString mode = wxString::Format(_T("Colour:%i Depth:%i Alpha:%i "), video.capsList[i].colour, video.capsList[i].zBuffer, video.capsList[i].alpha);
+	for (size_t i=0; i<g_videoSetting.capsList.size(); i++) {
+		wxString mode = wxString::Format(_T("Colour:%i Depth:%i Alpha:%i "), g_videoSetting.capsList[i].colour, g_videoSetting.capsList[i].zBuffer, g_videoSetting.capsList[i].alpha);
 		
-		if (video.capsList[i].sampleBuffer)
-			mode.Append(wxString::Format(_T("FSAA:%i "), video.capsList[i].aaSamples));
+		if (g_videoSetting.capsList[i].sampleBuffer)
+			mode.Append(wxString::Format(_T("FSAA:%i "), g_videoSetting.capsList[i].aaSamples));
 		
-		if (video.capsList[i].doubleBuffer)
+		if (g_videoSetting.capsList[i].doubleBuffer)
 			mode.Append(_T("DoubleBuffer "));
 
-		if (video.capsList[i].hwAcc == WGL_FULL_ACCELERATION_ARB)
+		if (g_videoSetting.capsList[i].hwAcc == WGL_FULL_ACCELERATION_ARB)
 			mode.Append(_T("Hardware mode"));
-		else if (video.capsList[i].hwAcc == WGL_GENERIC_ACCELERATION_ARB)
+		else if (g_videoSetting.capsList[i].hwAcc == WGL_GENERIC_ACCELERATION_ARB)
 			mode.Append(_T("Emulation mode"));
 		else //WGL_NO_ACCELERATION_ARB
 			mode.Append(_T("Software mode"));
@@ -201,62 +201,62 @@ void Settings_Page2::Update()
 		oglMode->Append(mode);
 	}
 
-	oglMode->SetSelection(video.capIndex);
+	oglMode->SetSelection(g_videoSetting.capIndex);
 
-	txtFov->SetValue(wxString::Format(_T("%f"), video.fov));
+	txtFov->SetValue(wxString::Format(_T("%f"), g_videoSetting.fov));
 
 	// Toggle all the video options
-	if (video.supportCompression)
-		chkBox[CHECK_COMPRESSEDTEX]->SetValue(video.useCompression);
+	if (g_videoSetting.supportCompression)
+		chkBox[CHECK_COMPRESSEDTEX]->SetValue(g_videoSetting.useCompression);
 	else
 		chkBox[CHECK_COMPRESSEDTEX]->Disable();
 
-	if (video.supportMultiTex) {
+	if (g_videoSetting.supportMultiTex) {
 		chkBox[CHECK_MULTITEX]->SetValue(true);
 		chkBox[CHECK_MULTITEX]->Disable();
 	} else
 		chkBox[CHECK_MULTITEX]->Disable();
 
-	if (video.supportVBO)
-		chkBox[CHECK_VBO]->SetValue(video.useVBO);
+	if (g_videoSetting.supportVBO)
+		chkBox[CHECK_VBO]->SetValue(g_videoSetting.useVBO);
 	else
 		chkBox[CHECK_VBO]->Disable();
 
-	if (video.supportFBO)
-		chkBox[CHECK_FBO]->SetValue(video.useFBO);
+	if (g_videoSetting.supportFBO)
+		chkBox[CHECK_FBO]->SetValue(g_videoSetting.useFBO);
 	else
 		chkBox[CHECK_FBO]->Disable();
 
-	if (video.supportPBO)
-		chkBox[CHECK_PBO]->SetValue(video.usePBO);
+	if (g_videoSetting.supportPBO)
+		chkBox[CHECK_PBO]->SetValue(g_videoSetting.usePBO);
 	else
 		chkBox[CHECK_PBO]->Disable();
 
-	if (video.supportDrawRangeElements) {
+	if (g_videoSetting.supportDrawRangeElements) {
 		chkBox[CHECK_DRAWRANGEELEMENTS]->SetValue(true);
 		chkBox[CHECK_DRAWRANGEELEMENTS]->Disable();
 	} else
 		chkBox[CHECK_DRAWRANGEELEMENTS]->Disable();
 
-	chkBox[CHECK_ENVMAPPING]->SetValue(video.useEnvMapping);
+	chkBox[CHECK_ENVMAPPING]->SetValue(g_videoSetting.useEnvMapping);
 
-	if (video.supportNPOT) {
+	if (g_videoSetting.supportNPOT) {
 		chkBox[CHECK_NPOT]->SetValue(true);
 		chkBox[CHECK_NPOT]->Disable();
 	} else
 		chkBox[CHECK_NPOT]->Disable();
 
-	if (video.supportFragProg)
+	if (g_videoSetting.supportFragProg)
 		chkBox[CHECK_PIXELSHADERS]->SetValue(true);
 	else
 		chkBox[CHECK_PIXELSHADERS]->Disable();
 
-	if (video.supportVertexProg)
+	if (g_videoSetting.supportVertexProg)
 		chkBox[CHECK_VERTEXSHADERS]->SetValue(true);
 	else
 		chkBox[CHECK_VERTEXSHADERS]->Disable();
 
-	if (video.supportGLSL)
+	if (g_videoSetting.supportGLSL)
 		chkBox[CHECK_GLSLSHADERS]->SetValue(true);
 	else
 		chkBox[CHECK_GLSLSHADERS]->Disable();
@@ -267,7 +267,7 @@ void Settings_Page2::OnButton(wxCommandEvent &event)
 	int id = event.GetId();
 	
 	if (id == ID_SETTINGS_APPLY) {
-		if ((oglMode->GetSelection() != video.capIndex) && video.GetCompatibleWinMode(video.capsList[oglMode->GetSelection()])) {
+		if ((oglMode->GetSelection() != g_videoSetting.capIndex) && g_videoSetting.GetCompatibleWinMode(g_videoSetting.capsList[oglMode->GetSelection()])) {
 			wxLogMessage("Info: Graphics display mode changed.  Requires restart to take effect.");
 			wxMessageBox("Graphics display settings changed.\nWoW Model Viewer requires restarting to take effect.", "Settings Changed", wxICON_INFORMATION);
 		}
@@ -275,7 +275,7 @@ void Settings_Page2::OnButton(wxCommandEvent &event)
 		double fov;
 		txtFov->GetValue().ToDouble(&fov);
 		if ((fov > 0) && (fov < 270.0))
-			video.fov = (float) fov;
+			g_videoSetting.fov = (float) fov;
 
 		g_modelViewer->SaveSession();
 		g_modelViewer->interfaceManager.GetPane(this->GetParent()).Show(false);

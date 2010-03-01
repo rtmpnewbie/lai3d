@@ -54,7 +54,7 @@ class ModelBankControl: public wxWindow
 	wxStaticText *lblName;
 	wxTextCtrl *txtName;
 
-	std::vector<ModelBank> bankList;
+	std::vector<ModelBank> m_bankList;
 
 public:
 	ModelBankControl(wxWindow* parent, wxWindowID id);

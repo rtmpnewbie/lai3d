@@ -83,7 +83,7 @@ WMO::WMO(std::string name): ManagedItem(name)
                 string texpath(texbuf + m->nameStart);
                 fixname(texpath);
 
-                m->tex = texturemanager.add(texpath);
+                m->tex = g_texturemanager.add(texpath);
                 textures.push_back(texpath);
 
                 // need repeat turned on
@@ -256,7 +256,7 @@ WMO::~WMO()
         for(vector < string > ::iterator it = textures.begin(); it !=
             textures.end(); ++it)
         {
-            texturemanager.delbyname(*it);
+            g_texturemanager.delbyname(*it);
         }
 
         /*

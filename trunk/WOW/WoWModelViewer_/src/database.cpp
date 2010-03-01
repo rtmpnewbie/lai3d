@@ -16,7 +16,7 @@ ItemSetDB setsdb;
 // --
 AnimDB animdb;
 CharHairGeosetsDB hairdb;
-CharSectionsDB chardb;
+CharSectionsDB g_dbChar;
 CharClassesDB classdb;
 CharFacialHairDB facialhairdb;
 CharRacesDB racedb;

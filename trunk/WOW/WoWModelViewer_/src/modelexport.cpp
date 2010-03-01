@@ -161,7 +161,7 @@ void AddVertices(Model *m, Attachment *att)
                     verts[vertIndex].vertex.z = ( (m->vertices[a].z *scale.z) +
                         pos.z);
 
-                    if(video.supportVBO)
+                    if(g_videoSetting.supportVBO)
                     {
                         verts[vertIndex].normal.x = (m->vertices[m
                             ->m_header.nVertices + a].x + pos.x);

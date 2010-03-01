@@ -432,9 +432,9 @@ void ModelViewer::InitObjects()
 
 	canvas = new ModelCanvas(this);
 
-	if (video.secondPass) {
+	if (g_videoSetting.secondPass) {
 		canvas->Destroy();
-		video.Release();
+		g_videoSetting.Release();
 		canvas = new ModelCanvas(this);
 	}
 
@@ -471,7 +471,7 @@ void ModelViewer::InitDatabase()
 		initDB = false;
 		wxLogMessage(_T("Error: Could not open the Hair Geoset DB."));
 	}
-	if(!chardb.open()) {
+	if(!g_dbChar.open()) {
 		initDB = false;
 		wxLogMessage(_T("Error: Could not open the Character DB."));
 	}
@@ -686,15 +686,15 @@ void ModelViewer::SaveSession()
 
 	// Graphic / Video display settings
 	pConfig->SetPath(_T("/Graphics"));
-	pConfig->Write(_T("FSAA"), video.curCap.aaSamples);
-	pConfig->Write(_T("AccumulationBuffer"), video.curCap.accum);
-	pConfig->Write(_T("AlphaBits"), video.curCap.alpha);
-	pConfig->Write(_T("ColourBits"), video.curCap.colour);
-	pConfig->Write(_T("DoubleBuffer"), video.curCap.doubleBuffer);
-	pConfig->Write(_T("HWAcceleration"), video.curCap.hwAcc);
-	pConfig->Write(_T("SampleBuffer"), video.curCap.sampleBuffer);
-	pConfig->Write(_T("StencilBuffer"), video.curCap.stencil);
-	pConfig->Write(_T("ZBuffer"), video.curCap.zBuffer);
+	pConfig->Write(_T("FSAA"), g_videoSetting.curCap.aaSamples);
+	pConfig->Write(_T("AccumulationBuffer"), g_videoSetting.curCap.accum);
+	pConfig->Write(_T("AlphaBits"), g_videoSetting.curCap.alpha);
+	pConfig->Write(_T("ColourBits"), g_videoSetting.curCap.colour);
+	pConfig->Write(_T("DoubleBuffer"), g_videoSetting.curCap.doubleBuffer);
+	pConfig->Write(_T("HWAcceleration"), g_videoSetting.curCap.hwAcc);
+	pConfig->Write(_T("SampleBuffer"), g_videoSetting.curCap.sampleBuffer);
+	pConfig->Write(_T("StencilBuffer"), g_videoSetting.curCap.stencil);
+	pConfig->Write(_T("ZBuffer"), g_videoSetting.curCap.zBuffer);
 	
 
 
@@ -953,7 +953,7 @@ void ModelViewer::LoadItem(unsigned int displayID)
 void ModelViewer::OnExit(wxCommandEvent &event)
 {
 	if (event.GetId() == ID_FILE_EXIT) {
-		video.render = false;
+		g_videoSetting.render = false;
 		//canvas->timer.Stop();
 		canvas->Disable();
 		Close(false);
@@ -984,7 +984,7 @@ ModelViewer::~ModelViewer()
 {
 	wxLogMessage(_T("Shuting down the program...\n"));
 
-	video.render = false;
+	g_videoSetting.render = false;
 
 	// If we have a canvas (which we always should)
 	// Stop rendering, give more power back to the CPU to close this sucker down!
@@ -1098,7 +1098,7 @@ void ModelViewer::Init()
 	*/
 	
 	wxLogMessage(_T("Setting OpenGL render state..."));
-	video.InitGL();
+	g_videoSetting.InitGL();
 
 	// Initiate other stuff
 	wxLogMessage(_T("Initiating Archives...\n"));
@@ -1276,7 +1276,7 @@ void ModelViewer::OnTreeSelect(wxTreeEvent &event)
 		if (!isChar) { 
 			wxDELETE(canvas->model);
 		} else{
-			charControl->charAtt = NULL;
+			charControl->m_charAtt = NULL;
 		}
 	}			
 
@@ -1288,7 +1288,7 @@ void ModelViewer::OnTreeSelect(wxTreeEvent &event)
 #endif
 
 	// Texture clearing and debugging
-	texturemanager.clear();
+	g_texturemanager.clear();
 
 #ifdef _DEBUG
 	err = glGetError();
@@ -1403,7 +1403,7 @@ void ModelViewer::OnToggleCommand(wxCommandEvent &event)
 		break;
 	*/
 	case ID_SHOW_MASK:
-		video.useMasking = !video.useMasking;
+		g_videoSetting.useMasking = !g_videoSetting.useMasking;
 
 	case ID_SHOW_BOUNDS:
 		canvas->model->showBounds = !canvas->model->showBounds;
@@ -1439,7 +1439,7 @@ void ModelViewer::OnToggleCommand(wxCommandEvent &event)
 			wxFileDialog loadDialog(this, _("Load character"), wxEmptyString, wxEmptyString, _T("Character files (*.chr)|*.chr"), wxFD_OPEN|wxFD_FILE_MUST_EXIST);
 			if (loadDialog.ShowModal()==wxID_OK) {
 				for (int i=0; i<NUM_CHAR_SLOTS; i++)
-					charControl->cd.equipment[i] = 0;
+					charControl->m_cd.equipment[i] = 0;
 				
 				LoadChar(loadDialog.GetPath().c_str());
 			}
@@ -1812,7 +1812,7 @@ void ModelViewer::OnSave(wxCommandEvent &event)
 		if (!canvas->model)
 			return;
 
-		if (!video.supportFBO && !video.supportPBO) {
+		if (!g_videoSetting.supportFBO && !g_videoSetting.supportPBO) {
 			wxMessageBox(_T("This function is currently disabled for video cards that don't\nsupport the FrameBufferObject or PixelBufferObject OpenGL extensions"), _T("Error"));
 			return;
 		}
@@ -1832,7 +1832,7 @@ void ModelViewer::OnSave(wxCommandEvent &event)
 		if (canvas->wmo && !canvas->model)
 			return;
 
-		if (!video.supportFBO && !video.supportPBO) {
+		if (!g_videoSetting.supportFBO && !g_videoSetting.supportPBO) {
 			wxMessageBox(_T("This function is currently disabled for video cards that don't\nsupport the FrameBufferObject or PixelBufferObject OpenGL extensions"), _T("Error"));
 			return;
 		}
@@ -1918,15 +1918,15 @@ void ModelViewer::SaveChar(const char *fn)
 {
 	ofstream f(fn, ios_base::out|ios_base::trunc);
 	f << canvas->model->name << endl;
-	f << charControl->cd.race << " " << charControl->cd.gender << endl;
-	f << charControl->cd.skinColor << " " << charControl->cd.faceType << " " << charControl->cd.hairColor << " " << charControl->cd.hairStyle << " " << charControl->cd.facialHair << " " << charControl->cd.facialColor << endl;
+	f << charControl->m_cd.race << " " << charControl->m_cd.gender << endl;
+	f << charControl->m_cd.skinColor << " " << charControl->m_cd.faceType << " " << charControl->m_cd.hairColor << " " << charControl->m_cd.hairStyle << " " << charControl->m_cd.facialHair << " " << charControl->m_cd.facialColor << endl;
 	for (int i=0; i<NUM_CHAR_SLOTS; i++) {
-		f << charControl->cd.equipment[i] << endl;
+		f << charControl->m_cd.equipment[i] << endl;
 	}
 
 	// 5976 is the ID value for "Guild Tabard"
-	if (charControl->cd.equipment[CS_TABARD] == 5976) {
-		f << charControl->td.Background << " " << charControl->td.Border << " " << charControl->td.BorderColor << " " << charControl->td.Icon << " " << charControl->td.IconColor << endl;
+	if (charControl->m_cd.equipment[CS_TABARD] == 5976) {
+		f << charControl->m_td.Background << " " << charControl->m_td.Border << " " << charControl->m_td.BorderColor << " " << charControl->m_td.Icon << " " << charControl->m_td.IconColor << endl;
 	}
 
 	f << endl;
@@ -1956,20 +1956,20 @@ void ModelViewer::LoadChar(const char *fn)
 	LoadModel(modelname.c_str());
 	canvas->model->modelType = MT_CHAR;
 
-	f >> charControl->cd.race >> charControl->cd.gender; // race and gender
-	f >> charControl->cd.skinColor >> charControl->cd.faceType >> charControl->cd.hairColor >> charControl->cd.hairStyle >> charControl->cd.facialHair >> charControl->cd.facialColor;
+	f >> charControl->m_cd.race >> charControl->m_cd.gender; // race and gender
+	f >> charControl->m_cd.skinColor >> charControl->m_cd.faceType >> charControl->m_cd.hairColor >> charControl->m_cd.hairStyle >> charControl->m_cd.facialHair >> charControl->m_cd.facialColor;
 
 	while (!f.eof()) {
 		for (int i=0; i<NUM_CHAR_SLOTS; i++) {
-			f >> charControl->cd.equipment[i];
+			f >> charControl->m_cd.equipment[i];
 		}
 		break;
 	}
 
 	// 5976 is the ID value for "Guild Tabard"
-	if (charControl->cd.equipment[CS_TABARD] == 5976 && !f.eof()) {
-		f >> charControl->td.Background >> charControl->td.Border >> charControl->td.BorderColor >> charControl->td.Icon >> charControl->td.IconColor;
-		charControl->td.showCustom = true;
+	if (charControl->m_cd.equipment[CS_TABARD] == 5976 && !f.eof()) {
+		f >> charControl->m_td.Background >> charControl->m_td.Border >> charControl->m_td.BorderColor >> charControl->m_td.Icon >> charControl->m_td.IconColor;
+		charControl->m_td.showCustom = true;
 	}
 
 	f.close();
@@ -2167,13 +2167,13 @@ void ModelViewer::OnExport(wxCommandEvent &event)
 
 void ModelViewer::OnTest(wxCommandEvent &event)
 {
-		if (!charControl->charAtt)
+		if (!charControl->m_charAtt)
 			return;
 
 		if (arrowControl) {
 			arrowControl->Show(true);
 		} else {
-			arrowControl = new ArrowControl(this, wxID_ANY, wxDefaultPosition, charControl->charAtt);
+			arrowControl = new ArrowControl(this, wxID_ANY, wxDefaultPosition, charControl->m_charAtt);
 			/* // wxIFM stuff
 			arrowControlPanel = new wxIFMDefaultChildData(arrowControl, IFM_CHILD_GENERIC, wxDefaultPosition, wxSize(140, 300), true, _("Arrow Control"));
 			arrowControlPanel->m_orientation = IFM_ORIENTATION_FLOAT;
@@ -2299,7 +2299,7 @@ void ModelViewer::ImportArmoury(wxString strURL)
 							else if (slotID == 16) // Left Hand
 								slotID = CS_HAND_LEFT;
 
-							g_charControl->cd.equipment[slotID] = itemID;
+							g_charControl->m_cd.equipment[slotID] = itemID;
 						}
 
 						itemNode = itemNode->GetNext();

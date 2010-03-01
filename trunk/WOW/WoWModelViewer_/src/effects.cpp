@@ -194,7 +194,7 @@ void EnchantsDialog::OnClick(wxCommandEvent &event)
                 int s = slot->GetSelection();
                 s += 10;
 
-                if(!charControl->model)
+                if(!charControl->m_model)
                 {
                     return ;
                 }
@@ -214,12 +214,12 @@ void EnchantsDialog::OnClick(wxCommandEvent &event)
                 }
 
                 // children:
-                for(size_t i = 0; i < charControl->charAtt->children.size(); i
+                for(size_t i = 0; i < charControl->m_charAtt->children.size(); i
                     ++)
                 {
-                    if(charControl->charAtt->children[i]->slot == s)
+                    if(charControl->m_charAtt->children[i]->slot == s)
                     {
-                        Attachment *att = charControl->charAtt->children[i];
+                        Attachment *att = charControl->m_charAtt->children[i];
                         if(att->children.size() > 0)
                         {
                             att->delChildren();

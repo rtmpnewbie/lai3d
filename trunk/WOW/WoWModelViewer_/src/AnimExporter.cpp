@@ -154,7 +154,7 @@ void CAnimationExporter::CreateGif()
     txtDelay->Enable(false);
 
     // Pause our rendering to screen so we can focus on making the animated image
-    video.render = false;
+    g_videoSetting.render = false;
 
     m_fAnimSpeed = g_canvas->model->animManager->GetSpeed(); 
         // Save the old animation speed
@@ -203,7 +203,7 @@ void CAnimationExporter::CreateGif()
     // CREATE OUR RENDERTOTEXTURE OBJECT
     // -------------------------------------------
     // if either are supported use our 'RenderTexture' object.
-    if(video.supportPBO || video.supportVBO)
+    if(g_videoSetting.supportPBO || g_videoSetting.supportVBO)
     {
         g_canvas->rt = new RenderTexture();
 
@@ -214,7 +214,7 @@ void CAnimationExporter::CreateGif()
             return ;
         }
 
-        g_canvas->rt->Init( (HWND)g_canvas->GetHandle(), 0, 0, video.supportFBO)
+        g_canvas->rt->Init( (HWND)g_canvas->GetHandle(), 0, 0, g_videoSetting.supportFBO)
             ;
 
         m_iWidth = g_canvas->rt->nWidth;
@@ -313,7 +313,7 @@ void CAnimationExporter::CreateGif()
 
     wxDELETEA(buffer);
 
-    if(video.supportPBO || video.supportVBO)
+    if(g_videoSetting.supportPBO || g_videoSetting.supportVBO)
     {
         g_canvas->rt->EndRender();
 
@@ -376,7 +376,7 @@ void CAnimationExporter::CreateGif()
 
     Show(false);
 
-    video.render = true;
+    g_videoSetting.render = true;
     g_canvas->InitView();
 }
 
@@ -443,7 +443,7 @@ void CAnimationExporter::CreateAvi(wxString fn)
     }
 
     // Pause rendering to canvas
-    video.render = false;
+    g_videoSetting.render = false;
 
     // Save the old animation speed and set back to default
     m_fAnimSpeed = g_canvas->model->animManager->GetSpeed();
@@ -452,7 +452,7 @@ void CAnimationExporter::CreateAvi(wxString fn)
     m_iTotalAnimFrames = g_canvas->model->animManager->GetFrameCount();
     m_iTotalFrames = (m_iTotalAnimFrames / 25);
 
-    if(video.supportPBO || video.supportVBO)
+    if(g_videoSetting.supportPBO || g_videoSetting.supportVBO)
     {
         // if either are supported use our 'RenderTexture' object.
         g_canvas->rt = new RenderTexture();
@@ -465,7 +465,7 @@ void CAnimationExporter::CreateAvi(wxString fn)
         }
 
         g_canvas->rt->Init( (HWND)g_canvas->GetHandle(), 512, 512,
-            video.supportFBO);
+            g_videoSetting.supportFBO);
 
         m_iWidth = g_canvas->rt->nWidth;
         m_iHeight = g_canvas->rt->nHeight;
@@ -570,7 +570,7 @@ void CAnimationExporter::CreateAvi(wxString fn)
     g_canvas->model->animManager->SetSpeed(m_fAnimSpeed); 
         // Return the animation speed back to whatever it was previously set as
     g_canvas->model->animManager->Play();
-    video.render = true;
+    g_videoSetting.render = true;
     g_canvas->InitView();
 }
 

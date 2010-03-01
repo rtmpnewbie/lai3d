@@ -105,7 +105,7 @@ void ArrowControl::OnButton(wxCommandEvent &event)
             ->GetStringSelection(), joint->GetSelection(),  - 1);
         atts.push_back(curAtt);
 
-        GLuint tex = texturemanager.add(mp);
+        GLuint tex = g_texturemanager.add(mp);
         Model *m = static_cast < Model * > (curAtt->model);
         m->replaceTextures[2] = tex;
 
