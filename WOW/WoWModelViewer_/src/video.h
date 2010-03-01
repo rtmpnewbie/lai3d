@@ -137,8 +137,8 @@ public:
 
 void getTextureData(GLuint tex, unsigned char *buf);
 
-extern VideoSettings video;
-extern TextureManager texturemanager;
+extern VideoSettings g_videoSetting;
+extern TextureManager g_texturemanager;
 
 void decompressDXTC(GLint format, int w, int h, size_t size, unsigned char *src, unsigned char *dest);
 

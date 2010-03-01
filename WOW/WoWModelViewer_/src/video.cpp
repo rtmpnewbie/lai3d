@@ -45,8 +45,8 @@ PIXELFORMATDESCRIPTOR pfd =  // pfd Tells Windows How We Want Things To Be
 };
 
 
-VideoSettings video;
-TextureManager texturemanager;
+VideoSettings g_videoSetting;
+TextureManager g_texturemanager;
 
 VideoSettings::VideoSettings()
 {
@@ -954,7 +954,7 @@ void TextureManager::LoadBLP(GLuint id, Texture *tex)
     {
         // compressed
         unsigned char *ucbuf = NULL;
-        if(!video.supportCompression)
+        if(!g_videoSetting.supportCompression)
         {
             ucbuf = new unsigned char[w *h * 4];
         }
@@ -999,7 +999,7 @@ void TextureManager::LoadBLP(GLuint id, Texture *tex)
 
                 int size = ( (w + 3) / 4)*( (h + 3) / 4) *blocksize;
 
-                if(video.supportCompression)
+                if(g_videoSetting.supportCompression)
                 {
                     glCompressedTexImage2DARB(GL_TEXTURE_2D, i, format, w, h, 0,
                         size, buf);
@@ -1021,7 +1021,7 @@ void TextureManager::LoadBLP(GLuint id, Texture *tex)
         }
 
         wxDELETEA(buf);
-        if(!video.supportCompression)
+        if(!g_videoSetting.supportCompression)
         {
             wxDELETEA(ucbuf);
         }

@@ -117,13 +117,13 @@ void ImageControl::OnButton(wxCommandEvent &event)
 {
     if(event.GetId() == ID_IMAGE_SAVE)
     {
-        video.render = false;
+        g_videoSetting.render = false;
         manager->GetPane(this).Show(false);
         manager->Update();
         cc->Screenshot(filename->GetValue(), x, y);
         ssCounter++;
         cc->InitView();
-        video.render = true;
+        g_videoSetting.render = true;
 
     }
     else if(event.GetId() == ID_IMAGE_CANCEL)

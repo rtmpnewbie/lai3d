@@ -266,18 +266,18 @@ void WowModelViewApp::LoadSettings()
 
     // Graphic / Video display settings
     pConfig->SetPath(_T("/Graphics") );
-    pConfig->Read(_T("FSAA"), &video.curCap.aaSamples, 0);
-    pConfig->Read(_T("AccumulationBuffer"), &video.curCap.accum, 0);
-    pConfig->Read(_T("AlphaBits"), &video.curCap.alpha, 0);
-    pConfig->Read(_T("ColourBits"), &video.curCap.colour, 24);
-    pConfig->Read(_T("DoubleBuffer"), (bool*) &video.curCap.doubleBuffer, 1);
+    pConfig->Read(_T("FSAA"), &g_videoSetting.curCap.aaSamples, 0);
+    pConfig->Read(_T("AccumulationBuffer"), &g_videoSetting.curCap.accum, 0);
+    pConfig->Read(_T("AlphaBits"), &g_videoSetting.curCap.alpha, 0);
+    pConfig->Read(_T("ColourBits"), &g_videoSetting.curCap.colour, 24);
+    pConfig->Read(_T("DoubleBuffer"), (bool*) &g_videoSetting.curCap.doubleBuffer, 1);
     // True
-    pConfig->Read(_T("HWAcceleration"), &video.curCap.hwAcc,
+    pConfig->Read(_T("HWAcceleration"), &g_videoSetting.curCap.hwAcc,
         WGL_FULL_ACCELERATION_ARB);
-    pConfig->Read(_T("SampleBuffer"), (bool*) &video.curCap.sampleBuffer, 0);
+    pConfig->Read(_T("SampleBuffer"), (bool*) &g_videoSetting.curCap.sampleBuffer, 0);
     // False
-    pConfig->Read(_T("StencilBuffer"), &video.curCap.stencil, 0);
-    pConfig->Read(_T("ZBuffer"), &video.curCap.zBuffer, 16);
+    pConfig->Read(_T("StencilBuffer"), &g_videoSetting.curCap.stencil, 0);
+    pConfig->Read(_T("ZBuffer"), &g_videoSetting.curCap.zBuffer, 16);
 
     // Application locale info
     pConfig->SetPath(_T("/Locale") );

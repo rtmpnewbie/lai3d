@@ -617,7 +617,7 @@ Model::~Model()
             {
                 if(textures[i] > 0)
                 {
-                    texturemanager.del(textures[i]);
+                    g_texturemanager.del(textures[i]);
                 }
             }
 
@@ -625,7 +625,7 @@ Model::~Model()
             {
                 if(replaceTextures[i] > 0)
                 {
-                    texturemanager.del(replaceTextures[i]);
+                    g_texturemanager.del(replaceTextures[i]);
                 }
             }
 
@@ -647,7 +647,7 @@ Model::~Model()
             // unload all sorts of crap
             // Need this if statement because VBO supported
             // cards have already deleted it.
-            if(video.supportVBO)
+            if(g_videoSetting.supportVBO)
             {
                 glDeleteBuffersARB(1, &m_nbuf);
                 glDeleteBuffersARB(1, &m_vbuf);
@@ -870,7 +870,7 @@ void Model::initCommon(MPQFile &f)
                     texname[texdef[i].nameLen] = 0;
                     std::string path(texname);
                     //fixname(path);
-                    textures[i] = texturemanager.add(texname);
+                    textures[i] = g_texturemanager.add(texname);
                 }
                 else
                 {
@@ -888,7 +888,7 @@ void Model::initCommon(MPQFile &f)
                     if(texdef[i].type == 3)
                     {
                         // a fix for weapons with type-3 textures.
-                        replaceTextures[3] = texturemanager.add(_T(
+                        replaceTextures[3] = g_texturemanager.add(_T(
                             "Item\\ObjectComponents\\Weapon\\ArmorReflect4.BLP")
                             );
                     }
@@ -1280,7 +1280,7 @@ void Model::initAnimated(MPQFile &f)
         texCoords[i] = m_origVertices[i].texcoords;
     }
 
-    if(video.supportVBO)
+    if(g_videoSetting.supportVBO)
     {
         // Vert buffer
         glGenBuffersARB(1, &m_vbuf);
@@ -1685,7 +1685,7 @@ void Model::animate(int anim)
     if(animGeometry)
     {
 
-        if(video.supportVBO)
+        if(g_videoSetting.supportVBO)
         {
             glBindBufferARB(GL_ARRAY_BUFFER_ARB, m_vbuf);
             glBufferDataARB(GL_ARRAY_BUFFER_ARB, 2 *m_vbufsize, NULL,
@@ -1722,7 +1722,7 @@ void Model::animate(int anim)
             }
 
             vertices[i] = v;
-            if(video.supportVBO)
+            if(g_videoSetting.supportVBO)
             {
                 vertices[m_header.nVertices + i] = n.normalize();
             }
@@ -1733,7 +1733,7 @@ void Model::animate(int anim)
             }
         }
 
-        if(video.supportVBO)
+        if(g_videoSetting.supportVBO)
         {
             glUnmapBufferARB(GL_ARRAY_BUFFER_ARB);
         }
@@ -2141,7 +2141,7 @@ void ModelRenderPass::deinit()
 inline void Model::drawModel()
 {
     // assume these client states are enabled: GL_VERTEX_ARRAY, GL_NORMAL_ARRAY, GL_TEXTURE_COORD_ARRAY
-    if(video.supportVBO && animated)
+    if(g_videoSetting.supportVBO && animated)
     {
         // bind / point to the vertex normals buffer
         if(animGeometry)
@@ -2190,7 +2190,7 @@ inline void Model::drawModel()
                 //glDrawElements(GL_TRIANGLES, p.indexCount, GL_UNSIGNED_SHORT, indices + p.indexStart);
                 // a GDC OpenGL Performace Tuning paper recommended glDrawRangeElements over glDrawElements
                 // I can't notice a difference but I guess it can't hurt
-                if(video.supportVBO && video.supportDrawRangeElements)
+                if(g_videoSetting.supportVBO && g_videoSetting.supportDrawRangeElements)
                 {
                     glDrawRangeElements(GL_TRIANGLES, p.vertexStart,
                         p.vertexEnd, p.indexCount, GL_UNSIGNED_SHORT, indices +
@@ -2302,7 +2302,7 @@ void ModelCamera::setup(int time)
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(fov *34.5f, (GLfloat)video.xRes / (GLfloat)video.yRes,
+    gluPerspective(fov *34.5f, (GLfloat)g_videoSetting.xRes / (GLfloat)g_videoSetting.yRes,
         nearclip, farclip);
 
     Vec3D p = pos + tPos.getValue(0, time);

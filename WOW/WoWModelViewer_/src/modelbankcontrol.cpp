@@ -60,7 +60,7 @@ ModelBankControl::ModelBankControl(wxWindow *parent, wxWindowID id)
 ModelBankControl::~ModelBankControl()
 {
     SaveList();
-    bankList.clear();
+    m_bankList.clear();
 }
 
 //-------------------------------------------------------------------------
@@ -98,7 +98,7 @@ void ModelBankControl::LoadModel()
         return ;
     }
 
-    ModelBank cd = bankList[val];
+    ModelBank cd = m_bankList[val];
 
     g_modelViewer->LoadModel(cd.fileName.c_str() );
 
@@ -114,23 +114,23 @@ void ModelBankControl::LoadModel()
 
     if(cd.modelType == MT_CHAR && g_charControl)
     {
-        g_charControl->cd.faceType = cd.faceType;
-        g_charControl->cd.facialColor = cd.facialColor;
-        g_charControl->cd.facialHair = cd.facialHair;
-        g_charControl->cd.gender = cd.gender;
-        g_charControl->cd.hairColor = cd.hairColor;
-        g_charControl->cd.hairStyle = cd.hairStyle;
-        g_charControl->cd.skinColor = cd.skinColor;
-        g_charControl->cd.race = cd.race;
+        g_charControl->m_cd.faceType = cd.faceType;
+        g_charControl->m_cd.facialColor = cd.facialColor;
+        g_charControl->m_cd.facialHair = cd.facialHair;
+        g_charControl->m_cd.gender = cd.gender;
+        g_charControl->m_cd.hairColor = cd.hairColor;
+        g_charControl->m_cd.hairStyle = cd.hairStyle;
+        g_charControl->m_cd.skinColor = cd.skinColor;
+        g_charControl->m_cd.race = cd.race;
 
-        g_charControl->cd.showEars = cd.showEars;
-        g_charControl->cd.showFacialHair = cd.showFacialHair;
-        g_charControl->cd.showFeet = cd.showFeet;
-        g_charControl->cd.showHair = cd.showHair;
+        g_charControl->m_cd.showEars = cd.showEars;
+        g_charControl->m_cd.showFacialHair = cd.showFacialHair;
+        g_charControl->m_cd.showFeet = cd.showFeet;
+        g_charControl->m_cd.showHair = cd.showHair;
 
         for(int i = 0; i < NUM_CHAR_SLOTS; i++)
         {
-            g_charControl->cd.equipment[i] = cd.equipment[i];
+            g_charControl->m_cd.equipment[i] = cd.equipment[i];
         }
 
         g_charControl->RefreshModel();
@@ -196,32 +196,32 @@ void ModelBankControl::AddModel()
 
         for(int i = 0; i < NUM_CHAR_SLOTS; i++)
         {
-            cd.equipment[i] = g_charControl->cd.equipment[i];
+            cd.equipment[i] = g_charControl->m_cd.equipment[i];
         }
 
-        cd.faceType = g_charControl->cd.faceType;
-        cd.facialColor = g_charControl->cd.facialColor;
-        cd.facialHair = g_charControl->cd.facialHair;
-        cd.gender = g_charControl->cd.gender;
-        cd.hairColor = g_charControl->cd.hairColor;
-        cd.hairStyle = g_charControl->cd.hairStyle;
-        cd.race = g_charControl->cd.race;
-        cd.skinColor = g_charControl->cd.skinColor;
+        cd.faceType = g_charControl->m_cd.faceType;
+        cd.facialColor = g_charControl->m_cd.facialColor;
+        cd.facialHair = g_charControl->m_cd.facialHair;
+        cd.gender = g_charControl->m_cd.gender;
+        cd.hairColor = g_charControl->m_cd.hairColor;
+        cd.hairStyle = g_charControl->m_cd.hairStyle;
+        cd.race = g_charControl->m_cd.race;
+        cd.skinColor = g_charControl->m_cd.skinColor;
 
-        cd.showEars = g_charControl->cd.showEars;
-        cd.showFacialHair = g_charControl->cd.showFacialHair;
-        cd.showFeet = g_charControl->cd.showFeet;
-        cd.showHair = g_charControl->cd.showHair;
-        cd.showUnderwear = g_charControl->cd.showUnderwear;
+        cd.showEars = g_charControl->m_cd.showEars;
+        cd.showFacialHair = g_charControl->m_cd.showFacialHair;
+        cd.showFeet = g_charControl->m_cd.showFeet;
+        cd.showHair = g_charControl->m_cd.showHair;
+        cd.showUnderwear = g_charControl->m_cd.showUnderwear;
 
-        cd.useNPC = g_charControl->cd.useNPC;
+        cd.useNPC = g_charControl->m_cd.useNPC;
 
     }
     else if(cd.modelType == MT_WMO){
 
     }
 
-    bankList.push_back(cd);
+    m_bankList.push_back(cd);
 
     txtName->Clear();
     UpdateList();
@@ -238,18 +238,18 @@ void ModelBankControl::RemoveModel()
     }
 
     std::vector < ModelBank > temp;
-    for(size_t i = 0; i < bankList.size(); i++)
+    for(size_t i = 0; i < m_bankList.size(); i++)
     {
         if(i != val)
         {
-            temp.push_back(bankList[i]);
+            temp.push_back(m_bankList[i]);
         }
     }
 
-    bankList.clear();
+    m_bankList.clear();
     for(size_t i = 0; i < temp.size(); i++)
     {
-        bankList.push_back(temp[i]);
+        m_bankList.push_back(temp[i]);
     }
 
     UpdateList();
@@ -261,9 +261,9 @@ void ModelBankControl::UpdateList()
 {
     lstBank->Clear();
 
-    for(size_t i = 0; i < bankList.size(); i++)
+    for(size_t i = 0; i < m_bankList.size(); i++)
     {
-        lstBank->Append(bankList[i].name);
+        lstBank->Append(m_bankList[i].name);
     }
 
 }
@@ -272,7 +272,7 @@ void ModelBankControl::UpdateList()
 
 void ModelBankControl::SaveList()
 {
-    if(bankList.size() == 0)
+    if(m_bankList.size() == 0)
     {
         return ;
     }
@@ -293,74 +293,74 @@ void ModelBankControl::SaveList()
     size_t val = 0;
     int iVal = 0;
 
-    for(size_t i = 0; i < bankList.size(); i++)
+    for(size_t i = 0; i < m_bankList.size(); i++)
     {
-        if(bankList[i].name.size() > 0)
+        if(m_bankList[i].name.size() > 0)
         {
             // name
-            val = bankList[i].name.size();
+            val = m_bankList[i].name.size();
             file.Write(&val, sizeof(val) );
-            file.Write(bankList[i].name.c_str(), val);
+            file.Write(m_bankList[i].name.c_str(), val);
 
             // filename
-            val = bankList[i].fileName.size();
+            val = m_bankList[i].fileName.size();
             file.Write(&val, sizeof(val) );
-            file.Write(bankList[i].fileName.c_str(), val);
+            file.Write(m_bankList[i].fileName.c_str(), val);
 
-            file.Write(&bankList[i].pos, sizeof(Vec3D) );
-            file.Write(&bankList[i].rot, sizeof(Vec3D) );
+            file.Write(&m_bankList[i].pos, sizeof(Vec3D) );
+            file.Write(&m_bankList[i].rot, sizeof(Vec3D) );
 
 
             // File Type
-            file.Write(&bankList[i].modelType, sizeof(unsigned int) );
+            file.Write(&m_bankList[i].modelType, sizeof(unsigned int) );
 
-            if(bankList[i].modelType == MT_NORMAL)
+            if(m_bankList[i].modelType == MT_NORMAL)
             {
 
                 // Texture count
-                iVal = (int)bankList[i].textures.Count();
+                iVal = (int)m_bankList[i].textures.Count();
                 file.Write(&iVal, sizeof(int) );
 
-                for(unsigned int j = 0; j < bankList[i].textures.Count(); j++)
+                for(unsigned int j = 0; j < m_bankList[i].textures.Count(); j++)
                 {
-                    val = bankList[i].textures[j].size();
+                    val = m_bankList[i].textures[j].size();
                     file.Write(&val, sizeof(val) );
-                    file.Write(bankList[i].textures[j].c_str(), val);
+                    file.Write(m_bankList[i].textures[j].c_str(), val);
                 }
 
             }
-            else if(bankList[i].modelType == MT_CHAR)
+            else if(m_bankList[i].modelType == MT_CHAR)
             {
                 // Skin Colour
-                file.Write(&bankList[i].skinColor, sizeof(unsigned int) );
+                file.Write(&m_bankList[i].skinColor, sizeof(unsigned int) );
                 // Face Type
-                file.Write(&bankList[i].faceType, sizeof(unsigned int) );
+                file.Write(&m_bankList[i].faceType, sizeof(unsigned int) );
                 // Hair Colour
-                file.Write(&bankList[i].hairColor, sizeof(unsigned int) );
+                file.Write(&m_bankList[i].hairColor, sizeof(unsigned int) );
                 // Hair Style
-                file.Write(&bankList[i].hairStyle, sizeof(unsigned int) );
+                file.Write(&m_bankList[i].hairStyle, sizeof(unsigned int) );
                 // Facial Features style
-                file.Write(&bankList[i].facialHair, sizeof(unsigned int) );
+                file.Write(&m_bankList[i].facialHair, sizeof(unsigned int) );
                 // Facial Features Colour
-                file.Write(&bankList[i].facialColor, sizeof(unsigned int) );
+                file.Write(&m_bankList[i].facialColor, sizeof(unsigned int) );
 
                 // Race
-                file.Write(&bankList[i].race, sizeof(unsigned int) );
+                file.Write(&m_bankList[i].race, sizeof(unsigned int) );
                 // Gender
-                file.Write(&bankList[i].gender, sizeof(unsigned int) );
+                file.Write(&m_bankList[i].gender, sizeof(unsigned int) );
                 // use NPC?
-                file.Write(&bankList[i].useNPC, sizeof(unsigned int) );
+                file.Write(&m_bankList[i].useNPC, sizeof(unsigned int) );
 
                 //bool showUnderwear, showEars, showHair, showFacialHair, showFeet;
-                file.Write(&bankList[i].showUnderwear, sizeof(bool) );
-                file.Write(&bankList[i].showEars, sizeof(bool) );
-                file.Write(&bankList[i].showHair, sizeof(bool) );
-                file.Write(&bankList[i].showFacialHair, sizeof(bool) );
-                file.Write(&bankList[i].showFeet, sizeof(bool) );
+                file.Write(&m_bankList[i].showUnderwear, sizeof(bool) );
+                file.Write(&m_bankList[i].showEars, sizeof(bool) );
+                file.Write(&m_bankList[i].showHair, sizeof(bool) );
+                file.Write(&m_bankList[i].showFacialHair, sizeof(bool) );
+                file.Write(&m_bankList[i].showFeet, sizeof(bool) );
 
                 for(int j = 0; j < NUM_CHAR_SLOTS; j++)
                 {
-                    iVal = bankList[i].equipment[j];
+                    iVal = m_bankList[i].equipment[j];
                     file.Write(&iVal, sizeof(int) );
                 }
             }
@@ -391,7 +391,7 @@ void ModelBankControl::LoadList()
         return ;
     }
 
-    bankList.clear();
+    m_bankList.clear();
 
     size_t val = 0;
     char name[512];
@@ -495,7 +495,7 @@ void ModelBankControl::LoadList()
             }
         }
 
-        bankList.push_back(cd);
+        m_bankList.push_back(cd);
     }
 
     UpdateList();

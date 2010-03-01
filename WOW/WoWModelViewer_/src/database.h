@@ -68,7 +68,7 @@ extern StartOutfitDB startdb;
 extern ItemSubClassDB subclassdb;
 extern ItemVisualDB visualdb;
 extern CharHairGeosetsDB hairdb;
-extern CharSectionsDB chardb;
+extern CharSectionsDB g_dbChar;
 extern CharClassesDB classdb;
 extern CharFacialHairDB facialhairdb;
 extern CharRacesDB racedb;

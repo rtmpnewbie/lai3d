@@ -1086,8 +1086,8 @@ void AnimControl::SetSkin(int num)
     {
         if(g_selModel->useReplaceTextures[grp->base + i])
         {
-            texturemanager.del(g_selModel->replaceTextures[grp->base + i]);
-            g_selModel->replaceTextures[grp->base + i] = texturemanager.add( 
+            g_texturemanager.del(g_selModel->replaceTextures[grp->base + i]);
+            g_selModel->replaceTextures[grp->base + i] = g_texturemanager.add( 
                 (std::string)makeSkinTexture(g_selModel->name.c_str(), grp
                 ->tex[i].c_str() ) );
         }

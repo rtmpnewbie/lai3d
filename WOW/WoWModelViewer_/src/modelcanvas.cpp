@@ -123,7 +123,7 @@ ModelCanvas::ModelCanvas(wxWindow *parent, VideoCaps *caps)
 
         // Initiate our default OpenGL settings
         wxLogMessage(_T("Initiating OpenGL...") );
-        video.SetHandle( (HWND)this->GetHandle(), bpp);
+        g_videoSetting.SetHandle( (HWND)this->GetHandle(), bpp);
     }
 
     root = new Attachment(NULL, NULL,  - 1,  - 1);
@@ -138,7 +138,7 @@ ModelCanvas::~ModelCanvas()
     cAvi.ReleaseEngine();
 
     // Clear remaining textures.
-    texturemanager.clear();
+    g_texturemanager.clear();
 
     // Uninitialise shaders
     UninitShaders();
@@ -184,13 +184,13 @@ void ModelCanvas::InitView()
     // set GL viewport
     int w = 0, h = 0;
     GetClientSize(&w, &h);
-    video.SetCurrent();
+    g_videoSetting.SetCurrent();
 
     // update projection
     //SetupProjection();
-    video.ResizeGLScene(w, h);
-    video.xRes = w;
-    video.yRes = h;
+    g_videoSetting.ResizeGLScene(w, h);
+    g_videoSetting.xRes = w;
+    g_videoSetting.yRes = h;
 }
 
 //-------------------------------------------------------------------------
@@ -198,7 +198,7 @@ void ModelCanvas::InitView()
 void ModelCanvas::InitShaders()
 {
 
-    if(video.supportFragProg)
+    if(g_videoSetting.supportFragProg)
     {
         /*
         // TODO: Rewrite these shaders from WoW into GLSL
@@ -625,8 +625,8 @@ void ModelCanvas::OnMouse(wxMouseEvent &event)
 void ModelCanvas::InitGL()
 {
     // Initiate our default OpenGL settings
-    video.SetCurrent();
-    video.InitGL();
+    g_videoSetting.SetCurrent();
+    g_videoSetting.InitGL();
 
     GLenum err = 0;
 
@@ -661,7 +661,7 @@ void ModelCanvas::OnPaint(wxPaintEvent &WXUNUSED(event) )
         InitGL();
     }
 
-    if(video.render)
+    if(g_videoSetting.render)
     {
         if(wmo)
         {
@@ -989,7 +989,7 @@ inline void ModelCanvas::RenderObjects()
     // ***************** MODEL RENDERING **********************
     // ************* Setup our render state *********
     //glEnable(GL_COLOR_MATERIAL);
-    if(video.useMasking)
+    if(g_videoSetting.useMasking)
     {
         glDisable(GL_LIGHTING);
         glDisable(GL_TEXTURE_2D);
@@ -1004,7 +1004,7 @@ inline void ModelCanvas::RenderObjects()
         glDepthFunc(GL_LEQUAL);
         //glEnable(GL_CULL_FACE);
 
-        if(video.supportGLSL)
+        if(g_videoSetting.supportGLSL)
         {
             /*
             // Per pixel lighting, experimental
@@ -1033,7 +1033,7 @@ inline void ModelCanvas::RenderObjects()
     root->draw(this);
     //glDisable(GL_NORMALIZE);
 
-    if(video.supportGLSL)
+    if(g_videoSetting.supportGLSL)
     {
         //perpixelShader.Disable();
         //toonShader.Disable();
@@ -1041,7 +1041,7 @@ inline void ModelCanvas::RenderObjects()
         //blurShader.Disable();
     }
 
-    if(!video.useMasking)
+    if(!g_videoSetting.useMasking)
     {
         // render our particles, we do this afterwards so that all the particles display "OK" without having things like shields "overwriting" the particles.
         glEnable(GL_TEXTURE_2D);
@@ -1122,7 +1122,7 @@ inline void ModelCanvas::Render()
 {
     // Sets the "clear" colour.  Without this you get the "ghosting" effecting 
     // as the buffer doesn't get set/cleared.
-    if(video.useMasking)
+    if(g_videoSetting.useMasking)
     {
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     }
@@ -1137,7 +1137,7 @@ inline void ModelCanvas::Render()
     InitView();
 
     // If masking isn't enabled
-    if(!video.useMasking)
+    if(!g_videoSetting.useMasking)
     {
         // Draw the background image if any
         if(drawBackground)
@@ -1255,7 +1255,7 @@ inline void ModelCanvas::Render()
     // ==============================================
 
     // Render the grid if wanted and masking isn't enabled
-    if(drawGrid && !video.useMasking)
+    if(drawGrid && !g_videoSetting.useMasking)
     {
         RenderGrid();
     }
@@ -1265,7 +1265,7 @@ inline void ModelCanvas::Render()
     {
         //if (video.supportFragProg)
         //	deathShader.Enable();
-        if(video.supportGLSL)
+        if(g_videoSetting.supportGLSL)
         {
             // Per pixel lighting, experimental
             //perpixelShader.Enable();
@@ -1281,7 +1281,7 @@ inline void ModelCanvas::Render()
         //	deathShader.Disable();
 
         // Blur/Glowing effects
-        if(video.supportGLSL)
+        if(g_videoSetting.supportGLSL)
         {
             //perpixelShader.Disable();
             //RenderToTexture();
@@ -1292,7 +1292,7 @@ inline void ModelCanvas::Render()
     // Finished rendering, swap it into our front buffer (to the screen)
     //glFlush();
     //glFinish();
-    video.SwapBuffers();
+    g_videoSetting.SwapBuffers();
 }
 
 //-------------------------------------------------------------------------
@@ -1532,7 +1532,7 @@ inline void ModelCanvas::RenderWMO()
     //glFlush();
     //glFinish();
     //SwapBuffers();
-    video.SwapBuffers();
+    g_videoSetting.SwapBuffers();
 }
 
 //-------------------------------------------------------------------------
@@ -1544,7 +1544,7 @@ inline void ModelCanvas::RenderWMOToBuffer()
         return ;
     }
 
-    if(!init || video.supportFBO)
+    if(!init || g_videoSetting.supportFBO)
     {
         InitGL();
     }
@@ -1552,7 +1552,7 @@ inline void ModelCanvas::RenderWMOToBuffer()
     glClearColor(vecBGColor.x, vecBGColor.y, vecBGColor.z, 0.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    if(video.supportFBO && video.supportPBO)
+    if(g_videoSetting.supportFBO && g_videoSetting.supportPBO)
     {
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
@@ -1603,7 +1603,7 @@ void ModelCanvas::RenderToBuffer()
     GLuint lightID = 0;
 
 
-    if(!init || !video.supportFBO)
+    if(!init || !g_videoSetting.supportFBO)
     {
         InitGL();
         g_modelViewer->lightControl->UpdateGL();
@@ -1613,7 +1613,7 @@ void ModelCanvas::RenderToBuffer()
     // Reset the render state
     glLoadMatrixf(defaultMatrix);
 
-    if(video.supportDrawRangeElements || video.supportVBO)
+    if(g_videoSetting.supportDrawRangeElements || g_videoSetting.supportVBO)
     {
         glEnableClientState(GL_VERTEX_ARRAY);
         glEnableClientState(GL_NORMAL_ARRAY);
@@ -1627,7 +1627,7 @@ void ModelCanvas::RenderToBuffer()
     }
 
 
-    if(video.supportAntiAlias && video.curCap.aaSamples > 0)
+    if(g_videoSetting.supportAntiAlias && g_videoSetting.curCap.aaSamples > 0)
     {
         glEnable(GL_MULTISAMPLE_ARB);
     }
@@ -1654,13 +1654,13 @@ void ModelCanvas::RenderToBuffer()
     {
         glPushAttrib(GL_VIEWPORT_BIT);
         glViewport(0, 0, rt->nWidth, rt->nHeight);
-        video.ResizeGLScene(rt->nWidth, rt->nHeight);
+        g_videoSetting.ResizeGLScene(rt->nWidth, rt->nHeight);
     }
 
 
     // Sets the "clear" colour.  Without this you get the "ghosting" effecting 
     // as the buffer doesn't get set/cleared.
-    if(video.useMasking)
+    if(g_videoSetting.useMasking)
     {
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     }
@@ -1680,7 +1680,7 @@ void ModelCanvas::RenderToBuffer()
      */
 
     // If masking isn't enabled
-    if(!video.useMasking)
+    if(!g_videoSetting.useMasking)
     {
         // Draw the background image if any
         if(drawBackground)
@@ -1698,7 +1698,7 @@ void ModelCanvas::RenderToBuffer()
     camera.Setup();
 
     // Render the grid if wanted and masking isn't enabled
-    if(drawGrid && !video.useMasking)
+    if(drawGrid && !g_videoSetting.useMasking)
     {
         RenderGrid();
     }
@@ -1847,7 +1847,7 @@ inline void Attachment::draw(ModelCanvas *c)
                 glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
             }
 
-            if(!m->showTexture || video.useMasking)
+            if(!m->showTexture || g_videoSetting.useMasking)
             {
                 glDisable(GL_TEXTURE_2D);
             }
@@ -1878,7 +1878,7 @@ inline void Attachment::draw(ModelCanvas *c)
                 glEnable(GL_COLOR_MATERIAL);
             }
 
-            if(!video.useMasking)
+            if(!g_videoSetting.useMasking)
             {
                 glDisable(GL_LIGHTING);
                 glDisable(GL_TEXTURE_2D);
@@ -1983,7 +1983,7 @@ void Attachment::tick(float dt)
 
 void ModelCanvas::OnTimer(wxTimerEvent &event)
 {
-    if(video.render && init)
+    if(g_videoSetting.render && init)
     {
         CheckMovement();
         tick();
@@ -2454,7 +2454,7 @@ void ModelCanvas::Screenshot(const wxString fn, int x, int y)
     int screenSize[4];
 
     // Setup out buffers for offscreen rendering
-    if(video.supportPBO || video.supportFBO)
+    if(g_videoSetting.supportPBO || g_videoSetting.supportFBO)
     {
         rt = new RenderTexture();
 
@@ -2463,7 +2463,7 @@ void ModelCanvas::Screenshot(const wxString fn, int x, int y)
             return ;
         }
 
-        rt->Init( (HWND)this->GetHandle(), x, y, video.supportFBO);
+        rt->Init( (HWND)this->GetHandle(), x, y, g_videoSetting.supportFBO);
 
         screenSize[2] = rt->nWidth;
         screenSize[3] = rt->nHeight;
@@ -2576,7 +2576,7 @@ void ModelCanvas::SaveSceneState(int id)
     {
         sceneState[id].pos = model->pos;
         sceneState[id].rot = model->rot;
-        sceneState[id].fov = video.fov;
+        sceneState[id].fov = g_videoSetting.fov;
     }
 }
 
@@ -2591,14 +2591,14 @@ void ModelCanvas::LoadSceneState(int id)
     // bounds check
     if(id >  - 1 && id < 4)
     {
-        video.fov = sceneState[id].fov;
+        g_videoSetting.fov = sceneState[id].fov;
         model->pos = sceneState[id].pos;
         model->rot = sceneState[id].rot;
 
         int screenSize[4];
         glGetIntegerv(GL_VIEWPORT, screenSize); 
             // get the width/height of the canvas
-        video.ResizeGLScene(screenSize[2], screenSize[3]);
+        g_videoSetting.ResizeGLScene(screenSize[2], screenSize[3]);
     }
 }
 

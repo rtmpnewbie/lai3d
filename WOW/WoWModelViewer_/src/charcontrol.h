@@ -168,7 +168,7 @@ public:
 	void RefreshEquipment();
 	inline void RandomiseChar();
 
-	TextureID charTex, hairTex, furTex, capeTex, gobTex;
+	TextureID m_charTex, m_hairTex, m_furTex, m_capeTex, m_gobTex;
 
 	bool bSheathe;
 
@@ -179,11 +179,11 @@ public:
 
 	void OnUpdateItem(int type, int id);
 
-	CharDetails cd;
-	TabardDetails td;
+	CharDetails m_cd;
+	TabardDetails m_td;
 
-	Attachment *charAtt;
-	Model *model;
+	Attachment *m_charAtt;
+	Model *m_model;
 
 	wxString makeItemTexture(int region, const wxString name);
 	wxString customSkin;
