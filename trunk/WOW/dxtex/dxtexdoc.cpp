@@ -166,6 +166,44 @@ BOOL CDxtexDoc::OnOpenDocument(LPCTSTR lpszPathName)
     D3DXIMAGE_INFO imageinfo;
     D3DXIMAGE_INFO imageinfo2;
 
+	// judge if blp file
+	CString strPathName = lpszPathName;
+	strPathName = strPathName.Right(3);
+
+	if ("blp" == strPathName)
+	{
+		enum
+		{
+			MaxMipmapNum = 16,
+			PaletteColorNum = 256
+		};
+		struct BLP2Header
+		{
+			DWORD id;				///< Always 'BLP2'
+			DWORD type;						///< 0: JPEG compression, 1: Uncompressed or DirectX compression
+			byte encoding;					///< 1: Uncompressed, 2: DirectX compression
+			byte alphaDepth;				///< 0: No alpha channel, 1: 1 bit alpha, 8: 8 bit alpha
+			byte alphaEncoding;				///< 0: DXT1 alpha (0 or 1 bit alpha), 1: DXT2/3 alpha (4 bit alpha), 7: DXT4/5 alpha (interpolated alpha)
+			byte hasMips;					///< 0: No mip levels, 1: Mip levels present (the number of levels is determined by the image size)
+			DWORD width;						///< Dimensions of the image in pixels (always a power of two)
+			DWORD height;					///< Dimensions of the image in pixels (always a power of two)
+			DWORD offsets[MaxMipmapNum];		///< Offset from the start of the file to the image data
+			DWORD lengths[MaxMipmapNum];		///< Length in bytes of the image data
+			DWORD palette[PaletteColorNum];	///< 4-byte BGRA color values for paletted textures (this field is present regardless of whether the texture actually uses palettes)
+		};
+
+		// load blp file
+		CFile file;
+		if(file.Open(lpszPathName, CFile::OpenFlags::modeRead))
+		{
+			// read the blp2 header
+			char buff[1000];
+			file.Read(&buff, sizeof(BLP2Header));
+			return TRUE;
+		}
+		return FALSE;
+	}
+
     if( FAILED( D3DXGetImageInfoFromFile( lpszPathName, &imageinfo ) ) )
     {
         AfxMessageBox(ID_ERROR_COULDNTLOADFILE);
