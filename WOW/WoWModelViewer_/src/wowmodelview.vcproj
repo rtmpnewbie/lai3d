@@ -43,7 +43,7 @@
 				AdditionalOptions="/D &quot;WotLK&quot;&#x0D;&#x0A;"
 				Optimization="0"
 				AdditionalIncludeDirectories="&quot;.\wx\include&quot;;&quot;.\wx\include\msvc&quot;;.\zlib\;.\glew\include;.\bzip2\;.\;"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;__WINDOWS__;__WXMSW__;__WXDEBUG__"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;__WINDOWS__;__WXMSW__;__WXDEBUG__;WotLK"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				SmallerTypeCheck="true"
