@@ -3,7 +3,7 @@
 #include "enums.h"
 #include "util.h"
 
-#include "globalvars.h"
+#include "globalvars.h" 
 
 IMPLEMENT_CLASS(Settings_Page1, wxWindow)
 IMPLEMENT_CLASS(Settings_Page2, wxWindow)
