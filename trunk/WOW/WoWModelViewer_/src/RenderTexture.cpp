@@ -60,7 +60,7 @@ bool CHECK_FRAMEBUFFER_STATUS()
 
 void RenderTexture::InitGL()
 {
-    video.InitGL();
+    g_videoSetting.InitGL();
 
     glEnable(GL_TEXTURE_2D);
     glEnable(GL_DEPTH_TEST);
@@ -94,7 +94,7 @@ void RenderTexture::Init(HWND hWnd, int width, int height, bool fboMode)
     }
 
     // Find the (easiest) format to use
-    if(video.supportNPOT && video.supportTexRects && GL_TEXTURE_RECTANGLE_ARB)
+    if(g_videoSetting.supportNPOT && g_videoSetting.supportTexRects && GL_TEXTURE_RECTANGLE_ARB)
     {
         m_texFormat = GL_TEXTURE_RECTANGLE_ARB;
     }
